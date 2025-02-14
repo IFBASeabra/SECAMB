@@ -8,6 +8,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 
 import "./sign-up.scss"
+import { Target } from 'lucide-react'
 
 type SignUpFormType = {
   searchParams: Message
@@ -30,7 +31,7 @@ const SignUpForm = ({searchParams, signUpAction}: SignUpFormType) => {
           <div className="register__form-group">
             <Label htmlFor="register_type">Tipo de Registro: </Label>
             <label className="register__radio" htmlFor="pessoa_fisica">
-              <input 
+              <input  
                 name="register_type" 
                 type="radio" 
                 value="pessoa_fisica" 
@@ -61,10 +62,49 @@ const SignUpForm = ({searchParams, signUpAction}: SignUpFormType) => {
             </Label>
             <Input name="name" placeholder={registerType === "pessoa_juridica" ? "Casas Bahia" : "José dos Santos"} required />
           </div>
+
+
+          <div className="register_form-group">
+            <Label htmlFor='register-type'>
+              {
+                registerType === "pessoa_juridica" ? "CNPJ"  : "CPF"
+              }
+            </Label>
+            <Input
+             name="document"
+             placeholder={registerType === "pessoa_juridica" ? "00.000.000/0001-00" : "000.000.000-00"} 
+             type='text'
+             required
+            />
+          </div>
+
+
           <div className="register__form-group">
             <Label htmlFor="email">E-mail</Label>
             <Input name="email" placeholder="jose@email.com" required />
           </div>
+
+
+          <div className="register__form-group">
+            <Label htmlFor="address">Endereço</Label>
+            <Input name="address" placeholder="Rua Horáco de Matos" required />
+          </div>
+
+
+          <div className="register__form-group">
+            <Label htmlFor="neighborhood">Bairro</Label>
+            <Input name="neighborhood" placeholder="Bloco" required />
+          </div>
+
+
+          
+          <div className="register__form-group">
+            <Label htmlFor="zipcode">CEP</Label>
+            <Input name="zipcode" placeholder="xxxxx-xxx" required />
+          </div>
+
+
+
           <div className="register__form-group">
             <Label htmlFor="password">Senha</Label>
             <Input
