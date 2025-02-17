@@ -8,7 +8,6 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 
 import "./sign-up.scss"
-import { Target } from 'lucide-react'
 
 type SignUpFormType = {
   searchParams: Message
