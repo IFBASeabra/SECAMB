@@ -35,10 +35,14 @@ export const signUpAction = async (formData: FormData) => {
     const user_id = data.user.id
     const register_type = formData.get('register_type')?.toString()
     const name = formData.get('name')?.toString()
+    const document = formData.get('document')?.toString()
+    const address = formData.get('address')?.toString()
+    const neighborhood = formData.get('neighborhood')?.toString()
+    const zipcode = formData.get('zipcode')?.toString()
 
     const { error } = await supabase
     .from('user_info')
-    .insert({ name,register_type, user_id, document: '123456789'  })
+    .insert({ name,register_type, user_id, document, address, neighborhood, zipcode  })
 
     if (error) {
       console.error(error.code + " " + error.message);
