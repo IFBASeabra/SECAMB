@@ -1,4 +1,4 @@
-import { signUpAction } from "@/app/actions";
+import { signUpAction } from "@/app/actions/signUp";
 import { FormMessage, Message } from "@/components/form-message";
 import SignUpForm from "./SignUpForm";
 
