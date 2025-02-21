@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 export const signUpAction = async (formData: FormData) => {
   const email = formData.get("email")?.toString();
   const password = formData.get("password")?.toString();
+  const password_validation = formData.get("password_validation")?.toString();
 
   const supabase = await createClient();
   const origin = (await headers()).get("origin");
@@ -20,6 +21,22 @@ export const signUpAction = async (formData: FormData) => {
       "error",
       "/sign-up",
       "E-mail e senha são obrigatórios",
+    );
+  }
+
+  if (!password_validation) {
+    return encodedRedirect(
+      "error",
+      "/sign-up",
+      "Validação de senha é obrigatória",
+    );
+  }
+
+  if (password_validation !== password) {
+    return encodedRedirect(
+      "error",
+      "/sign-up",
+      "Senhas não batem. Verifique os campos e tente novamente",
     );
   }
 
