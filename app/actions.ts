@@ -5,88 +5,6 @@ import { createClient } from "@/utils/supabase/server";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-export const signUpAction = async (formData: FormData) => {
-  const email = formData.get("email")?.toString();
-  const password = formData.get("password")?.toString();
-  const password_validation = formData.get("password_validation")?.toString();
-
-  const supabase = await createClient();
-  const origin = (await headers()).get("origin");
-
-
-  console.log('DADOS DO FORMULÁRIO', formData)
-
-  if (!email || !password) {
-    return encodedRedirect(
-      "error",
-      "/sign-up",
-      "E-mail e senha são obrigatórios",
-    );
-  }
-
-  if (!password_validation) {
-    return encodedRedirect(
-      "error",
-      "/sign-up",
-      "Validação de senha é obrigatória",
-    );
-  }
-
-  if (password_validation !== password) {
-    return encodedRedirect(
-      "error",
-      "/sign-up",
-      "Senhas não batem. Verifique os campos e tente novamente",
-    );
-  }
-
-  const { error, data } = await supabase.auth.signUp({
-    email,
-    password,
-    options: {
-      emailRedirectTo: `${origin}/auth/callback`,
-    },
-  });
-
-  if ( data?.user?.id) {
-    const user_id = data.user.id
-    const register_type = formData.get('register_type')?.toString()
-    const name = formData.get('name')?.toString()
-    const document = formData.get('document')?.toString()
-    const address = formData.get('address')?.toString()
-    const neighborhood = formData.get('neighborhood')?.toString()
-    const zipcode = formData.get('zipcode')?.toString()
-
-    const { error } = await supabase
-    .from('user_info')
-    .insert({ name,register_type, user_id, document, address, neighborhood, zipcode  })
-
-    if (error) {
-      console.error(error.code + " " + error.message);
-      return encodedRedirect("error", "/sign-up", error.message);
-    } else {
-      return encodedRedirect(
-        "success",
-        "/sign-up",
-        "Thanks for signing up! Please check your email for a verification link.",
-      );
-    }
-  }
-
-  console.log('data do auth: ', data)
-
-  if (error) {
-    console.error(error.code + " " + error.message);
-    return encodedRedirect("error", "/sign-up", error.message);
-  } else {
-    return encodedRedirect(
-      "success",
-      "/sign-up",
-      "Thanks for signing up! Please check your email for a verification link.",
-    );
-  }
-};
-
 export const signInAction = async (formData: FormData) => {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
@@ -101,7 +19,7 @@ export const signInAction = async (formData: FormData) => {
     return encodedRedirect("error", "/sign-in", error.message);
   }
 
-  return redirect("/protected");
+  return redirect("/home");
 };
 
 export const forgotPasswordAction = async (formData: FormData) => {
