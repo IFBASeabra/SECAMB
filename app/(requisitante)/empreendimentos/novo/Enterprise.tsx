@@ -58,12 +58,6 @@ const EnterpriseForm = ({ searchParams, enterpriseAction }: EnterpriseFormType) 
         onSubmit={form.handleSubmit(registerUser)}
       >
         <h1 className="register__title">Empreendimento</h1>
-        <p className="register__sign-in">
-          Já tem uma conta?{" "}
-          <Link className="register__link" href="/sign-in">
-            Entrar
-          </Link>
-        </p>
         <div className="register__form" >
           <div className="register__form-group">
             <Label htmlFor="name">Nome do Empreendimento</Label>

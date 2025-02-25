@@ -1,101 +1,62 @@
-import {z} from 'zod';
+import { z } from "zod";
 
+export const enterpriseFormSchema = z.object({
+	name: z
+		.string()
+		.regex(/^[A-Za-zÀ-ÖØ-öø-ÿ]+(?: [A-Za-zÀ-ÖØ-öø-ÿ]+)+$/, {
+			message:
+				"Informe o nome completo da sua empresa, sem caracteres especiais",
+		})
+		.trim(),
 
-function validateCNPJ(cnpj: string) {
-	cnpj = cnpj.replace(/\D/g, "");
-	if (cnpj.length !== 14 || /^(\d)\1{13}$/.test(cnpj)) return false;
-	let length = cnpj.length - 2;
-	let numbers = cnpj.substring(0, length);
-	let digits = cnpj.substring(length);
-	let sum = 0;
-	let pos = length - 7;
-	for (let i = length; i >= 1; i--) {
-		sum += Number(numbers[length - i]) * pos--;
-		if (pos < 2) pos = 9;
-	}
-	let result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
-	if (result !== parseInt(digits[0])) return false;
-	length++;
-	numbers = cnpj.substring(0, length);
-	sum = 0;
-	pos = length - 7;
-	for (let i = length; i >= 1; i--) {
-		sum += Number(numbers[length - i]) * pos--;
-		if (pos < 2) pos = 9;
-	}
-	result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
-	return result === parseInt(digits[1]);
-}
+	cnpj: z.string(),
 
+	activity_type: z.enum([
+		"POR AQUI NADA ",
+		"POR NADA AQ AINDA",
+		"POR AQUI AINDA NADA ",
+	]),
 
+	address: z
+		.string()
+		.min(5, "O endereço deve ter pelo menos 5 caracteres")
+		.trim(),
 
-export const enterpriseFormSchema = z
-  .object({
-    name: z
-      .string()
-      .regex(/^[A-Za-zÀ-ÖØ-öø-ÿ]+(?: [A-Za-zÀ-ÖØ-öø-ÿ]+)+$/, {message: "Informe o nome completo da sua empresa, sem caracteres especiais"})
-      .trim(),
+	neighborhood: z
+		.string()
+		.min(3, "O bairro deve ter pelo menos 3 caracteres")
+		.trim(),
 
-    cnpj: z
-    .string(),
+	zipcode: z
+		.string()
+		.regex(/^\d{5}-\d{3}$/, {
+			message: "CEP inválido. Use o formato XXXXX-XXX.",
+		})
+		.trim(),
 
-    activity_type: z
-    .enum(["POR AQUI NADA ", "POR NADA AQ AINDA", "POR AQUI AINDA NADA "]),
+	telephone_contact: z
+		.string()
+		.regex(/^\(\d{2}\) \d{4}-\d{4}$/, "Telefone inválido")
+		.trim(),
 
-    address: z
-    .string()
-    .min(5, "O endereço deve ter pelo menos 5 caracteres")
-    .trim(),
+	cellphone_contact: z
+		.string()
+		.regex(/^\(\d{2}\) \d{5}-\d{4}$/, "Celular inválido")
+		.trim(),
 
-    neighborhood: z
-    .string()
-    .min(3, "O bairro deve ter pelo menos 3 caracteres")
-    .trim(),
+	email: z.string().email({ message: "Informe um e-mail válido." }).trim(),
 
-    zipcode: z
-    .string()
-    .regex(/^\d{5}-\d{3}$/, "CEP inválido")
-    .trim(),
+	uc: z.enum(["sim", "nao"]),
 
-    telephone_contact :z
-    .string()
-    .regex(/^\(\d{2}\) \d{4}-\d{4}$/, "Telefone inválido")
-    .trim(),
+	river_basin: z.string().trim(),
 
-    cellphone_contact: z
-    .string()
-    .regex(/^\(\d{2}\) \d{5}-\d{4}$/, "Celular inválido")
-    .trim(),
+	water_resource: z.string().trim(),
 
-    email: z
-    .string()
-    .email({ message: "Informe um e-mail válido." })
-    .trim(),
+	geographic_coordinates: z.string().trim(),
 
-    uc: z
-    .enum(["sim", "nao"]),
+	longitude: z.string().min(1, "Longitude obrigatória").trim(),
 
-    river_basin: z.string() .trim(),
-    
-    water_resource: z.string() .trim(),
+	latitude: z.string().min(1, "Latitude obrigatória").trim(),
 
-    geographic_coordinates: z 
-    .string()
-    .trim(),
-
-    longitude: z
-    .string()
-    .min(1, "Longitude obrigatória")
-    .trim(),
-
-    latitude: z
-    .string()
-    .min(1, "Latitude obrigatória")
-    .trim(),   
-
-    operation_phase: z 
-    .string()
-    .trim(),
-
-    })
-
+	operation_phase: z.string().trim(),
+});

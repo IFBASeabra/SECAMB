@@ -25,16 +25,22 @@ export default async function layout({
 				<div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
 					<ul className="flex justify-start gap-4">
             <li>
+              <a href="/home">Página Inicial</a>
+            </li>
+            <li>
               <a href="#">Nova requisição</a>
             </li>
             <li>
               <a href="#">Minhas requisições</a>
             </li>
+            <li>
+              <a href="/empreendimentos">Empreendimentos</a>
+            </li>
           </ul>
 					{!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
 				</div>
 			</nav>
-			<div className="flex flex-col gap-20 w-full">{children}</div>
+			<div className="flex flex-col w-4/5 items-center ">{children}</div>
 		</>
 	);
 }

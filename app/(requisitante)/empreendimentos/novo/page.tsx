@@ -6,6 +6,9 @@ export default async function Enterprise(props: {
   searchParams: Promise<Message>;
 }) {
   const searchParams = await props.searchParams;
+
+  
+
   if ("message" in searchParams) {
     return (
       <div className="">
