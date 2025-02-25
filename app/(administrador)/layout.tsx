@@ -11,7 +11,6 @@ export default async function layout({
 }>) {
   const supabase = await createClient();
 
-
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -20,29 +19,27 @@ export default async function layout({
     return redirect("/sign-in");
   }
 
-  const {data: {profile}} =  await supabase
-  .from("user_info")
-  .select()
-  .eq('user_id', user.id)
-  .single()
+  const {
+    data: { profile },
+  } = await supabase.from("user_info").select().eq("user_id", user.id).single();
 
-  if (profile !== "admin")  {
+  if (profile !== "admin") {
     return redirect("/unauthorized");
   }
-  
+
   return (
     <>
       <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
         <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
           <ul className="flex justify-start gap-4">
             <li>
-              <a href="#">Visualizar cadastros</a>
+              <a href="/usuarios">Usuarios</a>
             </li>
             <li>
-              <a href="#">Visualizar requisições</a>
+              <a href="#">Requisições</a>
             </li>
             <li>
-              <a href="#">Editar usuários</a>
+              <a href="#">Dados</a>
             </li>
           </ul>
           {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
