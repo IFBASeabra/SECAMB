@@ -33,10 +33,10 @@ export default async function layout({
         <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
           <ul className="flex justify-start gap-4">
             <li>
-              <a href="/usuarios">Usuarios</a>
+              <a href="/admin/usuarios">Usuarios</a>
             </li>
             <li>
-              <a href="#">Requisições</a>
+              <a href="/admin/empreendimentos">Empreendimentos</a>
             </li>
             <li>
               <a href="#">Dados</a>

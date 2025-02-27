@@ -1,11 +1,18 @@
-"use client ";
 import { createClient } from "@/utils/supabase/server";
 
 import "./usuarios.scss";
+import Link from "next/link";
 
-export default async function Usuarios() {
+async function Usuarios() {
   const supabase = await createClient();
-  const { data, error } = await supabase.from("user_info").select();
+  const { data, error } = await supabase
+    .from("user_info")
+    .select()
+    .eq("profile", "user");
+
+  if (error) {
+    return <>Houve um erro. {error.message}</>;
+  }
 
   return (
     <div className="usuarios-container">
@@ -24,7 +31,7 @@ export default async function Usuarios() {
           {data?.map((d) => (
             <tr key={d.id}>
               <td>
-                <button type="submit">editar</button>
+                <Link href={`/admin/usuarios/edit?id=${d.id}`}>editar</Link>
               </td>
               <td>{d.name}</td>
               <td>{d.document}</td>
@@ -37,3 +44,5 @@ export default async function Usuarios() {
     </div>
   );
 }
+
+export default Usuarios;
