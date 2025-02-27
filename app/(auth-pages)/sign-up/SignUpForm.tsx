@@ -49,7 +49,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
   return (
     <form className="register" onSubmit={form.handleSubmit(registerUser)}>
       <div className="register__banner">
-        <Image src="/logo.png" alt="logo" width={60} height={100} />
+        <Image src="/Logo.png" alt="logo" width={60} height={100} />
         <h3 className="banner-h4"> SECAMB</h3>
       </div>
       <h4 className="register__title">Cadastre-se</h4>
