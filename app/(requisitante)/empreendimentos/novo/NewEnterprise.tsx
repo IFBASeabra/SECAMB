@@ -162,14 +162,18 @@ const EnterpriseForm = ({
         </div>
 
         <div className="register__form-group">
-          <Label htmlFor="operation_phase">Fase Atual do Empreendimento:</Label>
+          <Label htmlFor="operation_phase" className="my-4 text-xl">
+            Fase Atual do Empreendimento
+          </Label>
           <select
             {...form.register('operation_phase')}
             name="operation_phase"
             className="register__select"
             required
           >
-            <option value="">Selecione uma opção</option>
+            <option value="" className="my-4 text-xl">
+              Selecione uma opção
+            </option>
             <option value="Localização">Localização</option>
             <option value="Instalação">Instalação</option>
             <option value="Operação">Operação</option>
@@ -205,7 +209,6 @@ const EnterpriseForm = ({
               {...form.register('telephone_contact')}
               name="telephone_contact"
               placeholder="(75) 99999-9999"
-              required
             />
             {form.formState.errors.telephone_contact && (
               <p className="form-error">
