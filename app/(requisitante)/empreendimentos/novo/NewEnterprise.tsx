@@ -20,6 +20,13 @@ type EnterpriseFormType = {
   enterpriseAction: (formData: FormData) => Promise<EnterpriseActionState>;
 };
 
+const formatarTelefone = (value: string) => {
+  const digits = value.replace(/\D/g, ''); // Remove caracteres não numéricos
+  if (digits.length <= 2) return digits;
+  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
+};
+
 const EnterpriseForm = ({
   searchParams,
   enterpriseAction,
@@ -27,6 +34,9 @@ const EnterpriseForm = ({
   const form = useForm<z.output<typeof enterpriseFormSchema>>({
     resolver: zodResolver(enterpriseFormSchema),
   });
+
+  const [telephone, setTelephone] = useState('');
+  const [cellphone, setCellphone] = useState('');
 
   const registerEmpreendimento = async (
     data: z.output<typeof enterpriseFormSchema>,
@@ -209,6 +219,8 @@ const EnterpriseForm = ({
               {...form.register('telephone_contact')}
               name="telephone_contact"
               placeholder="(75) 99999-9999"
+              value={telephone}
+              onChange={(e) => setTelephone(formatarTelefone(e.target.value))}
             />
             {form.formState.errors.telephone_contact && (
               <p className="form-error">
@@ -223,6 +235,8 @@ const EnterpriseForm = ({
               {...form.register('cellphone_contact')}
               name="cellphone_contact"
               placeholder="(75) 99999-9999"
+              value={cellphone}
+              onChange={(e) => setCellphone(formatarTelefone(e.target.value))}
               required
             />
             {form.formState.errors.cellphone_contact && (
