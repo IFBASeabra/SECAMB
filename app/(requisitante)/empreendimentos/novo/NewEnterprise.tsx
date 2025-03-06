@@ -51,8 +51,8 @@ const EnterpriseForm = ({
     formData.append('neighborhood', data.neighborhood);
     formData.append('zipcode', data.zipcode);
     formData.append('contact_name', data.contact_name);
-    formData.append('telephone_contact', data.telephone_contact ?? '');
-    formData.append('cellphone_contact', data.cellphone_contact ?? '');
+    formData.append('telephone', data.telephone ?? '');
+    formData.append('cellphone', data.cellphone ?? '');
     formData.append('email', data.email);
     //   formData.append('uc', data.uc)
     formData.append('river_basin', data.river_basin);
@@ -68,11 +68,11 @@ const EnterpriseForm = ({
       className="register"
       onSubmit={form.handleSubmit(registerEmpreendimento)}
     >
-      <h1 className="register__title">Empreendimento</h1>
+      <h1 className="register__title">Empreendimento</h1> <hr />
       <div className="register__form">
         <div className="register__form__blocoum">
           <div className="register__form-group">
-            <Label htmlFor="name">Nome do Empreendimento</Label>
+            <Label htmlFor="name"> Nome do Empreendimento</Label>
             <Input
               {...form.register('name')}
               name="name"
@@ -95,7 +95,6 @@ const EnterpriseForm = ({
             )}
           </div>
         </div>
-
         <div className="register__form__blocodois">
           <div className="register__form-group">
             <Label htmlFor="address">Endereço</Label>
@@ -144,7 +143,6 @@ const EnterpriseForm = ({
             )}
           </div>
         </div>
-
         <div className="register__form__blocotres">
           <div className="register__form-group">
             <Label htmlFor="river_basin">Bacia Hidrográfica</Label>
@@ -176,12 +174,15 @@ const EnterpriseForm = ({
             )}
           </div>
         </div>
-
         <div className="register__form__blocoquatro">
           <div className="register__form-group">
-            <Label htmlFor="operation_phase" className="my-4 text-xl">
-              Fase Atual do Empreendimento
-            </Label>
+            <Label
+              htmlFor="operation_phase"
+              className="my-4 text-xl font-size2rem"
+            >
+              <h2> Fase Atual do Empreendimento</h2>
+            </Label>{' '}
+            <hr />
             <select
               {...form.register('operation_phase')}
               name="operation_phase"
@@ -203,11 +204,9 @@ const EnterpriseForm = ({
             )}
           </div>
         </div>
-
         <div className="register__form__blococinco">
-          <div className="flex flex-col gap-8">
-            <h2 className="my-4 text-xl">Dados de Contato</h2>
-
+          <div className="flex flex-col gap-5">
+            <h2 className="my-3 text-xl">Dados de Contato</h2> <hr />
             <div className="register__form-group">
               <Label htmlFor="contact_name">Nome do contato</Label>
               <Input
@@ -216,45 +215,43 @@ const EnterpriseForm = ({
                 placeholder="José dos Santos"
                 required
               />
-              {form.formState.errors.telephone_contact && (
+              {form.formState.errors.telephone && (
                 <p className="form-error">
-                  {form.formState.errors.telephone_contact.message}
+                  {form.formState.errors.telephone.message}
                 </p>
               )}
             </div>
             <div className="register__form-group">
-              <Label htmlFor="telephone_contact">Telefone</Label>
+              <Label htmlFor="telephone">Telefone</Label>
               <Input
-                {...form.register('telephone_contact')}
-                name="telephone_contact"
+                {...form.register('telephone')}
+                name="telephone"
                 placeholder="(75) 99999-9999"
                 value={telephone}
                 onChange={(e) => setTelephone(formatarTelefone(e.target.value))}
               />
-              {form.formState.errors.telephone_contact && (
+              {form.formState.errors.telephone && (
                 <p className="form-error">
-                  {form.formState.errors.telephone_contact.message}
+                  {form.formState.errors.telephone.message}
                 </p>
               )}
             </div>
-
             <div className="register__form-group">
-              <Label htmlFor="cellphone_contact">Celular</Label>
+              <Label htmlFor="cellphone">Celular</Label>
               <Input
-                {...form.register('cellphone_contact')}
-                name="cellphone_contact"
+                {...form.register('cellphone')}
+                name="cellphone"
                 placeholder="(75) 99999-9999"
                 value={cellphone}
                 onChange={(e) => setCellphone(formatarTelefone(e.target.value))}
                 required
               />
-              {form.formState.errors.cellphone_contact && (
+              {form.formState.errors.cellphone && (
                 <p className="form-error">
-                  {form.formState.errors.cellphone_contact.message}
+                  {form.formState.errors.cellphone.message}
                 </p>
               )}
             </div>
-
             <div className="register__form-group">
               <Label htmlFor="email">E-mail</Label>
               <Input
@@ -271,7 +268,6 @@ const EnterpriseForm = ({
             </div>
           </div>
         </div>
-
         <button type="submit" className="register__submit">
           Cadastrar
         </button>
