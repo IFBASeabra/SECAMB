@@ -8,8 +8,7 @@ async function Usuarios() {
   const { data, error } = await supabase
     .from('user_info')
     .select()
-    .eq('profile', 'user');
-
+    .eq('id', 'user');
   if (error) {
     return <>Houve um erro. {error.message}</>;
   }

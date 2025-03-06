@@ -8,9 +8,30 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
 
+  &__left-side {
+    flex: 1;
+    background: url("/fundo.png") no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+
+  &__right-side {
+    flex: 1;
+    background-color: aliceblue;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   &__banner {
     display: flex;
     align-items: center;
