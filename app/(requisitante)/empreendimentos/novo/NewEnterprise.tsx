@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import Link from 'next/link';
 import { z } from 'zod';
 
 import { EnterpriseActionState } from '@/app/actions/enterprise';
@@ -14,6 +13,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
 import './enterprise.scss';
+import { cnpjMask, zipCodeMask } from '@/utils/utils';
 
 type EnterpriseFormType = {
   searchParams: Message;
@@ -37,6 +37,8 @@ const EnterpriseForm = ({
 
   const [telephone, setTelephone] = useState('');
   const [cellphone, setCellphone] = useState('');
+  const [cnpj, setCNPJ] = useState('')
+  const [zipCode, setZipCode] = useState('')
 
   const registerEmpreendimento = async (
     data: z.output<typeof enterpriseFormSchema>,
@@ -79,6 +81,10 @@ const EnterpriseForm = ({
               placeholder="Casas Bahia"
               required
             />
+            
+            {form.formState.errors.name && (
+              <p className="form-error">{form.formState.errors.name.message}</p>
+            )}
           </div>
 
           <div className="register__form-group">
@@ -88,6 +94,8 @@ const EnterpriseForm = ({
               name="cnpj"
               placeholder="00.000.000/0001-00"
               required
+              onChange={(e) => {setCNPJ(cnpjMask(e.target.value))}}
+              value={cnpj}
             />
 
             {form.formState.errors.cnpj && (
@@ -136,6 +144,9 @@ const EnterpriseForm = ({
               name="zipcode"
               placeholder="46900-000"
               required
+              maxLength={9}
+              onChange={(e) => {setZipCode(zipCodeMask(e.target.value))}}
+              value={zipCode}
             />
             {form.formState.errors.zipcode && (
               <p className="form-error">
@@ -216,9 +227,9 @@ const EnterpriseForm = ({
                 placeholder="José dos Santos"
                 required
               />
-              {form.formState.errors.telephone_contact && (
+              {form.formState.errors.contact_name && (
                 <p className="form-error">
-                  {form.formState.errors.telephone_contact.message}
+                  {form.formState.errors.contact_name.message}
                 </p>
               )}
             </div>
