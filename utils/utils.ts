@@ -72,3 +72,13 @@ export const zipCodeMask = (value: string) => {
     .replace(/\D+/g, '') // não deixa ser digitado nenhuma letra
     .replace(/(\d{5})(\d)/, '$1-$2') // captura 5 primeiros digitos e adiciona um -
 }
+
+
+export const cpfMask = (value: string) => {
+  return value
+    .replace(/\D+/g, '') // não deixa ser digitado nenhuma letra
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d)/, '$1-$2')
+    .replace(/(-\d{2})\d+?$/, '$1') // captura os dois últimos 2 números, com um - antes dos dois números
+}

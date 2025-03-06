@@ -144,8 +144,7 @@ const EnterpriseForm = ({
               placeholder="46900-000"
               required
               maxLength={9}
-              onChange={(e) => {setZipCode(zipCodeMask(e.target.value))}}
-              value={zipCode}
+              mask={zipCodeMask}
             />
             {form.formState.errors.zipcode && (
               <p className="form-error">

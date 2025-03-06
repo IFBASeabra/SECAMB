@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 import "./sign-up.scss";
+import { cnpjMask, cpfMask, zipCodeMask } from "@/utils/utils";
 
 type SignUpFormType = {
   searchParams: Message;
@@ -127,6 +128,8 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                 }
                 type="text"
                 className="input"
+                mask={registerType === "pessoa_juridica" ? cnpjMask : cpfMask}
+                maxLength={registerType === "pessoa_juridica" ? 19 : 14}
                 required
               />
               {form.formState.errors.document && (
@@ -195,6 +198,8 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
             name="zipcode"
             placeholder="xxxxx-xxx"
             required
+            mask={zipCodeMask}
+            maxLength={9}
           />
           {form.formState.errors.zipcode && (
             <p className="form-error">
