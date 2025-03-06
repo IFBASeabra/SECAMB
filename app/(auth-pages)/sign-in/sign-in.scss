@@ -1,0 +1,150 @@
+:root {
+  --primary-color: #0080ca;
+}
+
+.container__signup {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+  &-left-side {
+    position: relative;
+    flex: 1;
+    background: url("/fundo.jpg") no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: #f1f1f1;
+    overflow: hidden;
+
+    /* Overlay para escurecer a imagem de fundo */
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #75737366;
+      z-index: 1;
+    }
+
+    .title {
+      margin-top: 20px;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      max-width: 80%;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  &-right-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f1f1f1;
+    width: 50vw;
+
+    .form__login {
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 50vw;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &-banner {
+        div {
+          margin-top: 70px;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+
+          span {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+          }
+          .sign-title {
+            font-size: 24px;
+          }
+        }
+      }
+
+      &-authentication {
+        height: 100%;
+
+        .authentication-emails,
+        .authentication-passwords {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 10px;
+
+          div {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+
+            input {
+              background-color: #ffffff;
+              width: 100%;
+              text-align: left;
+              width: 580px;
+              border-radius: 8px;
+              text-align: left;
+              outline: 0;
+              height: 50px;
+              font-size: 14px;
+            }
+          }
+        }
+
+        .passwords-forgot {
+          margin: 10px 0;
+          font-size: 10px;
+          text-align: right;
+          text-decoration: underline;
+          color: var(--primary-color);
+        }
+
+        .authentication-button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .button {
+            cursor: pointer;
+            padding: 30px 258px;
+            border-radius: 8px;
+            background-color: var(--primary-color);
+            font-size: 17px;
+          }
+        }
+      }
+
+      &-signin {
+        text-align: center;
+        margin-top: 15px;
+      }
+    }
+  }
+
+  .links {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+}

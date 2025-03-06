@@ -3,42 +3,86 @@ import { FormMessage, Message } from "@/components/form-message";
 import { SubmitButton } from "@/components/submit-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Image from "next/image";
 import Link from "next/link";
+import "./sign-in.scss";
 
 export default async function Login(props: { searchParams: Promise<Message> }) {
   const searchParams = await props.searchParams;
+
   return (
-    <form className="flex-1 flex flex-col min-w-64">
-      <h1 className="text-2xl font-medium">Sign in</h1>
-      <p className="text-sm text-foreground">
-        Não tem conta?{" "}
-        <Link className="text-foreground font-medium underline" href="/sign-up">
-          Sign up
-        </Link>
-      </p>
-      <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">
-        <Label htmlFor="email">Email</Label>
-        <Input name="email" placeholder="you@example.com" required />
-        <div className="flex justify-between items-center">
-          <Label htmlFor="password">Password</Label>
-          <Link
-            className="text-xs text-foreground underline"
-            href="/forgot-password"
-          >
-            Forgot Password?
-          </Link>
-        </div>
-        <Input
-          type="password"
-          name="password"
-          placeholder="Your password"
-          required
-        />
-        <SubmitButton pendingText="Signing In..." formAction={signInAction}>
-          Sign in
-        </SubmitButton>
-        <FormMessage message={searchParams} />
+    <main className="container__signup">
+      {/* Left Side */}
+      <div className="container__signup-left-side">
+        <h2 className="title">SECAMB</h2>
+        <p className="subtitle">
+          Secretaria Municipal de Desenvolvimento,Turismo e Meio Ambiente
+        </p>
       </div>
-    </form>
+
+      {/* Right Side */}
+      <div className="container__signup-right-side">
+        <form className="form__login">
+          <div className="form__login-banner">
+            <div className="logo-container">
+              <span>
+                <Image
+                  src="/Logo.png"
+                  className="logo"
+                  alt="logo"
+                  width={80}
+                  height={80}
+                />
+              </span>
+              <h4 className="sign-title">Olá! Bem-vindo</h4>
+            </div>
+          </div>
+
+          <div className="form__login-authentication">
+            <div className="authentication-emails">
+              <div>
+                <Label htmlFor="email">Email</Label>
+                <Input name="email" placeholder="you@example.com" required />
+              </div>
+            </div>
+
+            <div className="authentication-passwords">
+              <div>
+                <Label htmlFor="password">Password</Label>
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="Your password"
+                  required
+                />
+                <Link className="passwords-forgot" href="/forgot-password">
+                  Forgot Password?
+                </Link>
+              </div>
+            </div>
+
+            <div className="authentication-button">
+              <SubmitButton
+                pendingText="Signing In..."
+                formAction={signInAction}
+                className="button"
+              >
+                Sign in
+              </SubmitButton>
+            </div>
+            <FormMessage message={searchParams} />
+
+            <div className="form__login-signin">
+              <p className="text-sm text-foreground">
+                Don't have an account?{" "}
+                <Link className="links" href="/sign-up">
+                  Sign up
+                </Link>
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
   );
 }
