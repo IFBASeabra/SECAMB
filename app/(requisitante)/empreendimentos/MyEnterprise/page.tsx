@@ -2,11 +2,11 @@ import { createClient } from '@/utils/supabase/server';
 import './myenterprise.scss';
 
 interface ContactEnterprise {
-  id_contact: string;
+  id: string;
   id_enterprise: string;
   contact_name: string;
-  telephone_contact: string;
-  cellphone_contact: string;
+  telephone: string;
+  cellphone: string;
   email: string;
 }
 
@@ -17,7 +17,7 @@ async function getContactData(id: string): Promise<ContactEnterprise | null> {
   const { data, error } = await supabase
     .from('contact_enterprise')
     .select()
-    .eq('id_contact', id)
+    .eq('id', id)
     .single();
 
   if (error) {
@@ -38,8 +38,7 @@ async function Empreendimentos() {
     return <div>Contato não encontrado.</div>;
   }
 
-  const { contact_name, telephone_contact, cellphone_contact, email } =
-    contactData;
+  const { contact_name, telephone, cellphone, email } = contactData;
 
   return (
     <div className="empreendimento-container">
@@ -56,8 +55,8 @@ async function Empreendimentos() {
         <tbody>
           <tr>
             <td>{contact_name}</td>
-            <td>{telephone_contact}</td>
-            <td>{cellphone_contact}</td>
+            <td>{telephone}</td>
+            <td>{cellphone}</td>
             <td>{email}</td>
           </tr>
         </tbody>

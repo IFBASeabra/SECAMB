@@ -1,26 +1,31 @@
 $primary-color: #00b0b9;
-$background-color: #f0f9f9;
 $input-border-color: #e0e0e0;
 $input-focus-color: #00b0b9;
 $button-color: #00b0b9;
 $button-hover-color: #007f87;
 
+
 .register {
   max-width: 65%;
   margin: 50px auto;
   padding: 2rem;
-  background: $background-color;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 
   &__title {
     font-size: 2rem;
     font-weight: bold;
     color: #333;
     text-align: left;
+  }
+
+  hr{
+    border-color:#aaa;
+    box-sizing:border-box;
+    width:100%;  
   }
 
   &__form {
@@ -30,39 +35,40 @@ $button-hover-color: #007f87;
     width: 100%;
   }
 
-  // Cada bloco ocupa 100% da largura do formulário
   &__form__blocoum,
   &__form__blocodois,
   &__form__blocotres,
   &__form__blocoquatro{
     display: flex;
     width: 100%;
-    gap: 25px;
+    padding: 10px;
+    gap: 35px;
   }
 
   &__form__blococinco {
     display: flex;
-    align-self: center;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    gap: 20px;
+    padding: 10px;
+    gap: 15px;
   }
 
-  // Cada elemento dentro dos blocos ocupa espaço igual
   &__form-group {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.95rem;
 
     label {
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 600;
-      color: #555;
+      color: #333;
     }
 
     input,
     select {
-      padding: 0.75rem;
+      padding: 1rem;
       border: 1px solid $input-border-color;
       border-radius: 8px;
       font-size: 1rem;

@@ -1,4 +1,3 @@
-import { text } from 'stream/consumers';
 import { z } from 'zod';
 
 export const enterpriseFormSchema = z.object({
@@ -43,7 +42,7 @@ export const enterpriseFormSchema = z.object({
     })
     .trim(),
 
-  telephone_contact: z.union([
+  telephone: z.union([
     z.string().regex(/^\(\d{2}\) (?:\d{4,5}-\d{4})$/, {
       message:
         'Telefone inválido. Use o formato (XX) XXXX-XXXX ou (XX) 9XXXX-XXXX.',
@@ -52,7 +51,7 @@ export const enterpriseFormSchema = z.object({
     z.undefined(), // Permite omitir o campo
   ]),
 
-  cellphone_contact: z
+  cellphone: z
     .string()
     .regex(
       /^\(\d{2}\) (?:\d{4,5}-\d{4})$/,
