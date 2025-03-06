@@ -1,14 +1,14 @@
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from '@/utils/supabase/server';
 
-import "./usuarios.scss";
-import Link from "next/link";
+import './usuarios.scss';
+import Link from 'next/link';
 
 async function Usuarios() {
   const supabase = await createClient();
   const { data, error } = await supabase
-    .from("user_info")
+    .from('user_info')
     .select()
-    .eq("profile", "user");
+    .eq('profile', 'user');
 
   if (error) {
     return <>Houve um erro. {error.message}</>;

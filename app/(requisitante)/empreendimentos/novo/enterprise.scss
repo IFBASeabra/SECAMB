@@ -1,48 +1,95 @@
-.register { 
-  padding: 16px;
-  border: 1px solid rgba(255 ,255, 255 , 0.1);
-  border-radius: 8px;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
+$primary-color: #00b0b9;
+$background-color: #f0f9f9;
+$input-border-color: #e0e0e0;
+$input-focus-color: #00b0b9;
+$button-color: #00b0b9;
+$button-hover-color: #007f87;
+
+.register {
+  max-width: 65%;
+  margin: 50px auto;
+  padding: 2rem;
+  background: $background-color;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
   &__title {
-    font-size: 40px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
   }
 
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    padding: 12px 0;
-
-    &-group {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+    gap: 20px;
+    width: 100%;
   }
 
-  &__radio {
+  // Cada bloco ocupa 100% da largura do formulário
+  &__form__blocoum,
+  &__form__blocodois,
+  &__form__blocotres,
+  &__form__blocoquatro{
     display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 16px;
-    cursor: pointer;
+    width: 100%;
+    gap: 25px;
+  }
 
-    input[type="radio"] {
-      width: 16px;
-      height: 16px;
+  &__form__blococinco {
+    display: flex;
+    align-self: center;
+    width: 100%;
+    gap: 20px;
+  }
+
+  // Cada elemento dentro dos blocos ocupa espaço igual
+  &__form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #555;
+    }
+
+    input,
+    select {
+      padding: 0.75rem;
+      border: 1px solid $input-border-color;
+      border-radius: 8px;
+      font-size: 1rem;
+      width: 100%;
+      transition: border 0.3s ease;
+
+      &:focus {
+        border-color: $input-focus-color;
+        box-shadow: 0 0 4px rgba(0, 176, 185, 0.3);
+      }
     }
   }
-}
 
-.form-error {
-  color: red;
-  border: 1px solid red;
-  border-radius: 4px;
-  padding: 4px 6px;
-  margin: 8px 0 0;
-  text-align: left;
-  font-size: 12px;
+  &__submit {
+    align-self: center;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    background: $button-color;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: $button-hover-color;
+    }
+  }
 }

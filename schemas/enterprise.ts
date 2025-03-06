@@ -82,3 +82,12 @@ export const enterpriseFormSchema = z.object({
     },
   ),
 });
+
+//Esse daqui é para a tabela de meus empreendimentos.
+export const enterpriseSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  id_contact: z.string(),
+});
+
+export type Enterprise = z.infer<typeof enterpriseSchema>;

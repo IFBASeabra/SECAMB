@@ -70,195 +70,205 @@ const EnterpriseForm = ({
     >
       <h1 className="register__title">Empreendimento</h1>
       <div className="register__form">
-        <div className="register__form-group">
-          <Label htmlFor="name">Nome do Empreendimento</Label>
-          <Input
-            {...form.register('name')}
-            name="name"
-            placeholder="Casas Bahia"
-            required
-          />
-        </div>
-
-        <div className="register__form-group">
-          <Label htmlFor="cnpj">CNPJ</Label>
-          <Input
-            {...form.register('cnpj')}
-            name="cnpj"
-            placeholder="00.000.000/0001-00"
-            required
-          />
-
-          {form.formState.errors.cnpj && (
-            <p className="form-error">{form.formState.errors.cnpj.message}</p>
-          )}
-        </div>
-
-        <div className="register__form-group">
-          <Label htmlFor="address">Endereço</Label>
-          <Input
-            {...form.register('address')}
-            name="address"
-            placeholder="Rua Horáco de Matos"
-            required
-          />
-
-          {form.formState.errors.address && (
-            <p className="form-error">
-              {form.formState.errors.address.message}
-            </p>
-          )}
-        </div>
-
-        <div className="register__form-group">
-          <Label htmlFor="neighborhood">Bairro</Label>
-          <Input
-            {...form.register('neighborhood')}
-            name="neighborhood"
-            placeholder="São José"
-            required
-          />
-
-          {form.formState.errors.neighborhood && (
-            <p className="form-error">
-              {form.formState.errors.neighborhood.message}
-            </p>
-          )}
-        </div>
-
-        <div className="register__form-group">
-          <Label htmlFor="zipcode">CEP</Label>
-          <Input
-            {...form.register('zipcode')}
-            name="zipcode"
-            placeholder="46900-000"
-            required
-          />
-          {form.formState.errors.zipcode && (
-            <p className="form-error">
-              {form.formState.errors.zipcode.message}
-            </p>
-          )}
-        </div>
-
-        <div className="register__form-group">
-          <Label htmlFor="river_basin">Bacia Hidrográfica:</Label>
-          <Input
-            {...form.register('river_basin')}
-            name="river_basin"
-            placeholder="Bacia X"
-            required
-          />
-          {form.formState.errors.river_basin && (
-            <p className="form-error">
-              {form.formState.errors.river_basin.message}
-            </p>
-          )}
-        </div>
-
-        <div className="register__form-group">
-          <Label htmlFor="water_resource">Recurso Hídrico:</Label>
-          <Input
-            {...form.register('water_resource')}
-            name="water_resource"
-            placeholder="Rio Y"
-            required
-          />
-          {form.formState.errors.water_resource && (
-            <p className="form-error">
-              {form.formState.errors.water_resource.message}
-            </p>
-          )}
-        </div>
-
-        <div className="register__form-group">
-          <Label htmlFor="operation_phase" className="my-4 text-xl">
-            Fase Atual do Empreendimento
-          </Label>
-          <select
-            {...form.register('operation_phase')}
-            name="operation_phase"
-            className="register__select"
-            required
-          >
-            <option value="" className="my-4 text-xl">
-              Selecione uma opção
-            </option>
-            <option value="Localização">Localização</option>
-            <option value="Instalação">Instalação</option>
-            <option value="Operação">Operação</option>
-            <option value="Não se Aplica">Não se Aplica</option>
-          </select>
-          {form.formState.errors.operation_phase && (
-            <p className="form-error">
-              {form.formState.errors.operation_phase.message}
-            </p>
-          )}
-        </div>
-
-        <div className="flex flex-col gap-8">
-          <h2 className="my-4 text-xl">Dados de Contato</h2>
-
+        <div className="register__form__blocoum">
           <div className="register__form-group">
-            <Label htmlFor="contact_name">Nome do contato:</Label>
+            <Label htmlFor="name">Nome do Empreendimento</Label>
             <Input
-              {...form.register('contact_name')}
-              name="contact_name"
-              placeholder="José dos Santos"
+              {...form.register('name')}
+              name="name"
+              placeholder="Casas Bahia"
               required
             />
-            {form.formState.errors.telephone_contact && (
-              <p className="form-error">
-                {form.formState.errors.telephone_contact.message}
-              </p>
+          </div>
+
+          <div className="register__form-group">
+            <Label htmlFor="cnpj">CNPJ</Label>
+            <Input
+              {...form.register('cnpj')}
+              name="cnpj"
+              placeholder="00.000.000/0001-00"
+              required
+            />
+
+            {form.formState.errors.cnpj && (
+              <p className="form-error">{form.formState.errors.cnpj.message}</p>
             )}
           </div>
+        </div>
+
+        <div className="register__form__blocodois">
           <div className="register__form-group">
-            <Label htmlFor="telephone_contact">Telefone:</Label>
+            <Label htmlFor="address">Endereço</Label>
             <Input
-              {...form.register('telephone_contact')}
-              name="telephone_contact"
-              placeholder="(75) 99999-9999"
-              value={telephone}
-              onChange={(e) => setTelephone(formatarTelefone(e.target.value))}
+              {...form.register('address')}
+              name="address"
+              placeholder="Rua Horáco de Matos"
+              required
             />
-            {form.formState.errors.telephone_contact && (
+
+            {form.formState.errors.address && (
               <p className="form-error">
-                {form.formState.errors.telephone_contact.message}
+                {form.formState.errors.address.message}
               </p>
             )}
           </div>
 
           <div className="register__form-group">
-            <Label htmlFor="cellphone_contact">Celular:</Label>
+            <Label htmlFor="neighborhood">Bairro</Label>
             <Input
-              {...form.register('cellphone_contact')}
-              name="cellphone_contact"
-              placeholder="(75) 99999-9999"
-              value={cellphone}
-              onChange={(e) => setCellphone(formatarTelefone(e.target.value))}
+              {...form.register('neighborhood')}
+              name="neighborhood"
+              placeholder="São José"
               required
             />
-            {form.formState.errors.cellphone_contact && (
+
+            {form.formState.errors.neighborhood && (
               <p className="form-error">
-                {form.formState.errors.cellphone_contact.message}
+                {form.formState.errors.neighborhood.message}
               </p>
             )}
           </div>
 
           <div className="register__form-group">
-            <Label htmlFor="email">E-mail:</Label>
+            <Label htmlFor="zipcode">CEP</Label>
             <Input
-              {...form.register('email')}
-              name="email"
-              placeholder="jose@gmail.com"
+              {...form.register('zipcode')}
+              name="zipcode"
+              placeholder="46900-000"
               required
             />
-            {form.formState.errors.email && (
+            {form.formState.errors.zipcode && (
               <p className="form-error">
-                {form.formState.errors.email.message}
+                {form.formState.errors.zipcode.message}
               </p>
             )}
+          </div>
+        </div>
+
+        <div className="register__form__blocotres">
+          <div className="register__form-group">
+            <Label htmlFor="river_basin">Bacia Hidrográfica</Label>
+            <Input
+              {...form.register('river_basin')}
+              name="river_basin"
+              placeholder="Bacia X"
+              required
+            />
+            {form.formState.errors.river_basin && (
+              <p className="form-error">
+                {form.formState.errors.river_basin.message}
+              </p>
+            )}
+          </div>
+
+          <div className="register__form-group">
+            <Label htmlFor="water_resource">Recurso Hídrico</Label>
+            <Input
+              {...form.register('water_resource')}
+              name="water_resource"
+              placeholder="Rio Y"
+              required
+            />
+            {form.formState.errors.water_resource && (
+              <p className="form-error">
+                {form.formState.errors.water_resource.message}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <div className="register__form__blocoquatro">
+          <div className="register__form-group">
+            <Label htmlFor="operation_phase" className="my-4 text-xl">
+              Fase Atual do Empreendimento
+            </Label>
+            <select
+              {...form.register('operation_phase')}
+              name="operation_phase"
+              className="register__select"
+              required
+            >
+              <option value="" className="my-4 text-xl">
+                Selecione uma opção
+              </option>
+              <option value="Localização">Localização</option>
+              <option value="Instalação">Instalação</option>
+              <option value="Operação">Operação</option>
+              <option value="Não se Aplica">Não se Aplica</option>
+            </select>
+            {form.formState.errors.operation_phase && (
+              <p className="form-error">
+                {form.formState.errors.operation_phase.message}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <div className="register__form__blococinco">
+          <div className="flex flex-col gap-8">
+            <h2 className="my-4 text-xl">Dados de Contato</h2>
+
+            <div className="register__form-group">
+              <Label htmlFor="contact_name">Nome do contato</Label>
+              <Input
+                {...form.register('contact_name')}
+                name="contact_name"
+                placeholder="José dos Santos"
+                required
+              />
+              {form.formState.errors.telephone_contact && (
+                <p className="form-error">
+                  {form.formState.errors.telephone_contact.message}
+                </p>
+              )}
+            </div>
+            <div className="register__form-group">
+              <Label htmlFor="telephone_contact">Telefone</Label>
+              <Input
+                {...form.register('telephone_contact')}
+                name="telephone_contact"
+                placeholder="(75) 99999-9999"
+                value={telephone}
+                onChange={(e) => setTelephone(formatarTelefone(e.target.value))}
+              />
+              {form.formState.errors.telephone_contact && (
+                <p className="form-error">
+                  {form.formState.errors.telephone_contact.message}
+                </p>
+              )}
+            </div>
+
+            <div className="register__form-group">
+              <Label htmlFor="cellphone_contact">Celular</Label>
+              <Input
+                {...form.register('cellphone_contact')}
+                name="cellphone_contact"
+                placeholder="(75) 99999-9999"
+                value={cellphone}
+                onChange={(e) => setCellphone(formatarTelefone(e.target.value))}
+                required
+              />
+              {form.formState.errors.cellphone_contact && (
+                <p className="form-error">
+                  {form.formState.errors.cellphone_contact.message}
+                </p>
+              )}
+            </div>
+
+            <div className="register__form-group">
+              <Label htmlFor="email">E-mail</Label>
+              <Input
+                {...form.register('email')}
+                name="email"
+                placeholder="jose@gmail.com"
+                required
+              />
+              {form.formState.errors.email && (
+                <p className="form-error">
+                  {form.formState.errors.email.message}
+                </p>
+              )}
+            </div>
           </div>
         </div>
 

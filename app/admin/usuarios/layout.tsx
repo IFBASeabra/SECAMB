@@ -1,5 +1,5 @@
-import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
+import { createClient } from '@/utils/supabase/server';
+import { redirect } from 'next/navigation';
 
 export default async function layout({
   children,
@@ -13,15 +13,15 @@ export default async function layout({
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return redirect("/sign-in");
+    return redirect('/sign-in');
   }
 
   const {
     data: { profile },
-  } = await supabase.from("user_info").select().eq("user_id", user.id).single();
+  } = await supabase.from('user_info').select().eq('user_id', user.id).single();
 
-  if (profile !== "admin") {
-    return redirect("/unauthorized");
+  if (profile !== 'admin') {
+    return redirect('/unauthorized');
   }
 
   return (

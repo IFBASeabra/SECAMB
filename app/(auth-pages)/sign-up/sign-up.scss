@@ -1,13 +1,29 @@
-.register { 
+:root {
+  --color: #0080ca;
+}
+
+.register {
+  background-color: aliceblue;
   padding: 16px;
-  border: 1px solid rgba(255 ,255, 255 , 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   width: 100%;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
 
+  &__banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+
+    .banner-h4 {
+      font-size: 38px;
+    }
+  }
+
   &__title {
-    font-size: 40px;
+    font-size: 30px;
   }
 
   &__form {
@@ -19,20 +35,59 @@
     &-group {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+
+      &-types {
+        margin-top: 20px;
+        display: flex;
+        gap: 32px;
+        justify-content: center;
+      }
+
+      .label {
+        margin-bottom: 10px;
+      }
+
+      &-type {
+        display: flex;
+        gap: 32px;
+        &-ty {
+          .input {
+            color: lightblue;
+          }
+        }
+      }
     }
   }
 
   &__radio {
     display: flex;
-    align-items: center;
     gap: 12px;
     font-size: 16px;
     cursor: pointer;
+    width: 100%;
 
     input[type="radio"] {
       width: 16px;
       height: 16px;
+      accent-color: #0080ca;
+    }
+  }
+
+  &__submit {
+    padding: 12px;
+    background-color: var(--color);
+    border-radius: 9px;
+    color: #fff;
+  }
+
+  &__signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-links {
+      color: var(--color);
+      margin-left: 10px;
     }
   }
 }

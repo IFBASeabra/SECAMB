@@ -34,7 +34,7 @@ export default async function layout({
               <a href="#">Minhas requisições</a>
             </li>
             <li>
-              <a href="/empreendimentos">Empreendimentos</a>
+              <a href="/empreendimentos/MyEnterprise">Empreendimentos</a>
             </li>
           </ul>
           {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
