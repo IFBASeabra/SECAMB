@@ -93,6 +93,16 @@ export const resetPasswordAction = async (formData: FormData) => {
   encodedRedirect("success", "/protected/reset-password", "Password updated");
 };
 
+export const buscarEmpreendimento = async (cnpj: string) => {
+  const supabase = await createClient();
+
+  const {data, error} = supabase.from('enterprise').select().eq('cnpj', cnpj)
+
+  if (error) return error
+
+  return data
+}
+
 export const signOutAction = async () => {
   const supabase = await createClient();
   await supabase.auth.signOut();
