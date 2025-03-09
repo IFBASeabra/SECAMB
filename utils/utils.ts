@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { redirect } from 'next/navigation';
 
 /**
  * Redirects to a specified path with an encoded message as a query parameter.
@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
  * @returns {never} This function doesn't return as it triggers a redirect.
  */
 export function encodedRedirect(
-  type: "error" | "success",
+  type: 'error' | 'success',
   path: string,
   message: string,
 ) {
@@ -16,7 +16,7 @@ export function encodedRedirect(
 }
 
 export function validateCPF(cpf: string) {
-  cpf = cpf.replace(/\D/g, "");
+  cpf = cpf.replace(/\D/g, '');
   if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
   let sum = 0,
     remainder;
@@ -32,7 +32,7 @@ export function validateCPF(cpf: string) {
 }
 
 export function validateCNPJ(cnpj: string) {
-  cnpj = cnpj.replace(/\D/g, "");
+  cnpj = cnpj.replace(/\D/g, '');
   if (cnpj.length !== 14 || /^(\d)\1{13}$/.test(cnpj)) return false;
   let length = cnpj.length - 2;
   let numbers = cnpj.substring(0, length);
@@ -64,15 +64,14 @@ export const cnpjMask = (value: string) => {
     .replace(/(\d{3})(\d)/, '$1.$2')
     .replace(/(\d{3})(\d)/, '$1/$2') // captura 2 grupos de número o primeiro e o segundo com 3 digitos, separados por /
     .replace(/(\d{4})(\d)/, '$1-$2')
-    .replace(/(-\d{2})\d+?$/, '$1') // captura os dois últimos 2 números, com um - antes dos dois números
-}
+    .replace(/(-\d{2})\d+?$/, '$1'); // captura os dois últimos 2 números, com um - antes dos dois números
+};
 
 export const zipCodeMask = (value: string) => {
   return value
     .replace(/\D+/g, '') // não deixa ser digitado nenhuma letra
-    .replace(/(\d{5})(\d)/, '$1-$2') // captura 5 primeiros digitos e adiciona um -
-}
-
+    .replace(/(\d{5})(\d)/, '$1-$2'); // captura 5 primeiros digitos e adiciona um -
+};
 
 export const cpfMask = (value: string) => {
   return value
@@ -80,5 +79,16 @@ export const cpfMask = (value: string) => {
     .replace(/(\d{3})(\d)/, '$1.$2')
     .replace(/(\d{3})(\d)/, '$1.$2')
     .replace(/(\d{3})(\d)/, '$1-$2')
-    .replace(/(-\d{2})\d+?$/, '$1') // captura os dois últimos 2 números, com um - antes dos dois números
-}
+    .replace(/(-\d{2})\d+?$/, '$1'); // captura os dois últimos 2 números, com um - antes dos dois números
+};
+
+export const telephoneMask = (value: string) => {
+  return value
+    .replace(/\D+/g, '')
+    .replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+};
+export const cellphoneMask = (value: string) => {
+  return value
+    .replace(/\D+/g, '')
+    .replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+};

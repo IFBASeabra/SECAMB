@@ -13,18 +13,16 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
 import './enterprise.scss';
-import { cnpjMask, zipCodeMask } from '@/utils/utils';
+import {
+  cnpjMask,
+  zipCodeMask,
+  telephoneMask,
+  cellphoneMask,
+} from '@/utils/utils';
 
 type EnterpriseFormType = {
   searchParams: Message;
   enterpriseAction: (formData: FormData) => Promise<EnterpriseActionState>;
-};
-
-const formatarTelefone = (value: string) => {
-  const digits = value.replace(/\D/g, ''); // Remove caracteres não numéricos
-  if (digits.length <= 2) return digits;
-  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
-  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
 };
 
 const EnterpriseForm = ({
@@ -94,18 +92,15 @@ const EnterpriseForm = ({
               name="cnpj"
               placeholder="00.000.000/0001-00"
               required
-              onChange={(e) => {
-                setCNPJ(cnpjMask(e.target.value));
-              }}
-              value={cnpj}
+              mask={cnpjMask}
+              maxLength={18}
             />
 
             {form.formState.errors.cnpj && (
               <p className="form-error">{form.formState.errors.cnpj.message}</p>
             )}
           </div>
-        </div>
-        <div className="register__form__blocodois">
+
           <div className="register__form-group">
             <Label htmlFor="address">Endereço</Label>
             <Input
@@ -121,7 +116,9 @@ const EnterpriseForm = ({
               </p>
             )}
           </div>
+        </div>
 
+        <div className="register__form__blocodois">
           <div className="register__form-group">
             <Label htmlFor="neighborhood">Bairro</Label>
             <Input
@@ -201,13 +198,13 @@ const EnterpriseForm = ({
               className="register__select"
               required
             >
-              <option value="" className="my-4 text-xl">
+              <option value="" className="my-4 text-xl ">
                 Selecione uma opção
               </option>
-              <option value="Localização">Localização</option>
-              <option value="Instalação">Instalação</option>
-              <option value="Operação">Operação</option>
-              <option value="Não se Aplica">Não se Aplica</option>
+              <option value="Localização">localização</option>
+              <option value="Instalação">instalação</option>
+              <option value="Operação">operação</option>
+              <option value="Não se Aplica">não se aplica</option>
             </select>
             {form.formState.errors.operation_phase && (
               <p className="form-error">
@@ -238,9 +235,10 @@ const EnterpriseForm = ({
               <Input
                 {...form.register('telephone')}
                 name="telephone"
-                placeholder="(75) 99999-9999"
-                value={telephone}
-                onChange={(e) => setTelephone(formatarTelefone(e.target.value))}
+                placeholder="(75) 9999-9999"
+                required
+                mask={telephoneMask}
+                maxLength={14}
               />
               {form.formState.errors.telephone && (
                 <p className="form-error">
@@ -254,9 +252,9 @@ const EnterpriseForm = ({
                 {...form.register('cellphone')}
                 name="cellphone"
                 placeholder="(75) 99999-9999"
-                value={cellphone}
-                onChange={(e) => setCellphone(formatarTelefone(e.target.value))}
                 required
+                mask={cellphoneMask}
+                maxLength={15}
               />
               {form.formState.errors.cellphone && (
                 <p className="form-error">

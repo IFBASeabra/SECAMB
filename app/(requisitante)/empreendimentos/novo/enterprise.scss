@@ -1,101 +1,225 @@
-$primary-color: #00b0b9;
-$input-border-color: #e0e0e0;
-$input-focus-color: #00b0b9;
-$button-color: #00b0b9;
-$button-hover-color: #007f87;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
+  line-height: 1.6;
+}
 
 .register {
-  max-width: 65%;
-  margin: 50px auto;
+  max-width: 900px;
+  margin: 2rem auto;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   &__title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    text-align: left;
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
   }
 
-  hr{
-    border-color:#aaa;
-    box-sizing:border-box;
-    width:100%;  
+  hr {
+    margin: 1rem 0;
+    border: 0;
+    height: 1px;
+    background-color: #eee;
   }
 
   &__form {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-  }
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
 
-  &__form__blocoum,
-  &__form__blocodois,
-  &__form__blocotres,
-  &__form__blocoquatro{
-    display: flex;
-    width: 100%;
-    padding: 10px;
-    gap: 35px;
-  }
-
-  &__form__blococinco {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 10px;
-    gap: 15px;
-  }
-
-  &__form-group {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.95rem;
-
-    label {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #333;
+    .register__form__blocoum,
+    .register__form__blocodois,
+    .register__form__blocotres{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      width: 100%;
     }
 
-    input,
-    select {
-      padding: 1rem;
-      border: 1px solid $input-border-color;
-      border-radius: 8px;
-      font-size: 1rem;
-      width: 100%;
-      transition: border 0.3s ease;
+    .register__form-group {
+      flex: 1 1 calc(50% - 1rem); // pra ficar duas colunass
+      margin-bottom: 1rem;
 
-      &:focus {
-        border-color: $input-focus-color;
-        box-shadow: 0 0 4px rgba(0, 176, 185, 0.3);
+      label { //cada subtitulo(ex. nome do empreendimento)
+        display: block;
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #34495e;
+      }
+
+      input, select {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      input:focus, select:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+        outline: none;
+      }
+
+      .form-error {
+        color: #e74c3c;
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
       }
     }
+
+    .register__select {
+      background-color: #fff;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      padding: 12px;
+      font-size: 1rem;
+      width: 100%;
+      appearance: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .register__select:focus {
+      border-color: #3498db;
+      box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+    }
+
+    .register__select::after {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: #34495e;
+    }
   }
 
-  &__submit {
-    align-self: center;
-    padding: 1rem;
+  .register__form__blocoquatro {
+    width: 100%;
+    margin-top: 2rem;
+    .register__form-group {
+      width: 100%;
+    }
+
+    label {
+      font-size: 1.3rem;
+      color: #34495e;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .register__form__blococinco {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    .register__form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #34495e;
+    }
+
+    input {
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #3498db;
+      box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+      outline: none;
+    }
+  }
+
+  .register__submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
     border: none;
     border-radius: 8px;
-    background: $button-color;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background-color 0.3s ease;
+    margin-top: 2rem;
 
     &:hover {
-      background: $button-hover-color;
+      background-color: #2980b9;
     }
+
+    &:focus {
+      outline: none;
+      background-color: #2980b9;
+    }
+  }
+
+  .register__form__blococinco {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    h2 {
+      font-size: 1.6rem;
+      color: #2c3e50;
+    }
+
+    .register__form-group {
+      flex: 1;
+      min-width: 100%;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .register {
+    padding: 1.5rem;
+  }
+
+  .register__form__blocoum,
+  .register__form__blocodois,
+  .register__form__blocotres  {
+    flex-direction: column;
+  }
+
+  .register__form-group {
+    min-width: 100%;
   }
 }

@@ -45,7 +45,7 @@ export const enterpriseFormSchema = z.object({
   telephone: z.union([
     z.string().regex(/^\(\d{2}\) (?:\d{4,5}-\d{4})$/, {
       message:
-        'Telefone inválido. Use o formato (XX) XXXX-XXXX ou (XX) 9XXXX-XXXX.',
+        'Telefone inválido. Use o formato (XX) XXXX-XXXX ou (XX) 9XXX-XXXX.',
     }),
     z.string().length(0), // Permite string vazia ""
     z.undefined(), // Permite omitir o campo
