@@ -96,7 +96,10 @@ export const resetPasswordAction = async (formData: FormData) => {
 export const buscarEmpreendimento = async (cnpj: string) => {
   const supabase = await createClient();
 
-  const {data, error} = supabase.from('enterprise').select().eq('cnpj', cnpj)
+  const {data, error} = await supabase.from('enterprise')
+                              .select()
+                              .like('cnpj', cnpj)
+                              .single()
 
   if (error) return error
 

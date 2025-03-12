@@ -1,7 +1,5 @@
-import { EnvVarWarning } from "@/components/env-var-warning";
 import { Link } from "lucide-react";
 import HeaderAuth from "@/components/header-auth";
-import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 
 export default function layout({
 	children,
@@ -15,7 +13,7 @@ export default function layout({
 					<div className="flex gap-5 items-center font-semibold">
 						<Link href={"/"}>Next.js Supabase Starter</Link>
 					</div>
-					{!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
+					{<HeaderAuth />}
 				</div>
 			</nav>
 			<div className="flex flex-col gap-20 w-full">{children}</div>

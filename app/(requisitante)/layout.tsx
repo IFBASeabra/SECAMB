@@ -1,7 +1,6 @@
-import { EnvVarWarning } from '@/components/env-var-warning';
 import HeaderAuth from '@/components/header-auth';
-import { hasEnvVars } from '@/utils/supabase/check-env-vars';
 import { createClient } from '@/utils/supabase/server';
+import Image from 'next/image';
 import { redirect } from 'next/navigation';
 
 export default async function layout({
@@ -22,7 +21,14 @@ export default async function layout({
   return (
     <>
       <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-        <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
+        <div className="w-full md:w-4/5 flex justify-between items-center p-3 px-0 text-sm">
+          <Image
+            src="/logo-header.png"
+            className="logo"
+            alt="logo"
+            width={180}
+            height={60}
+          />
           <ul className="flex justify-start gap-4">
             <li>
               <a href="/home">Página Inicial</a>
@@ -37,7 +43,7 @@ export default async function layout({
               <a href="/empreendimentos/MyEnterprise">Empreendimentos</a>
             </li>
           </ul>
-          {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
+          {<HeaderAuth />}
         </div>
       </nav>
       <div className="flex flex-col w-4/5 items-center ">{children}</div>

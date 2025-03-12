@@ -79,3 +79,23 @@
   background-color: rgba(255, 107, 107, 0.1);
   width: 100%;
 }
+
+
+.terms-and-conditions {
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: .875rem;
+    line-height: 1.5;
+    margin: 8px 0;
+  }
+
+  a {
+    color: oklch(0.623 0.214 259.815);
+    text-decoration: underline
+  }
+}

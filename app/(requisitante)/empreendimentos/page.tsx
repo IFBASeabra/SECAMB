@@ -28,7 +28,6 @@ export default async function Enterprises() {
         data?.length === 0 &&
         <div className="p-4 text-center ">
           <p className="text-base py-2">Você ainda não representa nenhum empreendimento.</p>
-          {/* <p className="text-base py-2"><Link href="/empreendimentos/novo" className="text-blue-600 font-medium">Clique aqui</Link> e adicione um.</p> */}
 
           <p className="text-base py-2">Você pode buscar um empreendimento no formulário abaixo, ou <Link href="/empreendimentos/novo" className="text-blue-600 font-medium">Cadastrar um novo empreendimento</Link> </p>
         
