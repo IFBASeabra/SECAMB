@@ -2,6 +2,7 @@ import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.scss";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import { Toaster } from "@/components/ui/sonner";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -52,7 +53,8 @@ export default function RootLayout({
               <ThemeSwitcher />
             </footer>
           </main>
-        </ThemeProvider>
+        </ThemeProvider>        
+        <Toaster richColors/>
       </body>
     </html>
   );

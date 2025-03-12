@@ -23,7 +23,8 @@ export default async function layout({
         <div className="w-1/5">
           <a href="/empreendimentos/">Meus Empreendimentos</a>
         </div>
-        <nav className="flex justify-end items-center w-4/5">
+        <nav className="flex justify-end items-center w-4/5 gap-4">
+          <Link href={'/empreendimentos/buscar'}>Buscar</Link>
           <Link href={'/empreendimentos/novo'}>Novo</Link>
         </nav>
       </header>

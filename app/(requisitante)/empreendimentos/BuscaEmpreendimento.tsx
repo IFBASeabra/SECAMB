@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { buscarEmpreendimento } from "@/app/actions";
+import { addEnterpriseToUser, buscarEmpreendimento } from "@/app/actions";
 import { Input } from "@/components/ui/input";
 import { cnpjMask, validateCNPJ } from "@/utils/utils";
 import { z } from "zod";
@@ -12,6 +12,7 @@ import { EnterpriseType } from "@/types/enterprise";
 import { PostgrestError } from "@supabase/supabase-js";
 import Link from "next/link";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { toast } from "sonner"
 
 import {
   Dialog,
@@ -22,6 +23,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import TermsAndConditions from "@/components/termsAndConditions";
+import { CustomInsertResult } from "@/types/typings";
 
 const searchSchema = z.object({
   cnpj: z
@@ -57,27 +59,31 @@ const BuscaEmpreendimento = () => {
     console.log("buscsando por: ", data.cnpj);
 
     try {
-      const enterpriseList: EnterpriseType | PostgrestError =
+      const {data: enterpriseData, error} =
         await buscarEmpreendimento(data.cnpj);
 
-      if (!(enterpriseList instanceof PostgrestError)) {
-        setEmpresa(enterpriseList);
+      if (error) {
+        console.error(error)
+        setError(error.message)        
+        setEmpresa(undefined)
       } else {
-        console.error("Error fetching enterprises: ", enterpriseList);
-        setEmpresa(undefined);
+        setEmpresa(enterpriseData);
       }
-      console.log("enterpriseList: ", enterpriseList);
     } catch (error: any) {
       console.error(error.message);
       setError(error.message);
     }
   };
 
-  const addEnterpriseToList = () => {
-    console.log('adicionar empresa a lista: ', empresa);
+  const addEnterpriseToList = async () => {
+    const result: CustomInsertResult = await addEnterpriseToUser(empresa!.id)
+
+    result.status === "SUCCESS" ? toast.success(result.details) : toast.error(result.details)
   };
 
   const agree = watch("agree");
+
+  console.log('empresa: ', empresa)
 
   return (
     <>

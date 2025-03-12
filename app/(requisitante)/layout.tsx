@@ -40,7 +40,7 @@ export default async function layout({
               <a href="#">Minhas requisições</a>
             </li>
             <li>
-              <a href="/empreendimentos/MyEnterprise">Empreendimentos</a>
+              <a href="/empreendimentos">Empreendimentos</a>
             </li>
           </ul>
           {<HeaderAuth />}
