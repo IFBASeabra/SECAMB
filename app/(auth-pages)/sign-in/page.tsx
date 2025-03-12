@@ -3,6 +3,9 @@ import { FormMessage, Message } from "@/components/form-message";
 import { SubmitButton } from "@/components/submit-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+
+import { Mail, LockKeyhole } from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
 import "./sign-in.scss";
@@ -30,8 +33,8 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
                   src="/Logo.png"
                   className="logo"
                   alt="logo"
-                  width={80}
-                  height={80}
+                  width={140}
+                  height={140}
                 />
               </span>
               <h4 className="sign-title">Olá! Bem-vindo</h4>
@@ -39,24 +42,32 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
           </div>
 
           <div className="form__login-authentication">
+            {/* Campo de email */}
             <div className="authentication-emails">
-              <div>
+              <div className="input-container">
                 <Label htmlFor="email">Email</Label>
-                <Input name="email" placeholder="you@example.com" required />
+                <div className="input-with-icon">
+                  <Mail className="input-icon" />
+                  <Input name="email" placeholder="you@example.com" required />
+                </div>
               </div>
             </div>
 
+            {/* Campo de senha */}
             <div className="authentication-passwords">
               <div>
                 <Label htmlFor="password">Password</Label>
-                <Input
-                  type="password"
-                  name="password"
-                  placeholder="Your password"
-                  required
-                />
+                <div className="input-with-icon">
+                  <LockKeyhole className="input-icon" />
+                  <Input
+                    type="password"
+                    name="password"
+                    placeholder="Your password"
+                    required
+                  />
+                </div>
                 <Link className="passwords-forgot" href="/forgot-password">
-                  Forgot Password?
+                  Esqueci minha senha
                 </Link>
               </div>
             </div>
@@ -73,10 +84,10 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
             <FormMessage message={searchParams} />
 
             <div className="form__login-signin">
-              <p className="text-sm text-foreground">
-                Don't have an account?{" "}
+              <p className="form_login-signin-p">
+                Não Possue Conta?{" "}
                 <Link className="links" href="/sign-up">
-                  Sign up
+                  Cadastra-se
                 </Link>
               </p>
             </div>

@@ -2,113 +2,191 @@
   --color: #0080ca;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1; /* Mantendo fundo leve */
+}
+
+.container {
+  &__signin {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    color: #000;
+    font-family: "Arial", sans-serif;
+    align-items: center; /* Alinhando o conteúdo ao centro verticalmente */
+    justify-content: center; /* Alinhamento simétrico no eixo horizontal */
+
+    &__left-side,
+    &__right-side {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 40px;
+    }
+
+    &__left-side {
+      background: url("/fundo.png") no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      backdrop-filter: blur(8px); /* Suavizando o fundo com blur */
+    }
+
+    &__right-side {
+      background-color: #f1f1f1; /* Mantendo fundo leve */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adicionando sombra para destaque */
+    }
+  }
+}
+
 .register {
-  background-color: aliceblue;
-  padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  padding: 40px;
+  border-radius: 12px;
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
+  position: relative;
+  max-width: 750px; /* Limitar a largura para manter simetria */
 
-  &__left-side {
-    flex: 1;
-    background: url("/fundo.png") no-repeat center center/cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-    padding: 20px;
-  }
-
-  &__right-side {
-    flex: 1;
-    background-color: aliceblue;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
   &__banner {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 18px;
+    margin-bottom: 24px;
+    justify-content: center;
 
     .banner-h4 {
       font-size: 38px;
+      font-weight: 400;
+      text-align: left;
     }
   }
 
   &__title {
-    font-size: 30px;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-weight: 500;
   }
 
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
     padding: 12px 0;
+    width: 100%;
+    align-items: center;
 
     &-group {
       display: flex;
       flex-direction: column;
+      width: 100%;
+      gap: 16px;
+      position: relative;
+
+      label {
+        font-size: 18px;
+      }
+
+      .input-two,
+      .inputs {
+        padding: 25px 20px 25px 60px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        width: 100%;
+
+        &:focus {
+          border-color: var(--color);
+          box-shadow: 0 0 5px var(--color);
+        }
+      }
+
+      .input-two {
+        width: 350px;
+      }
+
+      //inputs de email e endereço
+      .inputs {
+        width: 716px;
+      }
 
       &-types {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+        width: 100%;
         margin-top: 20px;
-        display: flex;
-        gap: 32px;
-        justify-content: center;
       }
 
-      .label {
-        margin-bottom: 10px;
-      }
-
-      &-type {
+      &-column {
         display: flex;
-        gap: 32px;
-        &-ty {
-          .input {
-            color: lightblue;
-          }
-        }
+        gap: 20px;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
       }
     }
   }
 
   &__radio {
     display: flex;
-    gap: 12px;
+    gap: 16px;
     font-size: 16px;
     cursor: pointer;
     width: 100%;
+    color: #333;
 
     input[type="radio"] {
-      width: 16px;
-      height: 16px;
-      accent-color: #0080ca;
+      width: 22px;
+      height: 22px;
+      accent-color: var(--color);
     }
   }
 
   &__submit {
-    padding: 12px;
+    padding: 14px;
     background-color: var(--color);
-    border-radius: 9px;
+    border-radius: 10px;
     color: #fff;
+    margin-top: 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #0f62fd;
+    }
   }
 
   &__signup {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 20px;
+
+    p {
+      font-size: 18px;
+    }
 
     &-links {
       color: var(--color);
       margin-left: 10px;
+      text-decoration: underline;
+
+      &:hover {
+        color: var(--color);
+      }
     }
   }
 }
@@ -117,8 +195,29 @@
   color: red;
   border: 1px solid red;
   border-radius: 4px;
-  padding: 4px 6px;
-  margin: 8px 0 0;
-  text-align: left;
+  padding: 6px 10px;
+  margin-top: 8px;
   font-size: 12px;
+
+  background-color: rgba(255, 107, 107, 0.1);
+  width: 100%;
+}
+
+//confirações dos icones
+
+.lucide-icones,
+.lucide-two {
+  position: absolute;
+  left: 16px;
+  top: 70%;
+  transform: translateY(-50%);
+}
+
+.lucide-two {
+  top: 50%;
+}
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
 }

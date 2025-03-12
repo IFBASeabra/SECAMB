@@ -1,5 +1,17 @@
 :root {
   --primary-color: #0080ca;
+  --segund-color: #f1f1f1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f1f1f1;
 }
 
 .container__signup {
@@ -7,6 +19,7 @@
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  color: #000;
 
   &-left-side {
     position: relative;
@@ -17,10 +30,9 @@
     align-items: center;
     text-align: center;
     padding: 20px;
-    color: #f1f1f1;
+    color: var(--segund-color);
     overflow: hidden;
 
-    /* Overlay para escurecer a imagem de fundo */
     &::before {
       content: "";
       position: absolute;
@@ -52,12 +64,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f1f1f1;
     width: 50vw;
+    background: var(--segund-color);
 
     .form__login {
+      background: var(--segund-color);
+      margin-top: 200px;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       width: 50vw;
       height: 100%;
       display: flex;
@@ -79,7 +92,7 @@
             border-radius: 12px;
           }
           .sign-title {
-            font-size: 24px;
+            font-size: 28px;
           }
         }
       }
@@ -92,33 +105,53 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          margin-bottom: 10px;
+          margin: 14px;
 
           div {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 14px;
+
+            .passwords-forgot {
+              font-size: 13px;
+              text-align: right;
+              text-decoration: underline;
+              color: var(--primary-color);
+            }
+
+            label {
+              font-size: 18.5px;
+            }
+
+            .input-with-icon {
+              position: relative;
+              display: flex;
+              align-items: center;
+            }
 
             input {
               background-color: #ffffff;
               width: 100%;
-              text-align: left;
-              width: 580px;
               border-radius: 8px;
-              text-align: left;
-              outline: 0;
               height: 50px;
               font-size: 14px;
+              padding: 0 20px 0 60px;
+              border: 1px solid #ccc;
+              outline: 0;
+              box-sizing: border-box;
+              height: 46px;
+              width: 443px;
+            }
+
+            .input-icon {
+              position: absolute;
+              left: 16px;
+              top: 50%;
+              transform: translateY(-50%);
+              font-size: 20px;
+              color: #000000;
             }
           }
-        }
-
-        .passwords-forgot {
-          margin: 10px 0;
-          font-size: 10px;
-          text-align: right;
-          text-decoration: underline;
-          color: var(--primary-color);
         }
 
         .authentication-button {
@@ -128,10 +161,12 @@
 
           .button {
             cursor: pointer;
-            padding: 30px 258px;
+            padding: 26px 0;
             border-radius: 8px;
             background-color: var(--primary-color);
             font-size: 17px;
+            color: #ffffff;
+            width: 443px;
           }
         }
       }
@@ -139,6 +174,11 @@
       &-signin {
         text-align: center;
         margin-top: 15px;
+
+        p {
+          font-size: 18px;
+          margin: 15px;
+        }
       }
     }
   }
