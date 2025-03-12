@@ -20,6 +20,8 @@ import {
   cellphoneMask,
 } from '@/utils/utils';
 
+import { House, MapPinHouse } from 'lucide-react';
+
 type EnterpriseFormType = {
   searchParams: Message;
   enterpriseAction: (formData: FormData) => Promise<EnterpriseActionState>;
@@ -72,7 +74,7 @@ const EnterpriseForm = ({
       <div className="register__form">
         <div className="register__form__blocoum">
           <div className="register__form-group">
-            <Label htmlFor="name"> Nome do Empreendimento</Label>
+            <Label htmlFor="name"> Nome do Empreendimento </Label>
             <Input
               {...form.register('name')}
               name="name"
@@ -103,12 +105,15 @@ const EnterpriseForm = ({
 
           <div className="register__form-group">
             <Label htmlFor="address">Endereço</Label>
-            <Input
-              {...form.register('address')}
-              name="address"
-              placeholder="Rua Horáco de Matos"
-              required
-            />
+            <div className="input-wrapper">
+              <House className="lucide-icon" />
+              <Input
+                {...form.register('address')}
+                name="address"
+                placeholder="Rua Horáco de Matos"
+                required
+              />
+            </div>
 
             {form.formState.errors.address && (
               <p className="form-error">
@@ -121,13 +126,15 @@ const EnterpriseForm = ({
         <div className="register__form__blocodois">
           <div className="register__form-group">
             <Label htmlFor="neighborhood">Bairro</Label>
-            <Input
-              {...form.register('neighborhood')}
-              name="neighborhood"
-              placeholder="São José"
-              required
-            />
-
+            <div className="input-wrapper">
+              <MapPinHouse className="lucide-icon" />
+              <Input
+                {...form.register('neighborhood')}
+                name="neighborhood"
+                placeholder="São José"
+                required
+              />
+            </div>
             {form.formState.errors.neighborhood && (
               <p className="form-error">
                 {form.formState.errors.neighborhood.message}
@@ -201,10 +208,10 @@ const EnterpriseForm = ({
               <option value="" className="my-4 text-xl ">
                 Selecione uma opção
               </option>
-              <option value="Localização">localização</option>
-              <option value="Instalação">instalação</option>
-              <option value="Operação">operação</option>
-              <option value="Não se Aplica">não se aplica</option>
+              <option value="Localização">Localização</option>
+              <option value="Instalação">Instalação</option>
+              <option value="Operação">Operação</option>
+              <option value="Não se Aplica">Não se aplica</option>
             </select>
             {form.formState.errors.operation_phase && (
               <p className="form-error">
@@ -236,7 +243,6 @@ const EnterpriseForm = ({
                 {...form.register('telephone')}
                 name="telephone"
                 placeholder="(75) 9999-9999"
-                required
                 mask={telephoneMask}
                 maxLength={14}
               />

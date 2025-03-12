@@ -14,8 +14,8 @@ export interface EnterpriseActionState {
     neighborhood?: string;
     zipcode?: string;
     contact_name?: string;
-    telephone_contact?: string;
-    cellphone_contact?: string;
+    telephone?: string;
+    cellphone?: string;
     email?: string;
     // uc?: string
     river_basin?: string;
@@ -31,8 +31,8 @@ export interface EnterpriseActionState {
     neighborhood?: string[];
     zipcode?: string[];
     contact_name?: string[];
-    telephone_contact?: string[];
-    cellphone_contact?: string[];
+    telephone?: string[];
+    cellphone?: string[];
     email?: string[];
     //  uc?: string[]
     river_basin?: string[];
@@ -64,8 +64,8 @@ export const enterpriseAction = async (formData: FormData) => {
   const neighborhood = formData.get('neighborhood')!.toString();
   const zipcode = formData.get('zipcode')!.toString();
   const contact_name = formData.get('contact_name')!.toString();
-  const telephone_contact = formData.get('telephone_contact')!.toString();
-  const cellphone_contact = formData.get('cellphone_contact')!.toString();
+  const telephone = formData.get('telephone')!.toString();
+  const cellphone = formData.get('cellphone')!.toString();
   const email = formData.get('email')!.toString();
   // const uc = formData.get("uc")!.toString();
   const river_basin = formData.get('river_basin')!.toString();
@@ -94,18 +94,14 @@ export const enterpriseAction = async (formData: FormData) => {
     console.error(error.code + ' ' + error.message);
     return encodedRedirect('error', '/empreendimentos/novo', error.message);
   } else {
-    if (
-      data?.id &&
-      (telephone_contact || cellphone_contact || email) &&
-      contact_name
-    ) {
+    if (data?.id && (telephone || cellphone || email) && contact_name) {
       const { error } = await supabase
         .from('contact_enterprise')
         .insert({
           id_enterprise: data.id,
           contact_name,
-          telephone_contact,
-          cellphone_contact,
+          telephone,
+          cellphone,
           email,
         })
         .select()
