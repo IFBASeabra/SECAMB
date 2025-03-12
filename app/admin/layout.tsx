@@ -1,6 +1,4 @@
-import { EnvVarWarning } from "@/components/env-var-warning";
 import HeaderAuth from "@/components/header-auth";
-import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -42,7 +40,7 @@ export default async function layout({
               <a href="#">Dados</a>
             </li>
           </ul>
-          {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
+          {<HeaderAuth />}
         </div>
       </nav>
       <div className="flex flex-col gap-20 w-full">{children}</div>

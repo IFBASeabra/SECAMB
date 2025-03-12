@@ -67,3 +67,44 @@
     @apply bg-background text-foreground;
   }
 }
+
+.form-error {
+  color: red;
+  border: 1px solid red;
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin-top: 8px;
+  font-size: 12px;
+
+  background-color: rgba(255, 107, 107, 0.1);
+  width: 100%;
+}
+
+
+.terms-and-conditions {
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  h4, h5 {
+    font-size: 1rem
+  }
+
+  h6{
+    font-size: .75rem;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: .875rem;
+    line-height: 1.5;
+    margin: 8px 0;
+  }
+
+  a {
+    color: oklch(0.623 0.214 259.815);
+    text-decoration: underline
+  }
+}
