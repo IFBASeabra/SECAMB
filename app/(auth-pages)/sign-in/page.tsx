@@ -19,7 +19,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
       <div className="container__signup-left-side">
         <h2 className="title">SECAMB</h2>
         <p className="subtitle">
-          Secretaria Municipal de Desenvolvimento,Turismo e Meio Ambiente
+          Secretaria Municipal de Desenvolvimento, Turismo e Meio Ambiente
         </p>
       </div>
 
@@ -85,7 +85,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
 
             <div className="form__login-signin">
               <p className="form_login-signin-p">
-                Não Possue Conta?{" "}
+                Não possui conta?{" "}
                 <Link className="links" href="/sign-up">
                   Cadastra-se
                 </Link>

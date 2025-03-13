@@ -96,11 +96,63 @@ export const resetPasswordAction = async (formData: FormData) => {
 export const buscarEmpreendimento = async (cnpj: string) => {
   const supabase = await createClient();
 
-  const {data, error} = supabase.from('enterprise').select().eq('cnpj', cnpj)
+  const {data, error} = await supabase.from('enterprise')
+                              .select('id, name, cnpj')
+                              .eq('cnpj', cnpj)
+                              .single()
 
-  if (error) return error
+  console.log('data: ', data)
 
-  return data
+  if (error) return {data: null, error}
+
+  return {data}
+}
+
+export const addEnterpriseToUser = async (enterpriseId: number) => {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  console.log('user: ', user)
+  console.log('enterpriseId: ', enterpriseId)
+
+  if (!user) return {
+    status: 'FAILED',
+    code: 500,
+    details: 'Usuário não encontrado'
+  }
+
+  const id_enterprise = enterpriseId
+  const id_user =  user!.id
+
+  const {data} = await supabase.from('user_enterprise').select().eq('id_user', id_user).eq('id_enterprise', id_enterprise)
+
+  if (data?.length && data.length > 0) {
+    return {
+      status: 'FAILED',
+      code: 400,
+      details: 'Usuário já possui a empresa na lista'
+    }
+  }
+
+  const {error} = await supabase.from('user_enterprise').insert({id_user, id_enterprise })
+
+  if (error) {
+    console.error(error.code + " " + error.message);
+    return {
+      status: 'FAILED',
+      code: error.code,
+      details: error.message
+    }
+  } else {
+    return {
+      status: 'SUCCESS',
+      code: 200,
+      details: 'Empresa adicionada à lista do usuário'
+    }
+  }
 }
 
 export const signOutAction = async () => {
