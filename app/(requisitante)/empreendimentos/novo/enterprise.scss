@@ -9,6 +9,10 @@ body {
   background-color: #f4f7fa;
   color: #333;
   line-height: 1.6;
+  overflow-x:hidden;
+}
+html{
+  overflow-x:hidden;
 }
 
 .register {
@@ -20,7 +24,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   &__title {
-    text-align: center;
+    text-align: left;
     font-size: 2.5rem;
     color: #2c3e50;
     margin-bottom: 1rem;
@@ -205,22 +209,6 @@ body {
     }
   }
 }
-
-@media (max-width: 700px) {
-  .register {
-    padding: 1.5rem;
-  }
-
-  .register__form__blocoum,
-  .register__form__blocodois,
-  .register__form__blocotres  {
-    flex-direction: column;
-  }
-
-  .register__form-group {
-    min-width: 100%;
-  } 
-}
 //icones
 .input-wrapper{
   position:relative;
@@ -241,3 +229,27 @@ body {
     padding-bottom: 10px;
     box-sizing: border-box;
   }
+
+  @media (max-width: 700px) {
+    .register {
+      padding: 1.5rem;
+    
+
+    &__form{
+      flex-direction: column;
+      .register__form__blocoum,
+      .register__form__blocodois,
+      .register__form__blocotres  {
+        flex-direction: column !important;
+      } 
+    }
+  
+    .register__title {
+      font-size: 1.75rem;
+    } 
+  
+    .register__form-group {
+      min-width: 100%;
+    } 
+  }
+}
