@@ -4,11 +4,15 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: #f4f7fa;
   color: #333;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 .register {
@@ -41,7 +45,7 @@ body {
 
     .register__form__blocoum,
     .register__form__blocodois,
-    .register__form__blocotres{
+    .register__form__blocotres {
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
@@ -52,7 +56,8 @@ body {
       flex: 1 1 calc(50% - 1rem); // pra ficar duas colunass
       margin-bottom: 1rem;
 
-      label { //cada subtitulo(ex. nome do empreendimento)
+      label {
+        //cada subtitulo(ex. nome do empreendimento)
         display: block;
         font-size: 1.1rem;
         font-weight: bold;
@@ -60,17 +65,21 @@ body {
         color: #34495e;
       }
 
-      input, select {
+      input,
+      select {
         width: 100%;
         padding: 12px;
         font-size: 1rem;
         border-radius: 8px;
         border: 1px solid #ccc;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
       }
 
-      input:focus, select:focus {
+      input:focus,
+      select:focus {
         border-color: #3498db;
         box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
         outline: none;
@@ -90,11 +99,10 @@ body {
       border: 1px solid #ccc;
       border-radius: 6px;
       box-sizing: border-box;
-    
     }
 
     .register__select:focus-within {
-      box-shadow:  0 0 8px rgba(52, 152, 219, 0.3);
+      box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
       border-color: #3498db;
     }
 
@@ -156,7 +164,9 @@ body {
       font-size: 1rem;
       border: 1px solid #ccc;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
     }
 
     input:focus {
@@ -213,31 +223,42 @@ body {
 
   .register__form__blocoum,
   .register__form__blocodois,
-  .register__form__blocotres  {
+  .register__form__blocotres {
     flex-direction: column;
   }
 
   .register__form-group {
     min-width: 100%;
-  } 
+  }
 }
 //icones
-.input-wrapper{
-  position:relative;
+.input-wrapper {
+  position: relative;
 }
 
-.lucide-icon{
+.lucide-icon {
   position: absolute;
-  left: 12px; 
+  left: 12px;
   top: 50%;
-  transform: translateY(-50%); 
+  transform: translateY(-50%);
   z-index: 1;
-  top: 50%;}
+  top: 50%;
+}
 
-  .register__form-group .input-wrapper input {
-    padding-left: 43px; /* Espaço suficiente para o ícone dentro do campo */
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    box-sizing: border-box;
+.register__form-group .input-wrapper input {
+  padding-left: 43px; /* Espaço suficiente para o ícone dentro do campo */
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 756px) {
+  body {
+    .register {
+      &__form {
+        flex-direction: column;
+      }
+    }
   }
+}

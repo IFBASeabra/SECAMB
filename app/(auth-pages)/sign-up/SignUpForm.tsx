@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import Link from 'next/link';
-import { z } from 'zod';
+import React, { useState } from "react";
+import Image from "next/image";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import Link from "next/link";
+import { z } from "zod";
 
 import {
   BookUser,
@@ -15,17 +15,17 @@ import {
   MapPinHouse,
   MapPinned,
   UserRoundPen,
-} from 'lucide-react';
+} from "lucide-react";
 
-import { SignUpActionState } from '@/app/actions/signUp';
-import { signUpFormSchema } from '@/schemas/signUp';
+import { SignUpActionState } from "@/app/actions/signUp";
+import { signUpFormSchema } from "@/schemas/signUp";
 
-import { FormMessage, Message } from '@/components/form-message';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { FormMessage, Message } from "@/components/form-message";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
-import './sign-up.scss';
-import { cnpjMask, cpfMask, zipCodeMask } from '@/utils/utils';
+import "./sign-up.scss";
+import { cnpjMask, cpfMask, zipCodeMask } from "@/utils/utils";
 
 type SignUpFormType = {
   searchParams: Message;
@@ -37,25 +37,25 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
     resolver: zodResolver(signUpFormSchema),
   });
 
-  const [registerType, setRegisterType] = useState('pessoa_fisica');
+  const [registerType, setRegisterType] = useState("pessoa_fisica");
 
   const registerUser = async (data: z.output<typeof signUpFormSchema>) => {
     const formData = new FormData();
-    formData.append('name', data.name);
-    formData.append('email', data.email);
-    formData.append('register_type', data.register_type);
-    formData.append('document', data.document);
-    formData.append('address', data.address);
-    formData.append('neighborhood', data.neighborhood);
-    formData.append('zipcode', data.zipcode);
-    formData.append('password', data.password);
-    formData.append('password_validation', data.password_validation);
+    formData.append("name", data.name);
+    formData.append("email", data.email);
+    formData.append("register_type", data.register_type);
+    formData.append("document", data.document);
+    formData.append("address", data.address);
+    formData.append("neighborhood", data.neighborhood);
+    formData.append("zipcode", data.zipcode);
+    formData.append("password", data.password);
+    formData.append("password_validation", data.password_validation);
 
     await signUpAction(formData);
   };
 
   return (
-    <div className="container__signin">
+    <div className="container__signup">
       {/* Left Side */}
       <div className="container__signin__left-side">
         <h2 className="title">SECAMB</h2>
@@ -78,38 +78,38 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
               <Label htmlFor="register_type">Tipo de Registro: </Label>
               <div className="register__form-group-types">
                 <div className="register__form-group-types-cl">
-                  <label className="register__radio" htmlFor="pessoa_fisica">
+                  <div className="register__radio">
                     <input
-                      {...form.register('register_type')}
+                      {...form.register("register_type")}
                       name="register_type"
                       type="radio"
                       value="pessoa_fisica"
                       required
                       id="pessoa_fisica"
-                      checked={registerType === 'pessoa_fisica'}
+                      checked={registerType === "pessoa_fisica"}
                       onChange={({ target }) => {
                         setRegisterType(target.value);
                       }}
                     />
-                    Pessoa Física
-                  </label>
+                    <p>Pessoa Física</p>
+                  </div>
                 </div>
                 <div className="register__form-group-types-cl">
-                  <label className="register__radio" htmlFor="pessoa_juridica">
+                  <div className="register__radio">
                     <input
-                      {...form.register('register_type')}
+                      {...form.register("register_type")}
                       name="register_type"
                       type="radio"
                       value="pessoa_juridica"
                       required
                       id="pessoa_juridica"
-                      checked={registerType === 'pessoa_juridica'}
+                      checked={registerType === "pessoa_juridica"}
                       onChange={({ target }) => {
                         setRegisterType(target.value);
                       }}
                     />
-                    Pessoa Jurídica
-                  </label>
+                    <p>Pessoa Jurídica</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -119,22 +119,22 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
               <div className="register__form-group-column">
                 <div className="register__form-group-column-cl">
                   <Label htmlFor="name">
-                    {registerType === 'pessoa_juridica'
-                      ? 'Razão Social'
-                      : 'Nome Completo'}
+                    {registerType === "pessoa_juridica"
+                      ? "Razão Social"
+                      : "Nome Completo"}
                   </Label>
                   <div className="input-with-icon">
-                    <UserRoundPen className="lucide-two" />
                     <Input
-                      {...form.register('name')}
+                      {...form.register("name")}
                       name="name"
                       placeholder={
-                        registerType === 'pessoa_juridica'
-                          ? 'Nome da Empresa'
-                          : 'José dos Santos'
+                        registerType === "pessoa_juridica"
+                          ? "Nome da Empresa"
+                          : "José dos Santos"
                       }
                       required
                       className="input-two"
+                      Icon={<UserRoundPen />}
                     />
                     {form.formState.errors.name && (
                       <p className="form-error">
@@ -147,17 +147,17 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                 {/* CPF/CNPJ */}
                 <div className="register__form-group-column-cl">
                   <Label htmlFor="document">
-                    {registerType === 'pessoa_juridica' ? 'CNPJ' : 'CPF'}
+                    {registerType === "pessoa_juridica" ? "CNPJ" : "CPF"}
                   </Label>
                   <div className="input-with-icon">
                     <BookUser className="lucide-two" />
                     <Input
-                      {...form.register('document')}
+                      {...form.register("document")}
                       name="document"
                       placeholder={
-                        registerType === 'pessoa_juridica'
-                          ? '00.000.000/0001-00'
-                          : '000.000.000-00'
+                        registerType === "pessoa_juridica"
+                          ? "00.000.000/0001-00"
+                          : "000.000.000-00"
                       }
                       type="text"
                       required
@@ -175,43 +175,49 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
 
             {/* Email */}
             <div className="register__form-group">
-              <Label htmlFor="email">E-mail</Label>
+              <div className="tests">
+                <Label htmlFor="email">E-mail</Label>
 
-              {/* Ícone dentro do input */}
-              <Mail
-                className="lucide-icones" /* Adiciona a classe para o ícone */
-              />
+                {/* Ícone dentro do input */}
+                <div className="input-with-icon">
+                  <Mail
+                    className="lucide-icones" /* Adiciona a classe para o ícone */
+                  />
 
-              <Input
-                {...form.register('email')}
-                name="email"
-                placeholder="jose@email.com"
-                required
-                className="inputs"
-              />
-              {form.formState.errors.email && (
-                <p className="form-error">
-                  {form.formState.errors.email.message}
-                </p>
-              )}
+                  <Input
+                    {...form.register("email")}
+                    name="email"
+                    placeholder="jose@email.com"
+                    required
+                    className="inputs"
+                  />
+                </div>
+                {form.formState.errors.email && (
+                  <p className="form-error">
+                    {form.formState.errors.email.message}
+                  </p>
+                )}
+              </div>
             </div>
 
             {/* Address */}
             <div className="register__form-group">
-              <Label htmlFor="address">Endereço</Label>
-              <House className="lucide-icones" />
-              <Input
-                {...form.register('address')}
-                name="address"
-                placeholder="Rua Horácio de Matos"
-                required
-                className="inputs"
-              />
-              {form.formState.errors.address && (
-                <p className="form-error">
-                  {form.formState.errors.address.message}
-                </p>
-              )}
+              <div className="tests">
+                <Label htmlFor="address">Endereço</Label>
+                <House className="lucide-icones" />
+                <Input
+                  {...form.register("address")}
+                  name="address"
+                  placeholder="Rua Horácio de Matos"
+                  required
+                  className="inputs"
+                />
+                {form.formState.errors.address && (
+                  <p className="form-error">
+                    {form.formState.errors.address.message}
+                  </p>
+                )}
+              </div>
             </div>
 
             {/* Neighborhood and Zipcode */}
@@ -222,7 +228,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                   <div className="input-with-icon">
                     <MapPinHouse className="lucide-two" />
                     <Input
-                      {...form.register('neighborhood')}
+                      {...form.register("neighborhood")}
                       name="neighborhood"
                       placeholder="Bloco"
                       required
@@ -240,7 +246,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                   <div className="input-with-icon">
                     <MapPinned className="lucide-two" />
                     <Input
-                      {...form.register('zipcode')}
+                      {...form.register("zipcode")}
                       name="zipcode"
                       placeholder="xxxxx-xxx"
                       required
@@ -265,7 +271,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                     <LockKeyhole className="lucide-two" />
 
                     <Input
-                      {...form.register('password')}
+                      {...form.register("password")}
                       type="password"
                       name="password"
                       placeholder="Digite sua senha"
@@ -288,7 +294,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                   <div className="input-with-icon">
                     <LockKeyhole className="lucide-two" />
                     <Input
-                      {...form.register('password_validation')}
+                      {...form.register("password_validation")}
                       type="password"
                       name="password_validation"
                       placeholder="Digite sua senha novamente"

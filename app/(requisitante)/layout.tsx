@@ -1,7 +1,7 @@
-import HeaderAuth from '@/components/header-auth';
-import { createClient } from '@/utils/supabase/server';
-import Image from 'next/image';
-import { redirect } from 'next/navigation';
+import HeaderAuth from "@/components/header-auth";
+import { createClient } from "@/utils/supabase/server";
+import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export default async function layout({
   children,
@@ -15,7 +15,7 @@ export default async function layout({
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return redirect('/sign-in');
+    return redirect("/sign-in");
   }
 
   return (
@@ -41,6 +41,9 @@ export default async function layout({
             </li>
             <li>
               <a href="/empreendimentos">Empreendimentos</a>
+            </li>
+            <li>
+              <a href="/processos">Processos</a>
             </li>
           </ul>
           {<HeaderAuth />}
