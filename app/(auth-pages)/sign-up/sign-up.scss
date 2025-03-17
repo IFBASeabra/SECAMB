@@ -21,7 +21,7 @@ body {
     color: #000;
     font-family: "Arial", sans-serif;
     align-items: center; /* Alinhando o conteúdo ao centro verticalmente */
-    justify-content: center; /* Alinhamento simétrico no eixo horizontal */
+    justify-content: center;
 
     &__left-side,
     &__right-side {
@@ -35,15 +35,46 @@ body {
     }
 
     &__left-side {
-      background: url("/fundo.png") no-repeat center center/cover;
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* Alinha o conteúdo no topo */
+      height: 100%;
+      padding: 40px;
+      background: url("/fundo.jpg") no-repeat center center/cover;
       color: white;
-      text-align: center;
-      backdrop-filter: blur(8px); /* Suavizando o fundo com blur */
+      backdrop-filter: blur(8px);
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #75737366;
+        z-index: 1;
+      }
+
+      .title {
+        margin-top: 1px;
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-shadow: 2px 2px 6px #00000099;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        max-width: 80%;
+        text-shadow: 1px 1px 4px #00000099;
+      }
     }
 
     &__right-side {
-      background-color: #f1f1f1; /* Mantendo fundo leve */
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adicionando sombra para destaque */
+      background-color: #f1f1f1;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
   }
 }
@@ -208,4 +239,162 @@ body {
   position: relative;
   display: flex;
   align-items: center;
+}
+
+@media (max-width: 915px) {
+  .container__signin {
+    height: 100vh;
+    padding: 20px;
+    max-width: 915px;
+    background-color: #f1f1f1;
+
+    &__left-side {
+      display: none;
+    }
+
+    &__right-side {
+      width: 100%;
+      padding: 20px;
+      box-shadow: none;
+    }
+  }
+
+  .register {
+    max-width: 100%;
+    padding: 20px;
+
+    &__banner {
+      text-align: center;
+      gap: 10px;
+    }
+
+    &__title {
+      font-size: 28px;
+      text-align: center;
+    }
+
+    &__form {
+      gap: 16px;
+    }
+
+    &__form-group {
+      gap: 12px;
+
+      .input-two,
+      .inputs {
+        width: 100%;
+        padding: 20px 20px 20px 50px;
+      }
+
+      &-column {
+        gap: 40px;
+      }
+    }
+
+    &__radio {
+      gap: 12px; /* Reduz o espaçamento entre os botões */
+    }
+
+    &__submit {
+      font-size: 16px; /* Reduz o tamanho da fonte */
+      padding: 12px; /* Reduz o padding */
+    }
+
+    &__signup {
+      p {
+        font-size: 16px; /* Reduz o tamanho da fonte */
+      }
+    }
+  }
+}
+
+@media (max-width: 529px) {
+  .container__signin {
+    padding: 20px;
+    max-width: 100%;
+    background-color: #f1f1f1;
+    height: 100%;
+
+    &__left-side {
+      display: none;
+    }
+
+    &__right-side {
+      width: 100%;
+      padding: 20px;
+      box-shadow: none;
+      height: 100%;
+    }
+  }
+
+  .register {
+    max-width: 100%;
+    padding: 15px;
+
+    &__banner {
+      text-align: center;
+      gap: 10px;
+    }
+
+    &__title {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    &__form {
+      gap: 16px;
+    }
+
+    &__form-group {
+      flex-direction: column;
+      width: 70%;
+      margin-top: 20px;
+    }
+
+    .inputs,
+    .input-two {
+      padding: 12px 60px;
+    }
+
+    &__form-group-column {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &__radio {
+      gap: 12px;
+      flex-direction: column;
+    }
+
+    &__submit {
+      font-size: 16px;
+      padding: 14px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    &__signup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+
+      p {
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+
+      &-links {
+        font-size: 16px;
+        text-decoration: underline;
+        color: var(--color);
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #0f62fd;
+        }
+      }
+    }
+  }
 }

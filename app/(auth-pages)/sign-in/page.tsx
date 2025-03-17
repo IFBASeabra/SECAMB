@@ -64,6 +64,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
                     name="password"
                     placeholder="Your password"
                     required
+                    className="inputs"
                   />
                 </div>
                 <Link className="passwords-forgot" href="/forgot-password">
