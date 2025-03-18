@@ -2,6 +2,21 @@ import HeaderAuth from '@/components/header-auth';
 import { createClient } from '@/utils/supabase/server';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
+<<<<<<< Updated upstream
+=======
+import { Menu, LogOut } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { signOutAction } from '@/app/actions';
+
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+>>>>>>> Stashed changes
 
 export default async function layout({
   children,
@@ -43,8 +58,65 @@ export default async function layout({
               <a href="/empreendimentos">Empreendimentos</a>
             </li>
           </ul>
-          {<HeaderAuth />}
+          <div className="hidden md:block">{<HeaderAuth />}</div>
         </div>
+<<<<<<< Updated upstream
+=======
+
+        {/* Menu responsivo (mobile) */}
+        <Sheet>
+          <SheetTrigger asChild>
+            <button className="btn-mobile md:hidden">
+              <Menu />
+            </button>
+          </SheetTrigger>
+
+          <SheetContent
+            side="left"
+            className="h-full justify-left flex flex-col"
+          >
+            <SheetHeader>
+              <SheetTitle className="text-left">SECAMB</SheetTitle>
+              <SheetDescription className="flex flex-col md:flex-row text-left gap-4">
+                Hey, {user.email}!
+              </SheetDescription>
+            </SheetHeader>
+            <ul className="flex flex-col gap-4">
+              <li>
+                <a href="/home" className="text-sm">
+                  Página Inicial
+                </a>
+              </li>
+              <li>
+                <a href="/empreendimentos/novo" className="text-sm">
+                  Nova requisição
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-sm">
+                  Minhas requisições
+                </a>
+              </li>
+              <li>
+                <a href="/empreendimentos" className="text-sm">
+                  Empreendimentos
+                </a>
+              </li>
+            </ul>
+            <div className="flex-grow" />
+
+            {/* Botão de sair */}
+            <div className="pb-4 text-red-500">
+              <form action={signOutAction}>
+                <Button type="submit" variant={'outline'} className="border-0">
+                  <LogOut />
+                  <strong>Sair</strong>
+                </Button>
+              </form>
+            </div>
+          </SheetContent>
+        </Sheet>
+>>>>>>> Stashed changes
       </nav>
       <div className="flex flex-col w-4/5 items-center ">{children}</div>
     </>
