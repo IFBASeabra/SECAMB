@@ -2,8 +2,6 @@ import HeaderAuth from '@/components/header-auth';
 import { createClient } from '@/utils/supabase/server';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
-<<<<<<< Updated upstream
-=======
 import { Menu, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { signOutAction } from '@/app/actions';
@@ -16,7 +14,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
->>>>>>> Stashed changes
 
 export default async function layout({
   children,
@@ -44,7 +41,9 @@ export default async function layout({
             width={180}
             height={60}
           />
-          <ul className="flex justify-start gap-4">
+
+          {/* Menu normal (pra telas maiores) */}
+          <ul className="flex justify-start gap-4 hidden md:flex">
             <li>
               <a href="/home">Página Inicial</a>
             </li>
@@ -60,8 +59,6 @@ export default async function layout({
           </ul>
           <div className="hidden md:block">{<HeaderAuth />}</div>
         </div>
-<<<<<<< Updated upstream
-=======
 
         {/* Menu responsivo (mobile) */}
         <Sheet>
@@ -116,9 +113,8 @@ export default async function layout({
             </div>
           </SheetContent>
         </Sheet>
->>>>>>> Stashed changes
       </nav>
-      <div className="flex flex-col w-4/5 items-center ">{children}</div>
+      <div className="flex flex-col w-4/5 items-center">{children}</div>
     </>
   );
 }
