@@ -150,7 +150,6 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                     {registerType === "pessoa_juridica" ? "CNPJ" : "CPF"}
                   </Label>
                   <div className="input-with-icon">
-                    <BookUser className="lucide-two" />
                     <Input
                       {...form.register("document")}
                       name="document"
@@ -162,6 +161,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                       type="text"
                       required
                       className="input-two"
+                      Icon={<BookUser />}
                     />
                   </div>
                   {form.formState.errors.document && (
@@ -180,16 +180,13 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
 
                 {/* Ícone dentro do input */}
                 <div className="input-with-icon">
-                  <Mail
-                    className="lucide-icones" /* Adiciona a classe para o ícone */
-                  />
-
                   <Input
                     {...form.register("email")}
                     name="email"
                     placeholder="jose@email.com"
                     required
                     className="inputs"
+                    Icon={<Mail />}
                   />
                 </div>
                 {form.formState.errors.email && (
@@ -204,13 +201,13 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
             <div className="register__form-group">
               <div className="tests">
                 <Label htmlFor="address">Endereço</Label>
-                <House className="lucide-icones" />
                 <Input
                   {...form.register("address")}
                   name="address"
                   placeholder="Rua Horácio de Matos"
                   required
                   className="inputs"
+                  Icon={<House />}
                 />
                 {form.formState.errors.address && (
                   <p className="form-error">
@@ -226,13 +223,13 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                 <div className="register__form-group-column-cl">
                   <Label htmlFor="neighborhood">Bairro</Label>
                   <div className="input-with-icon">
-                    <MapPinHouse className="lucide-two" />
                     <Input
                       {...form.register("neighborhood")}
                       name="neighborhood"
                       placeholder="Bloco"
                       required
                       className="input-two"
+                      Icon={<MapPinHouse />}
                     />
                     {form.formState.errors.neighborhood && (
                       <p className="form-error">
@@ -244,13 +241,13 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                 <div className="register__form-group-column-cl">
                   <Label htmlFor="zipcode">CEP</Label>
                   <div className="input-with-icon">
-                    <MapPinned className="lucide-two" />
                     <Input
                       {...form.register("zipcode")}
                       name="zipcode"
                       placeholder="xxxxx-xxx"
                       required
                       className="input-two"
+                      Icon={<MapPinned />}
                     />
                     {form.formState.errors.zipcode && (
                       <p className="form-error">
@@ -268,8 +265,6 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                 <div className="register__form-group-column-cl">
                   <Label htmlFor="password">Senha</Label>
                   <div className="input-with-icon">
-                    <LockKeyhole className="lucide-two" />
-
                     <Input
                       {...form.register("password")}
                       type="password"
@@ -278,6 +273,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                       minLength={6}
                       required
                       className="input-two"
+                      Icon={<LockKeyhole />}
                     />
                     {form.formState.errors.password && (
                       <p className="form-error">
@@ -301,6 +297,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                       minLength={6}
                       required
                       className="input-two"
+                      Icon={<LockKeyhole />}
                     />
                     {form.formState.errors.password_validation && (
                       <p className="form-error">
