@@ -127,7 +127,6 @@ const EnterpriseForm = ({
           </div>
 
           <div className="register__form-group">
-            <Label htmlFor="address">Endereço</Label>
             <div className="input-wrapper">
               <House className="lucide-icon" />
               <Input
@@ -135,6 +134,7 @@ const EnterpriseForm = ({
                 name="address"
                 placeholder="Rua Horáco de Matos"
                 required
+                Label="Endereço"
               />
             </div>
 
@@ -148,7 +148,6 @@ const EnterpriseForm = ({
 
         <div className="register__form__blocodois">
           <div className="register__form-group">
-            <Label htmlFor="neighborhood">Bairro</Label>
             <div className="input-wrapper">
               <MapPinHouse className="lucide-icon" />
               <Input
@@ -156,6 +155,7 @@ const EnterpriseForm = ({
                 name="neighborhood"
                 placeholder="São José"
                 required
+                Label="Bairro"
               />
             </div>
             {form.formState.errors.neighborhood && (

@@ -1,8 +1,8 @@
-import { enterpriseAction } from "@/app/actions/enterprise";
 import { FormMessage, Message } from "@/components/form-message";
-import EnterpriseForm from "./NewEnterprise";
+import ProcessForm from "./NewProcess";
+import { processAction } from "@/app/actions/process";
 
-export default async function Enterprise(props: {
+export default async function Process(props: {
   searchParams: Promise<Message>;
 }) {
   const searchParams = await props.searchParams;
@@ -16,11 +16,6 @@ export default async function Enterprise(props: {
   }
 
   return (
-    <>
-      <EnterpriseForm
-        searchParams={searchParams}
-        enterpriseAction={enterpriseAction}
-      />
-    </>
+    <ProcessForm searchParams={searchParams} processAction={processAction} />
   );
 }

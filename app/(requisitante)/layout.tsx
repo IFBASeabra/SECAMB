@@ -56,6 +56,9 @@ export default async function layout({
             <li>
               <a href="/empreendimentos">Empreendimentos</a>
             </li>
+            <li>
+              <a href="/processos">Processos</a>
+            </li>
           </ul>
           <div className="hidden md:block">{<HeaderAuth />}</div>
         </div>
