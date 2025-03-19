@@ -22,9 +22,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div>
-        <label className="mb-2">{Label}</label>
+        <label className="mb-2 text-sm">{Label}</label>
         <div className="relative w-full">
-          {Icon && <div className="absolute top-2 left-2">{Icon}</div>}
+          {Icon && <div className="absolute top-3 left-2">{Icon}</div>}
           <input
             {...props}
             type={type}

@@ -13,6 +13,7 @@ body {
 }
 
 .container {
+  height: 100vh;
   &__signup {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -35,6 +36,7 @@ body {
       align-items: center;
       justify-content: center;
       padding: 40px;
+      height: 100vh;
     }
 
     &__left-side {
@@ -73,6 +75,14 @@ body {
     &__right-side {
       background-color: #f1f1f1;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    @media (max-width: 1190px) {
+      .container__signup__left-side {
+        display: none;
+      }
+      .container__signup__right-side {
+        width: 100vw;
+      }
     }
   }
 }
@@ -124,14 +134,13 @@ body {
         font-size: 18px;
       }
 
-      // .input-two,
-      // .inputs {
-      //   padding: 25px 20px 25px 60px;
-      //   border-radius: 8px;
-      //   border: 1px solid #ccc;
-      //   font-size: 16px;
-      //   transition: all 0.3s ease;
-      //   width: 100%;
+      .inputs {
+        width: 716px;
+      }
+
+      .input-two {
+        width: 350px;
+      }
 
       //   &:focus {
       //     border-color: var(--color);
@@ -246,10 +255,9 @@ body {
 }
 
 @media (max-width: 915px) {
-  .container__signin {
+  .container__signup {
     height: 100vh;
     padding: 20px;
-    max-width: 915px;
     background-color: #f1f1f1;
 
     &__left-side {
@@ -260,6 +268,7 @@ body {
       width: 100%;
       padding: 20px;
       box-shadow: none;
+      height: 100vh;
     }
   }
 
@@ -314,48 +323,41 @@ body {
 
 @media (max-width: 529px) {
   body {
-    overflow-x: hidden;
-    .container__signin {
+    .container__signup {
       background-color: #f1f1f1;
-      padding: 20px;
-      height: 100%;
-      max-width: 529px;
-
-      &__left-side {
-        display: none;
-      }
+      height: auto; /* Remover altura fixa */
+      padding: 0;
 
       &__right-side {
-        width: 100%;
-        padding: 20px;
+        padding: 0;
         box-shadow: none;
-        height: 100%;
+        height: auto; /* Ajuste para não forçar a altura */
+        overflow-y: auto; /* Adicionando rolagem, se necessário */
       }
     }
 
     .register {
-      max-width: 100%;
-      padding: 15px;
+      padding: 0;
 
       &__banner {
         text-align: center;
-        gap: 10px;
+        gap: 7px;
       }
 
       &__title {
         font-size: 28px;
-        text-align: center;
-        margin-bottom: 20px;
+        text-align: left;
+        margin-left: 20px;
       }
 
       &__form {
-        gap: 16px;
+        gap: 10px;
       }
 
       &__form-group {
         flex-direction: column;
         width: 100%;
-        margin-top: 20px;
+        gap: 6px;
         align-items: center;
 
         .tests {
@@ -368,17 +370,21 @@ body {
           display: flex;
           justify-content: right;
           flex-direction: column;
+          margin-left: 30px;
           div {
             display: flex;
             flex-direction: row;
           }
         }
+
+        &-column {
+          gap: 15px;
+        }
       }
 
       .inputs,
       .input-two {
-        padding: 12px 60px;
-        width: 300px;
+        width: 80vw;
       }
 
       &__form-group-column {
@@ -386,23 +392,19 @@ body {
         width: 100%;
       }
 
-      &__radio {
-        gap: 12px;
-        flex-direction: column;
-      }
-
       &__submit {
         font-size: 16px;
-        padding: 14px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 80vw;
       }
 
       &__signup {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 8px;
+        gap: 4px;
 
         p {
           font-size: 16px;

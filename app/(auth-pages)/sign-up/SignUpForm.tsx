@@ -57,7 +57,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
   return (
     <div className="container__signup">
       {/* Left Side */}
-      <div className="container__signin__left-side">
+      <div className="container__signup__left-side">
         <h2 className="title">SECAMB</h2>
         <p className="subtitle">
           Secretaria Municipal de Desenvolvimento, Turismo e Meio Ambiente
@@ -65,7 +65,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
       </div>
 
       {/* Right Side */}
-      <div className="container__signin__right-side">
+      <div className="container__signup__right-side">
         <form className="register" onSubmit={form.handleSubmit(registerUser)}>
           <div className="register__banner">
             <Image src="/Logo.png" alt="logo" width={60} height={100} />
@@ -176,31 +176,26 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
             {/* Email */}
             <div className="register__form-group">
               <div className="tests">
-                <Label htmlFor="email">E-mail</Label>
-
-                {/* Ícone dentro do input */}
-                <div className="input-with-icon">
-                  <Input
-                    {...form.register("email")}
-                    name="email"
-                    placeholder="jose@email.com"
-                    required
-                    className="inputs"
-                    Icon={<Mail />}
-                  />
-                </div>
-                {form.formState.errors.email && (
-                  <p className="form-error">
-                    {form.formState.errors.email.message}
-                  </p>
-                )}
+                <Input
+                  {...form.register("email")}
+                  name="email"
+                  placeholder="jose@email.com"
+                  required
+                  className="inputs"
+                  Icon={<Mail />}
+                  Label="Email"
+                />
               </div>
+              {form.formState.errors.email && (
+                <p className="form-error">
+                  {form.formState.errors.email.message}
+                </p>
+              )}
             </div>
 
             {/* Address */}
             <div className="register__form-group">
               <div className="tests">
-                <Label htmlFor="address">Endereço</Label>
                 <Input
                   {...form.register("address")}
                   name="address"
@@ -208,6 +203,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                   required
                   className="inputs"
                   Icon={<House />}
+                  Label="Endereço"
                 />
                 {form.formState.errors.address && (
                   <p className="form-error">
@@ -221,7 +217,6 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
             <div className="register__form-group">
               <div className="register__form-group-column">
                 <div className="register__form-group-column-cl">
-                  <Label htmlFor="neighborhood">Bairro</Label>
                   <div className="input-with-icon">
                     <Input
                       {...form.register("neighborhood")}
@@ -230,6 +225,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                       required
                       className="input-two"
                       Icon={<MapPinHouse />}
+                      Label="Bairro"
                     />
                     {form.formState.errors.neighborhood && (
                       <p className="form-error">
@@ -239,7 +235,6 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                   </div>
                 </div>
                 <div className="register__form-group-column-cl">
-                  <Label htmlFor="zipcode">CEP</Label>
                   <div className="input-with-icon">
                     <Input
                       {...form.register("zipcode")}
@@ -248,6 +243,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                       required
                       className="input-two"
                       Icon={<MapPinned />}
+                      Label="CEP"
                     />
                     {form.formState.errors.zipcode && (
                       <p className="form-error">
@@ -263,7 +259,6 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
             <div className="register__form-group">
               <div className="register__form-group-column">
                 <div className="register__form-group-column-cl">
-                  <Label htmlFor="password">Senha</Label>
                   <div className="input-with-icon">
                     <Input
                       {...form.register("password")}
@@ -274,6 +269,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                       required
                       className="input-two"
                       Icon={<LockKeyhole />}
+                      Label="Senha"
                     />
                     {form.formState.errors.password && (
                       <p className="form-error">
@@ -284,11 +280,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                 </div>
 
                 <div className="register__form-group-column-cl">
-                  <Label htmlFor="password_validation">
-                    Confirmação de Senha
-                  </Label>
                   <div className="input-with-icon">
-                    <LockKeyhole className="lucide-two" />
                     <Input
                       {...form.register("password_validation")}
                       type="password"
@@ -298,6 +290,7 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
                       required
                       className="input-two"
                       Icon={<LockKeyhole />}
+                      Label="Confirmação de Senha"
                     />
                     {form.formState.errors.password_validation && (
                       <p className="form-error">

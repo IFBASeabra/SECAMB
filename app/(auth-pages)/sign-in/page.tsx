@@ -14,9 +14,9 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
   const searchParams = await props.searchParams;
 
   return (
-    <main className="container__signup">
+    <main className="container__signin">
       {/* Left Side */}
-      <div className="container__signup-left-side">
+      <div className="container__signin-left-side">
         <h2 className="title">SECAMB</h2>
         <p className="subtitle">
           Secretaria Municipal de Desenvolvimento, Turismo e Meio Ambiente
@@ -24,7 +24,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
       </div>
 
       {/* Right Side */}
-      <div className="container__signup-right-side">
+      <div className="container__signin-right-side">
         <form className="form__login">
           <div className="form__login-banner">
             <div className="logo-container">
