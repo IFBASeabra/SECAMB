@@ -25,7 +25,7 @@ export default async function layout({
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return redirect("/sign-in");
+    return redirect('/sign-in');
   }
 
   return (
@@ -39,6 +39,9 @@ export default async function layout({
             width={180}
             height={60}
           />
+
+          {/* Menu normal (pra telas maiores) */}
+          <ul className="flex justify-start gap-4 hidden md:flex">
 
           {/* Menu normal (pra telas maiores) */}
           <ul className="flex justify-start gap-4 hidden md:flex">
@@ -58,7 +61,7 @@ export default async function layout({
               <a href="/processos">Processos</a>
             </li>
           </ul>
-          {<HeaderAuth />}
+          <div className="hidden md:block">{<HeaderAuth />}</div>
         </div>
 
         {/* Menu responsivo (mobile) */}
@@ -99,6 +102,7 @@ export default async function layout({
           </SheetContent>
         </Sheet>
       </nav>
+      <div className="flex flex-col w-4/5 items-center">{children}</div>
       <div className="flex flex-col w-4/5 items-center">{children}</div>
     </>
   );
