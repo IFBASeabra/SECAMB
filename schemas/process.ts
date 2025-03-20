@@ -1,13 +1,13 @@
 import { z } from "zod";
 
 export const processFormSchema = z.object({
-  name: z.string().trim(),
 
+
+  protocol: z.string(), 
   description: z
     .string()
     .min(1, "A descrição precisar ter no mínimo 50 caracteres")
     .trim(),
-
-  protocol: z.string(),
   type: z.string(),
+  enterprise: z.string(),
 });
