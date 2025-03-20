@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { addEnterpriseToUser, buscarEmpreendimento } from "@/app/actions";
-import { Input } from "@/components/ui/input";
-import { cnpjMask, validateCNPJ } from "@/utils/utils";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { FilePlus2, Search } from "lucide-react";
-import { EnterpriseType } from "@/types/enterprise";
-import { PostgrestError } from "@supabase/supabase-js";
-import Link from "next/link";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { toast } from "sonner"
+import React, { useState } from 'react';
+import { addEnterpriseToUser, buscarEmpreendimento } from '@/app/actions';
+import { Input } from '@/components/ui/input';
+import { cnpjMask, validateCNPJ } from '@/utils/utils';
+import { z } from 'zod';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { FilePlus2, Search } from 'lucide-react';
+import { EnterpriseType } from '@/types/enterprise';
+import { PostgrestError } from '@supabase/supabase-js';
+import Link from 'next/link';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { toast } from 'sonner';
 
 import {
   Dialog,
@@ -20,17 +20,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import TermsAndConditions from "@/components/termsAndConditions";
-import { CustomInsertResult } from "@/types/typings";
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import TermsAndConditions from '@/components/termsAndConditions';
+import { CustomInsertResult } from '@/types/typings';
 
 const searchSchema = z.object({
-  cnpj: z
-    .string()
-    .length(18, {
-      message: "CNPJ inválido. Confira os dados e tente novamente",
-    }),
+  cnpj: z.string().length(18, {
+    message: 'CNPJ inválido. Confira os dados e tente novamente',
+  }),
   // .superRefine((cnpj, ctx) => {
   //   if (!validateCNPJ(cnpj)) {
   //     ctx.addIssue({
@@ -56,16 +54,17 @@ const BuscaEmpreendimento = () => {
   });
 
   const searchByCNPJ = async (data: z.output<typeof searchSchema>) => {
-    console.log("buscsando por: ", data.cnpj);
+    console.log('buscsando por: ', data.cnpj);
 
     try {
-      const {data: enterpriseData, error} =
-        await buscarEmpreendimento(data.cnpj);
+      const { data: enterpriseData, error } = await buscarEmpreendimento(
+        data.cnpj,
+      );
 
       if (error) {
-        console.error(error)
-        setError(error.message)        
-        setEmpresa(undefined)
+        console.error(error);
+        setError(error.message);
+        setEmpresa(undefined);
       } else {
         setEmpresa(enterpriseData);
       }
@@ -76,25 +75,27 @@ const BuscaEmpreendimento = () => {
   };
 
   const addEnterpriseToList = async () => {
-    const result: CustomInsertResult = await addEnterpriseToUser(empresa!.id)
+    const result: CustomInsertResult = await addEnterpriseToUser(empresa!.id);
 
-    result.status === "SUCCESS" ? toast.success(result.details) : toast.error(result.details)
+    result.status === 'SUCCESS'
+      ? toast.success(result.details)
+      : toast.error(result.details);
   };
 
-  const agree = watch("agree");
+  const agree = watch('agree');
 
-  console.log('empresa: ', empresa)
+  console.log('empresa: ', empresa);
 
   return (
     <>
       <div className="flex flex-col items-start w-2/3 mx-auto p-4 gap-4">
         <form
-          className="flex w-full items-start gap-4"
+          className="flex  flex-col md:flex-row w-full items-center gap-4  "
           onSubmit={form.handleSubmit(searchByCNPJ)}
         >
           <div className="flex flex-col w-full gap-1">
             <Input
-              {...form.register("cnpj")}
+              {...form.register('cnpj')}
               type="text"
               className="w-full h-9"
               placeholder="Digite o CNPJ do Empreendimento"
@@ -109,7 +110,7 @@ const BuscaEmpreendimento = () => {
           </div>
           <button
             type="submit"
-            className="flex items-center gap-2 h-9 border-opacity-100 border px-3 rounded bg-blue-500 text-white focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="flex items-center gap-2 h-9 border-opacity-100 border px-3 rounded bg-blue-500 text-white focus-visible:ring-ring focus-visible:ring-offset-2 md-w-auto "
           >
             <Search size={16} />
             Buscar
@@ -153,9 +154,9 @@ const BuscaEmpreendimento = () => {
                         <label className="flex items-center space-x-2">
                           <input
                             type="checkbox"
-                            {...register("agree", {
+                            {...register('agree', {
                               required:
-                                "Você precisa confirmar que leu os termos antes de continuar.",
+                                'Você precisa confirmar que leu os termos antes de continuar.',
                             })}
                             className="h-4 w-4"
                           />
@@ -166,7 +167,7 @@ const BuscaEmpreendimento = () => {
                         </label>
                         <>
                           {errors?.agree?.message &&
-                            typeof errors.agree.message === "string" && (
+                            typeof errors.agree.message === 'string' && (
                               <p className="text-red-500 text-sm">
                                 {errors.agree.message}
                               </p>
@@ -187,14 +188,14 @@ const BuscaEmpreendimento = () => {
             ) : (
               <div className="p-4 mx-auto">
                 <p className="form-error">
-                  Nenhuma empresa foi encontrada para o CNPJ informado.{" "}
+                  Nenhuma empresa foi encontrada para o CNPJ informado.{' '}
                   <Link
                     href="/empreendimentos/novo"
                     className="text-blue-600 font-medium"
                   >
                     Clique aqui
-                  </Link>{" "}
-                  para cadastrar um novo empreendimento{" "}
+                  </Link>{' '}
+                  para cadastrar um novo empreendimento{' '}
                 </p>
               </div>
             )}

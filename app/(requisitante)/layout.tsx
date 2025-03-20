@@ -1,8 +1,8 @@
-import HeaderAuth from '@/components/header-auth';
-import { createClient } from '@/utils/supabase/server';
-import Image from 'next/image';
-import { redirect } from 'next/navigation';
-import { Menu } from 'lucide-react';
+import HeaderAuth from "@/components/header-auth";
+import { createClient } from "@/utils/supabase/server";
+import Image from "next/image";
+import { redirect } from "next/navigation";
+import { Menu } from "lucide-react";
 
 import {
   Sheet,
@@ -11,7 +11,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet';
+} from "@/components/ui/sheet";
 
 export default async function layout({
   children,
@@ -25,7 +25,7 @@ export default async function layout({
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return redirect('/sign-in');
+    return redirect("/sign-in");
   }
 
   return (
@@ -39,6 +39,10 @@ export default async function layout({
             width={180}
             height={60}
           />
+
+          {/* Menu normal (pra telas maiores)
+          
+          <ul className="flex justify-start gap-4 hidden md:flex">*/}
 
           {/* Menu normal (pra telas maiores) */}
           <ul className="flex justify-start gap-4 hidden md:flex">
@@ -54,8 +58,11 @@ export default async function layout({
             <li>
               <a href="/empreendimentos">Empreendimentos</a>
             </li>
+            <li>
+              <a href="/processos">Processos</a>
+            </li>
           </ul>
-          {<HeaderAuth />}
+          <div className="hidden md:block">{<HeaderAuth />}</div>
         </div>
 
         {/* Menu responsivo (mobile) */}
@@ -96,6 +103,7 @@ export default async function layout({
           </SheetContent>
         </Sheet>
       </nav>
+
       <div className="flex flex-col w-4/5 items-center">{children}</div>
     </>
   );

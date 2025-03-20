@@ -1,24 +1,24 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+import React, { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { EnterpriseActionState } from '@/app/actions/enterprise';
-import { enterpriseFormSchema } from '@/schemas/enterprise';
+import { EnterpriseActionState } from "@/app/actions/enterprise";
+import { enterpriseFormSchema } from "@/schemas/enterprise";
 
-import { FormMessage, Message } from '@/components/form-message';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { FormMessage, Message } from "@/components/form-message";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
-import './enterprise.scss';
+import "./enterprise.scss";
 import {
   cnpjMask,
   zipCodeMask,
   telephoneMask,
   cellphoneMask,
-} from '@/utils/utils';
+} from "@/utils/utils";
 
 // Icones
 import {
@@ -33,7 +33,7 @@ import {
   Headset,
   Waves,
   Droplets,
-} from 'lucide-react';
+} from "lucide-react";
 
 type EnterpriseFormType = {
   searchParams: Message;
@@ -48,32 +48,32 @@ const EnterpriseForm = ({
     resolver: zodResolver(enterpriseFormSchema),
   });
 
-  const [telephone, setTelephone] = useState('');
-  const [cellphone, setCellphone] = useState('');
-  const [cnpj, setCNPJ] = useState('');
-  const [zipCode, setZipCode] = useState('');
+  const [telephone, setTelephone] = useState("");
+  const [cellphone, setCellphone] = useState("");
+  const [cnpj, setCNPJ] = useState("");
+  const [zipCode, setZipCode] = useState("");
 
   const registerEmpreendimento = async (
-    data: z.output<typeof enterpriseFormSchema>,
+    data: z.output<typeof enterpriseFormSchema>
   ) => {
     const formData = new FormData();
-    console.log('form.formState.errors: ', form.formState.errors);
+    console.log("form.formState.errors: ", form.formState.errors);
 
-    formData.append('name', data.name);
-    formData.append('cnpj', data.cnpj);
+    formData.append("name", data.name);
+    formData.append("cnpj", data.cnpj);
     // formData.append('activity_type', data.activity_type)
-    formData.append('address', data.address);
-    formData.append('neighborhood', data.neighborhood);
-    formData.append('zipcode', data.zipcode);
-    formData.append('contact_name', data.contact_name);
-    formData.append('telephone', data.telephone ?? '');
-    formData.append('cellphone', data.cellphone ?? '');
-    formData.append('email', data.email);
+    formData.append("address", data.address);
+    formData.append("neighborhood", data.neighborhood);
+    formData.append("zipcode", data.zipcode);
+    formData.append("contact_name", data.contact_name);
+    formData.append("telephone", data.telephone ?? "");
+    formData.append("cellphone", data.cellphone ?? "");
+    formData.append("email", data.email);
     //   formData.append('uc', data.uc)
-    formData.append('river_basin', data.river_basin);
-    formData.append('water_resource', data.water_resource);
+    formData.append("river_basin", data.river_basin);
+    formData.append("water_resource", data.water_resource);
     //  formData.append('geographic_coordinates', data.geographic_coordinates)
-    formData.append('operation_phase', data.operation_phase);
+    formData.append("operation_phase", data.operation_phase);
 
     await enterpriseAction(formData);
   };
@@ -84,9 +84,9 @@ const EnterpriseForm = ({
       onSubmit={form.handleSubmit(registerEmpreendimento)}
     >
       <h1 className="register__title">
-        {' '}
+        {" "}
         <strong>Empreendimento</strong>
-      </h1>{' '}
+      </h1>{" "}
       <hr />
       <div className="register__form">
         <div className="register__form__blocoum">
@@ -95,7 +95,7 @@ const EnterpriseForm = ({
             <div className="input-wrapper">
               <Building2 className="lucide-icon" />
               <Input
-                {...form.register('name')}
+                {...form.register("name")}
                 name="name"
                 placeholder="Casas Bahia"
                 required
@@ -112,7 +112,7 @@ const EnterpriseForm = ({
             <div className="input-wrapper">
               <FileSearch className="lucide-icon" />
               <Input
-                {...form.register('cnpj')}
+                {...form.register("cnpj")}
                 name="cnpj"
                 placeholder="00.000.000/0001-00"
                 required
@@ -127,14 +127,14 @@ const EnterpriseForm = ({
           </div>
 
           <div className="register__form-group">
-            <Label htmlFor="address">Endereço</Label>
             <div className="input-wrapper">
               <House className="lucide-icon" />
               <Input
-                {...form.register('address')}
+                {...form.register("address")}
                 name="address"
                 placeholder="Rua Horáco de Matos"
                 required
+                Label="Endereço"
               />
             </div>
 
@@ -148,14 +148,14 @@ const EnterpriseForm = ({
 
         <div className="register__form__blocodois">
           <div className="register__form-group">
-            <Label htmlFor="neighborhood">Bairro</Label>
             <div className="input-wrapper">
               <MapPinHouse className="lucide-icon" />
               <Input
-                {...form.register('neighborhood')}
+                {...form.register("neighborhood")}
                 name="neighborhood"
                 placeholder="São José"
                 required
+                Label="Bairro"
               />
             </div>
             {form.formState.errors.neighborhood && (
@@ -170,7 +170,7 @@ const EnterpriseForm = ({
             <div className="input-wrapper">
               <MapPinned className="lucide-icon" />
               <Input
-                {...form.register('zipcode')}
+                {...form.register("zipcode")}
                 name="zipcode"
                 placeholder="46900-000"
                 required
@@ -191,7 +191,7 @@ const EnterpriseForm = ({
             <div className="input-wrapper">
               <Droplets className="lucide-icon" />
               <Input
-                {...form.register('river_basin')}
+                {...form.register("river_basin")}
                 name="river_basin"
                 placeholder="Bacia X"
                 required
@@ -209,7 +209,7 @@ const EnterpriseForm = ({
             <div className="input-wrapper">
               <Waves className="lucide-icon" />
               <Input
-                {...form.register('water_resource')}
+                {...form.register("water_resource")}
                 name="water_resource"
                 placeholder="Rio Y"
                 required
@@ -229,10 +229,10 @@ const EnterpriseForm = ({
               className="my-4 text-xl font-size2rem"
             >
               <h2> Fase Atual do Empreendimento</h2>
-            </Label>{' '}
+            </Label>{" "}
             <hr />
             <select
-              {...form.register('operation_phase')}
+              {...form.register("operation_phase")}
               name="operation_phase"
               className="register__select"
               required
@@ -260,7 +260,7 @@ const EnterpriseForm = ({
               <div className="input-wrapper">
                 <UserRoundPen className="lucide-icon" />
                 <Input
-                  {...form.register('contact_name')}
+                  {...form.register("contact_name")}
                   name="contact_name"
                   placeholder="José dos Santos"
                   required
@@ -277,7 +277,7 @@ const EnterpriseForm = ({
               <div className="input-wrapper">
                 <Headset className="lucide-icon" />
                 <Input
-                  {...form.register('telephone')}
+                  {...form.register("telephone")}
                   name="telephone"
                   placeholder="(75) 9999-9999"
                   mask={telephoneMask}
@@ -295,7 +295,7 @@ const EnterpriseForm = ({
               <div className="input-wrapper">
                 <Phone className="lucide-icon" />
                 <Input
-                  {...form.register('cellphone')}
+                  {...form.register("cellphone")}
                   name="cellphone"
                   placeholder="(75) 99999-9999"
                   required
@@ -314,7 +314,7 @@ const EnterpriseForm = ({
               <div className="input-wrapper">
                 <Mail className="lucide-icon" />
                 <Input
-                  {...form.register('email')}
+                  {...form.register("email")}
                   name="email"
                   placeholder="jose@gmail.com"
                   required

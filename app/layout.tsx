@@ -33,12 +33,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="min-h-screen flex flex-col items-center">
+          <main className="min-h-screen flex flex-col">
             <div className="flex-1 w-full flex flex-col gap-5 items-center">
               {children}
             </div>
 
-            <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-16">
+            <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-16 mt-auto">
               <p>
                 Powered by{" "}
                 <a
@@ -53,8 +53,8 @@ export default function RootLayout({
               <ThemeSwitcher />
             </footer>
           </main>
-        </ThemeProvider>        
-        <Toaster richColors/>
+        </ThemeProvider>
+        <Toaster richColors />
       </body>
     </html>
   );
