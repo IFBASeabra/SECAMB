@@ -20,7 +20,20 @@ import {
   cellphoneMask,
 } from "@/utils/utils";
 
-import { House, MapPinHouse } from "lucide-react";
+// Icones
+import {
+  House,
+  MapPinHouse,
+  MapPinned,
+  Mail,
+  Building2,
+  FileSearch,
+  UserRoundPen,
+  Phone,
+  Headset,
+  Waves,
+  Droplets,
+} from "lucide-react";
 
 type EnterpriseFormType = {
   searchParams: Message;
@@ -70,17 +83,24 @@ const EnterpriseForm = ({
       className="register"
       onSubmit={form.handleSubmit(registerEmpreendimento)}
     >
-      <h1 className="register__title">Empreendimento</h1> <hr />
+      <h1 className="register__title">
+        {" "}
+        <strong>Empreendimento</strong>
+      </h1>{" "}
+      <hr />
       <div className="register__form">
         <div className="register__form__blocoum">
           <div className="register__form-group">
-            <Input
-              {...form.register("name")}
-              name="name"
-              placeholder="Casas Bahia"
-              required
-              Label="Nome do Empreendimento"
-            />
+            <Label htmlFor="name"> Nome do Empreendimento </Label>
+            <div className="input-wrapper">
+              <Building2 className="lucide-icon" />
+              <Input
+                {...form.register("name")}
+                name="name"
+                placeholder="Casas Bahia"
+                required
+              />
+            </div>
 
             {form.formState.errors.name && (
               <p className="form-error">{form.formState.errors.name.message}</p>
@@ -88,15 +108,18 @@ const EnterpriseForm = ({
           </div>
 
           <div className="register__form-group">
-            <Input
-              {...form.register("cnpj")}
-              name="cnpj"
-              placeholder="00.000.000/0001-00"
-              required
-              mask={cnpjMask}
-              maxLength={18}
-              Label="CNPJ"
-            />
+            <Label htmlFor="cnpj">CNPJ</Label>
+            <div className="input-wrapper">
+              <FileSearch className="lucide-icon" />
+              <Input
+                {...form.register("cnpj")}
+                name="cnpj"
+                placeholder="00.000.000/0001-00"
+                required
+                mask={cnpjMask}
+                maxLength={18}
+              />
+            </div>
 
             {form.formState.errors.cnpj && (
               <p className="form-error">{form.formState.errors.cnpj.message}</p>
@@ -143,15 +166,18 @@ const EnterpriseForm = ({
           </div>
 
           <div className="register__form-group">
-            <Input
-              {...form.register("zipcode")}
-              name="zipcode"
-              placeholder="46900-000"
-              required
-              maxLength={9}
-              mask={zipCodeMask}
-              Label="CEP"
-            />
+            <Label htmlFor="zipcode">CEP</Label>
+            <div className="input-wrapper">
+              <MapPinned className="lucide-icon" />
+              <Input
+                {...form.register("zipcode")}
+                name="zipcode"
+                placeholder="46900-000"
+                required
+                maxLength={9}
+                mask={zipCodeMask}
+              />
+            </div>
             {form.formState.errors.zipcode && (
               <p className="form-error">
                 {form.formState.errors.zipcode.message}
@@ -161,13 +187,16 @@ const EnterpriseForm = ({
         </div>
         <div className="register__form__blocotres">
           <div className="register__form-group">
-            <Input
-              {...form.register("river_basin")}
-              name="river_basin"
-              placeholder="Bacia X"
-              required
-              Label="Bacia Hidrográfica"
-            />
+            <Label htmlFor="river_basin">Bacia Hidrográfica</Label>
+            <div className="input-wrapper">
+              <Droplets className="lucide-icon" />
+              <Input
+                {...form.register("river_basin")}
+                name="river_basin"
+                placeholder="Bacia X"
+                required
+              />
+            </div>
             {form.formState.errors.river_basin && (
               <p className="form-error">
                 {form.formState.errors.river_basin.message}
@@ -176,13 +205,16 @@ const EnterpriseForm = ({
           </div>
 
           <div className="register__form-group">
-            <Input
-              {...form.register("water_resource")}
-              name="water_resource"
-              placeholder="Rio Y"
-              required
-              Label="Recurso Hídrico"
-            />
+            <Label htmlFor="water_resource">Recurso Hídrico</Label>
+            <div className="input-wrapper">
+              <Waves className="lucide-icon" />
+              <Input
+                {...form.register("water_resource")}
+                name="water_resource"
+                placeholder="Rio Y"
+                required
+              />
+            </div>
             {form.formState.errors.water_resource && (
               <p className="form-error">
                 {form.formState.errors.water_resource.message}
@@ -224,13 +256,16 @@ const EnterpriseForm = ({
           <div className="flex flex-col gap-5">
             <h2 className="my-3 text-xl">Dados de Contato</h2> <hr />
             <div className="register__form-group">
-              <Input
-                {...form.register("contact_name")}
-                name="contact_name"
-                placeholder="José dos Santos"
-                required
-                Label="Nome do contato"
-              />
+              <Label htmlFor="contact_name">Nome do contato</Label>
+              <div className="input-wrapper">
+                <UserRoundPen className="lucide-icon" />
+                <Input
+                  {...form.register("contact_name")}
+                  name="contact_name"
+                  placeholder="José dos Santos"
+                  required
+                />
+              </div>
               {form.formState.errors.contact_name && (
                 <p className="form-error">
                   {form.formState.errors.contact_name.message}
@@ -238,14 +273,17 @@ const EnterpriseForm = ({
               )}
             </div>
             <div className="register__form-group">
-              <Input
-                {...form.register("telephone")}
-                name="telephone"
-                placeholder="(75) 9999-9999"
-                mask={telephoneMask}
-                maxLength={14}
-                Label="Telefone"
-              />
+              <Label htmlFor="telephone">Telefone</Label>
+              <div className="input-wrapper">
+                <Headset className="lucide-icon" />
+                <Input
+                  {...form.register("telephone")}
+                  name="telephone"
+                  placeholder="(75) 9999-9999"
+                  mask={telephoneMask}
+                  maxLength={14}
+                />
+              </div>
               {form.formState.errors.telephone && (
                 <p className="form-error">
                   {form.formState.errors.telephone.message}
@@ -253,15 +291,18 @@ const EnterpriseForm = ({
               )}
             </div>
             <div className="register__form-group">
-              <Input
-                {...form.register("cellphone")}
-                name="cellphone"
-                placeholder="(75) 99999-9999"
-                required
-                mask={cellphoneMask}
-                maxLength={15}
-                Label="Celular"
-              />
+              <Label htmlFor="cellphone">Celular</Label>
+              <div className="input-wrapper">
+                <Phone className="lucide-icon" />
+                <Input
+                  {...form.register("cellphone")}
+                  name="cellphone"
+                  placeholder="(75) 99999-9999"
+                  required
+                  mask={cellphoneMask}
+                  maxLength={15}
+                />
+              </div>
               {form.formState.errors.cellphone && (
                 <p className="form-error">
                   {form.formState.errors.cellphone.message}
@@ -269,13 +310,16 @@ const EnterpriseForm = ({
               )}
             </div>
             <div className="register__form-group">
-              <Input
-                {...form.register("email")}
-                name="email"
-                placeholder="jose@gmail.com"
-                required
-                Label="E-mail"
-              />
+              <Label htmlFor="email">E-mail</Label>
+              <div className="input-wrapper">
+                <Mail className="lucide-icon" />
+                <Input
+                  {...form.register("email")}
+                  name="email"
+                  placeholder="jose@gmail.com"
+                  required
+                />
+              </div>
               {form.formState.errors.email && (
                 <p className="form-error">
                   {form.formState.errors.email.message}
