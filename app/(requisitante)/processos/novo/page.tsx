@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import StepOne from "./StepOne";
+import ErrorMessage from "@/components/ui/error";
 
 export default async function Process(props: {
   searchParams: Promise<Message>;
@@ -14,10 +15,15 @@ export default async function Process(props: {
   const searchParams = await props.searchParams;
 
   const supabase = await createClient();
+  const cookieStore = await cookies();
 
-  const userId = (await cookies()).get('user')
 
-  if (!userId?.value) {
+  const userCookie = cookieStore.get('user')?.value;
+  const userInfo = userCookie ? JSON.parse(userCookie) : null;
+
+  const userId = userInfo?.id
+
+  if (!userId) {
     return redirect('/processos/novo?message=usuário não encontrado')
   }
 
@@ -40,6 +46,6 @@ export default async function Process(props: {
   return ((enterprises && enterprises.length > 0) && (processList && processList.length > 0)) ? (
     <StepOne processList={processList} enterprises={enterprises}/>
   ) : (
-    <>Para criar um processo, você precisa ter um empreendimento cadastrado</>
+    <ErrorMessage>Para criar um processo, você precisa ter um empreendimento cadastrado</ErrorMessage>
   );
 }
