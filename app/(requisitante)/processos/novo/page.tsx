@@ -1,21 +1,45 @@
 import { FormMessage, Message } from "@/components/form-message";
-import ProcessForm from "./NewProcess";
-import { processAction } from "@/app/actions/process";
+import { Button } from "@/components/ui/button";
+// import ProcessForm from "./NewProcess";
+// import { processAction } from "@/app/actions/process";
+import { createClient } from "@/utils/supabase/server";
+import { ArrowRight } from "lucide-react";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import StepOne from "./StepOne";
 
 export default async function Process(props: {
   searchParams: Promise<Message>;
 }) {
   const searchParams = await props.searchParams;
 
+  const supabase = await createClient();
+
+  const userId = (await cookies()).get('user')
+
+  if (!userId?.value) {
+    return redirect('/processos/novo?message=usuário não encontrado')
+  }
+
+  console.log('userID: ', userId)
+
+  const { data: enterprises } = await supabase.from('user_enterprise').select('enterprise(id, name)').eq('id_user', userId?.value)
+  const { data: processList } = await supabase.from('process_types').select('id, name')
+
+  console.log('empresas: ', enterprises)
+  console.log('processList: ', processList)
+
   if ("message" in searchParams) {
     return (
-      <div className="">
+      <div className="w-full text-center">
         <FormMessage message={searchParams} />
       </div>
     );
   }
 
-  return (
-    <ProcessForm searchParams={searchParams} processAction={processAction} />
+  return ((enterprises && enterprises.length > 0) && (processList && processList.length > 0)) ? (
+    <StepOne processList={processList} enterprises={enterprises}/>
+  ) : (
+    <>Para criar um processo, você precisa ter um empreendimento cadastrado</>
   );
 }

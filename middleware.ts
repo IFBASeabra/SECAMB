@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { updateSession } from "@/utils/supabase/middleware";
 import { createClient } from "./utils/supabase/server";
+import { cookies } from "next/headers";
 
 export async function middleware(request: NextRequest) {
   console.log('checando middleware')
@@ -20,6 +21,18 @@ export async function middleware(request: NextRequest) {
     const {
         data: { profile },
       } = await supabase.from("user_info").select().eq("user_id", user.id).single();
+
+      const cookieStore = await cookies()
+      
+      console.log('criando cookie')
+      cookieStore.set({
+        name: 'user',
+        value: user.id,
+        httpOnly: true,
+        sameSite: 'strict'
+      })
+
+      console.log(`user: ${cookieStore.get('user')}`)
     
       if (profile === "admin") {
         return NextResponse.redirect(new URL("/admin", request.url));
