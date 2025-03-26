@@ -128,7 +128,7 @@ const EnterpriseForm = ({
 
           <div className="register__form-group">
             <div className="input-wrapper">
-              <House className="lucide-icon" />
+              <House className="lucide-iconum" />
               <Input
                 {...form.register('address')}
                 name="address"
@@ -149,7 +149,7 @@ const EnterpriseForm = ({
         <div className="register__form__blocodois">
           <div className="register__form-group">
             <div className="input-wrapper">
-              <MapPinHouse className="lucide-icon" />
+              <MapPinHouse className="lucide-iconum" />
               <Input
                 {...form.register('neighborhood')}
                 name="neighborhood"
