@@ -18,7 +18,7 @@ export default async function ForgotPassword(props: {
           <p className="text-sm text-secondary-foreground">
             Already have an account?{" "}
             <Link className="text-primary underline" href="/sign-in">
-              Sign in
+              Entrar
             </Link>
           </p>
         </div>

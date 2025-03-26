@@ -49,12 +49,12 @@ export default async function layout({
             <li>
               <a href="/home">Página Inicial</a>
             </li>
-            <li>
+            {/* <li>
               <a href="/empreendimentos/novo">Nova requisição</a>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <a href="#">Minhas requisições</a>
-            </li>
+            </li> */}
             <li>
               <a href="/empreendimentos">Empreendimentos</a>
             </li>
