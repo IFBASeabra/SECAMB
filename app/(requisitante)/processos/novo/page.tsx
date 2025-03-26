@@ -23,13 +23,16 @@ export default async function Process(props: {
 
   const userId = userInfo?.id
 
+  console.log('userInfo: ', userInfo)
+  console.log('userId: ', userId)
+
   if (!userId) {
     return redirect('/processos/novo?message=usuário não encontrado')
   }
 
   console.log('userID: ', userId)
 
-  const { data: enterprises } = await supabase.from('user_enterprise').select('enterprise(id, name)').eq('id_user', userId?.value)
+  const { data: enterprises } = await supabase.from('user_enterprise').select('enterprise(id, name)').eq('id_user', userId)
   const { data: processList } = await supabase.from('process_types').select('id, name')
 
   console.log('empresas: ', enterprises)

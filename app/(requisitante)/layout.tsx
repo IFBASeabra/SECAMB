@@ -30,7 +30,7 @@ export default async function layout({
 
   return (
     <>
-      <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
+      <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 sticky top-0">
         <div className="w-full md:w-4/5 flex justify-between items-center p-3 px-0 text-sm">
           <Image
             src="/logo-header.png"
