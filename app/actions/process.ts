@@ -7,15 +7,15 @@ import { processFormSchema } from "@/schemas/process";
 
 export interface ProcessActionState {
   form?: {
-    name?: string;
-    description: string;
     protocol: string;
+    description: string;
     type: string;
+    enterprise: string;
   };
   errors?: {
-    name?: string[];
-    description?: string[];
     protocol?: string[];
+    description?: string[];
+    enterprise?: string[];
     type?: string[];
   };
 }
@@ -35,10 +35,10 @@ export const processAction = async (formData: FormData) => {
   const origin = (await headers()).get("origin");
 
   // Dados do formulário
-  const name = formData.get("name")!.toString();
-  const description = formData.get("description")!.toString();
   const protocol = formData.get("protocol")!.toString();
+  const description = formData.get("description")!.toString();
   const type = formData.get("type")!.toString();
+  const enterprise = formData.get("enterprise")!.toString();
 
   // Obtenção do usuário autenticado
   const {
@@ -60,10 +60,10 @@ export const processAction = async (formData: FormData) => {
     .from("process")
     .insert({
       id_user: user.id,
-      name,
-      description,
       protocol,
+      description,
       type,
+      enterprise,
     })
     .select()
     .single();

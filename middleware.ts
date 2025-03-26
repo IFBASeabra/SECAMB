@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { updateSession } from "@/utils/supabase/middleware";
 import { createClient } from "./utils/supabase/server";
 import { cookies } from "next/headers";
+import { cookies } from "next/headers";
 
 export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname === "/") {
