@@ -30,7 +30,7 @@ export default async function layout({
 
   return (
     <>
-      <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
+      <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 bg-blue-100 sticky top-0">
         <div className="w-full md:w-4/5 flex justify-between items-center p-3 px-0 text-sm">
           <Image
             src="/logo-header.png"
@@ -49,12 +49,12 @@ export default async function layout({
             <li>
               <a href="/home">Página Inicial</a>
             </li>
-            <li>
+            {/* <li>
               <a href="/empreendimentos/novo">Nova requisição</a>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <a href="#">Minhas requisições</a>
-            </li>
+            </li> */}
             <li>
               <a href="/empreendimentos">Empreendimentos</a>
             </li>

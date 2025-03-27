@@ -46,8 +46,8 @@ export default async function Enterprises() {
             </thead>
             <tbody>
               {
-                data?.map(linha => (
-                  <tr>
+                data?.map((linha, index) => (
+                  <tr key={index}>
                     <td>
                       {/*@ts-ignore*/}
                       {linha.enterprise.name}

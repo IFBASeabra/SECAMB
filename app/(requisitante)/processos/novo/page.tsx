@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import StepOne from "./StepOne";
+import ErrorMessage from "@/components/ui/error";
 
 export default async function Process(props: {
   searchParams: Promise<Message>;
@@ -14,16 +15,30 @@ export default async function Process(props: {
   const searchParams = await props.searchParams;
 
   const supabase = await createClient();
+  const cookieStore = await cookies();
 
-  const userId = (await cookies()).get('user')
 
+<<<<<<< HEAD
   // if (!userId?.value) {
   //   return redirect('/processos/novo?message=usuário não encontrado')
   // }
+=======
+  const userCookie = cookieStore.get('user')?.value;
+  const userInfo = userCookie ? JSON.parse(userCookie) : null;
+
+  const userId = userInfo?.id
+
+  console.log('userInfo: ', userInfo)
+  console.log('userId: ', userId)
+
+  if (!userId) {
+    return redirect('/processos/novo?message=usuário não encontrado')
+  }
+>>>>>>> 896145e71183443d24ffa2e597417eeb743b6659
 
   console.log('userID: ', userId)
 
-  const { data: enterprises } = await supabase.from('user_enterprise').select('enterprise(id, name)').eq('id_user', userId?.value)
+  const { data: enterprises } = await supabase.from('user_enterprise').select('enterprise(id, name)').eq('id_user', userId)
   const { data: processList } = await supabase.from('process_types').select('id, name')
 
 
@@ -41,6 +56,6 @@ export default async function Process(props: {
   return ((enterprises && enterprises.length > 0) && (processList && processList.length > 0)) ? (
     <StepOne processList={processList} enterprises={enterprises} />
   ) : (
-    <>Para criar um processo, você precisa ter um empreendimento cadastrado</>
+    <ErrorMessage>Para criar um processo, você precisa ter um empreendimento cadastrado</ErrorMessage>
   );
 }

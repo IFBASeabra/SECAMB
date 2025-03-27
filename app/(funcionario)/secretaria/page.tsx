@@ -1,3 +1,3 @@
 export default async function Secretaria() {
-    return <div>area do edit</div>
+    return <div>area do funcionário</div>
 }

@@ -3,3 +3,5 @@ export interface CustomInsertResult {
   status: string
   details: string
 }
+
+export type Status = 'Novo' | 'Em andamento' | 'Recusado' | 'Finalizado' | 'Desconhecido'

@@ -4,35 +4,26 @@ import { createClient } from "./utils/supabase/server";
 import { cookies } from "next/headers";
 
 export async function middleware(request: NextRequest) {
-  console.log('checando middleware')
-
   if (request.nextUrl.pathname === "/") {
     const supabase = await createClient();
-  
+    const cookieStore = await cookies();
+
     const {
       data: { user },
     } = await supabase.auth.getUser();
 
   
     if (!user) {
+      cookieStore.delete('user')
+
       return NextResponse.redirect(new URL('/sign-in', request.url));
     }
 
     const {
-        data: { profile },
+        data: { user_id, name, profile },
       } = await supabase.from("user_info").select().eq("user_id", user.id).single();
 
-      const cookieStore = await cookies()
-      
-      console.log('criando cookie')
-      cookieStore.set({
-        name: 'user',
-        value: user.id,
-        httpOnly: true,
-        sameSite: 'strict'
-      })
-
-      console.log(`user: ${cookieStore.get('user')}`)
+      cookieStore.set('user', JSON.stringify({id: user_id, name, profile}), {secure: true, sameSite: 'strict'})
     
       if (profile === "admin") {
         return NextResponse.redirect(new URL("/admin", request.url));
