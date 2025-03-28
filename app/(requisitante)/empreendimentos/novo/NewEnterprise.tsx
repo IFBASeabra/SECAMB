@@ -196,9 +196,8 @@ const EnterpriseForm = ({ searchParams, enterpriseAction }: EnterpriseFormType) 
       </div>
 
       <h2 className="text-xl font-semibold text-gray-800 mb-6">Dados de Contato</h2>
-      <div className="bg-gray-100 p-6 rounded-lg shadow-sm  w-full grid grid-cols-1 sm:grid-cols-2 gap-6  mb-6">
-        <div className="mb-4">
-          <Label htmlFor="contact_name">Nome do Contato</Label>
+      <div className="bg-gray-100 p-6 rounded-lg shadow-sm  w-full grid grid-cols-1 sm:grid-cols-2 gap-6  mb-6 w-full">
+        <div className="mb-4 ">
           <div className="relative">
             <Input
               {...form.register("contact_name")}
@@ -207,13 +206,14 @@ const EnterpriseForm = ({ searchParams, enterpriseAction }: EnterpriseFormType) 
               required
               Icon={<UserRoundPen />}
               className="w-full"
+              Label="Nome do Contato"
             />
           </div>
           {form.formState.errors.contact_name && <p className="text-red-500 text-sm">{form.formState.errors.contact_name.message}</p>}
         </div>
 
-        <div className="mb-4">
-          <Label htmlFor="telephone">Telefone</Label>
+        <div className="mb-4 w-full">
+
           <div className="relative">
             <Input
               {...form.register("telephone")}
@@ -222,13 +222,14 @@ const EnterpriseForm = ({ searchParams, enterpriseAction }: EnterpriseFormType) 
               mask={telephoneMask}
               maxLength={14}
               Icon={<Headset />}
+              className="w-full"
+              Label="Telefone"
             />
           </div>
           {form.formState.errors.telephone && <p className="text-red-500 text-sm">{form.formState.errors.telephone.message}</p>}
         </div>
 
         <div className="mb-4">
-          <Label htmlFor="cellphone">Celular</Label>
           <div className="relative">
             <Input
               {...form.register("cellphone")}
@@ -238,13 +239,14 @@ const EnterpriseForm = ({ searchParams, enterpriseAction }: EnterpriseFormType) 
               mask={cellphoneMask}
               maxLength={15}
               Icon={<Phone />}
+              Label="Celular"
+              className=""
             />
           </div>
           {form.formState.errors.cellphone && <p className="text-red-500 text-sm">{form.formState.errors.cellphone.message}</p>}
         </div>
 
         <div className="mb-4">
-          <Label htmlFor="email">E-mail</Label>
           <div className="relative">
             <Input
               {...form.register("email")}
@@ -252,6 +254,7 @@ const EnterpriseForm = ({ searchParams, enterpriseAction }: EnterpriseFormType) 
               placeholder="jose@gmail.com"
               required
               Icon={<Mail />}
+              Label="Email"
             />
           </div>
           {form.formState.errors.email && <p className="text-red-500 text-sm">{form.formState.errors.email.message}</p>}

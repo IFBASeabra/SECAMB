@@ -1,17 +1,17 @@
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import StatusBadge from "@/components/ui/StatusBadge";  // Corrigido: A importação estava errada
+import StatusBadge from "@/components/ui/StatusBadge";
 import TableModel from "@/components/ui/TableModel";
 import { Status } from "@/types/typings";
+import { Accessibility, FileSearch } from "lucide-react";
 
 export default async function Process() {
     const supabase = await createClient();
 
-    // Pega o usuário autenticado
     const { data: { user } } = await supabase.auth.getUser();
 
-    // Busca os processos no Supabase
+
     const { data, error } = await supabase.from("process").select(`
         id,
         protocol,
@@ -21,13 +21,13 @@ export default async function Process() {
         enterprise (name)
     `);
 
-    // Verifica se ocorreu algum erro na requisição
+
     if (error) {
         console.error("Erro ao buscar dados:", error.message);
         return null;
     }
 
-    // Definindo as colunas da tabela
+
     const columns = [
         {
             title: 'Empresa',
@@ -53,9 +53,9 @@ export default async function Process() {
             title: 'Detalhes',
             dataIndex: 'protocol',
             render: (value: string) => (
-                <Button className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-200">
-                    <Link href={`/secretaria/process/details?p=${value}`}>
-                        Detalhes
+                <Button className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-200 " >
+                    <Link className="flex gap-1 items-center" href={`/secretaria/process/details?protocol=${value}`}>
+                        <FileSearch size={15} /> Detalhes
                     </Link>
                 </Button>
             ),
