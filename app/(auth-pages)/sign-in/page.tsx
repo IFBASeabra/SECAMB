@@ -47,7 +47,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
               <div className="input-with-icon">
                 <Input
                   name="email"
-                  placeholder="you@example.com"
+                  placeholder="jose@gmail.com"
                   required
                   Icon={<Mail />}
                   Label="Email"
@@ -62,7 +62,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
                   <Input
                     type="password"
                     name="password"
-                    placeholder="Your password"
+                    placeholder="Digite sua senha"
                     required
                     Icon={<LockKeyhole />}
                     Label="Password"
@@ -76,11 +76,11 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
 
             <div className="authentication-button">
               <SubmitButton
-                pendingText="Signing In..."
+                pendingText="Entrando..."
                 formAction={signInAction}
                 className="button"
               >
-                Sign in
+                Entrar
               </SubmitButton>
             </div>
             <FormMessage message={searchParams} />
@@ -89,7 +89,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
               <p className="form_login-signin-p">
                 Não possui conta?{" "}
                 <Link className="links" href="/sign-up">
-                  Cadastra-se
+                  Cadastre-se
                 </Link>
               </p>
             </div>
