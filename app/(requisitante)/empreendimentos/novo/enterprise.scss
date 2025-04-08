@@ -17,6 +17,8 @@ body {
   overflow-x: hidden;
 }
 
+.register { 
+  width:100%;
 .register {
   width: 100%;
   max-width: 800px;
@@ -106,7 +108,7 @@ body {
 
     .register__select:focus-within {
       box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
-      border-color: #3498db;
+      border-color: #9ACD32;
     }
 
     .register__select::after {
@@ -173,7 +175,7 @@ body {
     }
 
     input:focus {
-      border-color: #3498db;
+      border-color: #9ACD32;
       box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
       outline: none;
     }
@@ -182,7 +184,7 @@ body {
   .register__submit {
     width: 100%;
     padding: 12px;
-    background-color: #249b6a;
+    background-color: #2E8B57;
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
@@ -193,12 +195,12 @@ body {
     margin-top: 2rem;
 
     &:hover {
-      background-color: #2980b9;
+      background-color: #9ACD32;
     }
 
     &:focus {
       outline: none;
-      background-color: #2980b9;
+      background-color: #9ACD32;
     }
   }
 
@@ -239,17 +241,27 @@ body {
   position: relative;
 }
 
-.lucide-icon {
+  .lucide-icon {
   position: absolute;
-  left: 12px;
-  top: 50%;
+  left: 10px;
   transform: translateY(-50%);
   z-index: 1;
   top: 50%;
   color: 34495e;
 }
 
-.register__form-group .input-wrapper input {
+  .lucide-iconum {
+    position: absolute;
+    left: 10px;
+    transform: translateY(-50%);
+    z-index: 1;
+    top: 70%;
+    color: 34495e;}
+  
+
+  .register__form-group .input-wrapper input {
+    padding-left: 43px; /* Espaço suficiente para o ícone dentro do campo */
+  .register__form-group .input-wrapper input {
   padding-left: 43px; /* Espaço suficiente para o ícone dentro do campo */
   width: 100%;
   padding-top: 10px;
@@ -283,5 +295,4 @@ body {
     .register__form-group {
       min-width: 100%;
     }
-  }
-}
+  }}}}

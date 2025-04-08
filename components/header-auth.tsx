@@ -16,16 +16,23 @@ export default async function AuthButton() {
   const userCookie = cookieStore.get('user')?.value;
   const userInfo = user && userCookie ? JSON.parse(userCookie) : null;
 
-  console.log('userCookie: ', userCookie)
-  console.log('userInfo: ', userInfo)
+  console.log('userCookie: ', userCookie);
+  console.log('userInfo: ', userInfo);
 
-  const userName = userInfo?.name?.split(" ")[0] ?? user?.email
-  
+  const userName = userInfo?.name?.split(' ')[0] ?? user?.email;
+
   return user ? (
     <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-      <span>Olá, <strong>{userName}!</strong></span>
+      <span>
+        Olá, <strong>{userName}!</strong>
+      </span>
       <form action={signOutAction}>
-        <Button type="submit" variant={'outline'} className="flex gap-1 bg-red-500 text-white hover:bg-red-600 hover:text-white" title="Sair">
+        <Button
+          type="submit"
+          variant={'outline'}
+          className="flex gap-1 bg-red-500 text-white hover:bg-red-600 hover:text-white"
+          title="Sair"
+        >
           <LogOutIcon size={16} /> Sair
         </Button>
       </form>

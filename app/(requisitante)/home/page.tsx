@@ -1,7 +1,5 @@
-export default async function AreaDoRequisitante() {
-  return (
-    <div>
-      Área do Requisitante
-    </div>
-  );
+import { CarouselTransition } from '@/components/ui/CarouselTransition';
+
+export default function AreaDoRequisitante() {
+  return <CarouselTransition />;
 }
