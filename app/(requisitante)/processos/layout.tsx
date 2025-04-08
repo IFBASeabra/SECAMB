@@ -21,7 +21,7 @@ export default async function layout({
     <main className="flex flex-col justify-start gap-10 w-full">
       <header className="flex justify-between w-full">
         <div className="w-1/5">
-          <a href="/empreendimentos/">Meus Empreendimentos</a>
+          <a href="/processos/">Meus Processos</a>
         </div>
         <nav className="flex justify-end items-center w-4/5 gap-4">
           <Link href={"/processos/buscar"}>Buscar</Link>
