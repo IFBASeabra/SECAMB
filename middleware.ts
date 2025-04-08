@@ -23,9 +23,17 @@ export async function middleware(request: NextRequest) {
         data: { user_id, name, profile },
       } = await supabase.from("user_info").select().eq("user_id", user.id).single();
 
-      cookieStore.set('user', JSON.stringify({id: user_id, name, profile}), {secure: true, sameSite: 'strict'})
+      const cookieStore = await cookies()
+      
+      console.log('criando cookie')
+      cookieStore.set({
+        name: 'user',
+        value: user.id,
+        httpOnly: true,
+        sameSite: 'strict'
+      })
 
-      console.log("profile: " + profile)
+      console.log(`user: ${cookieStore.get('user')}`)
     
       if (profile === "admin") {
         return NextResponse.redirect(new URL("/admin", request.url));
