@@ -23,17 +23,7 @@ export async function middleware(request: NextRequest) {
         data: { user_id, name, profile },
       } = await supabase.from("user_info").select().eq("user_id", user.id).single();
 
-      const cookieStore = await cookies()
-      
-      console.log('criando cookie')
-      cookieStore.set({
-        name: 'user',
-        value: user.id,
-        httpOnly: true,
-        sameSite: 'strict'
-      })
-
-      console.log(`user: ${cookieStore.get('user')}`)
+      cookieStore.set('user', JSON.stringify({id: user_id, name, profile}), {secure: true, sameSite: 'strict'})
     
       if (profile === "admin") {
         return NextResponse.redirect(new URL("/admin", request.url));
@@ -42,11 +32,6 @@ export async function middleware(request: NextRequest) {
       if (profile === "user") {
         return NextResponse.redirect(new URL("/home", request.url));
       }
-
-      if (profile === "editor") {
-        return NextResponse.redirect(new URL("/secretaria", request.url));
-      }
-      
 
     return NextResponse.redirect(new URL('/unauthorized', request.url))
   } 

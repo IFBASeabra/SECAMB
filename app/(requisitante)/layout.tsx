@@ -11,7 +11,7 @@ export default function layout({
   const NavItems = ([
     { name: "Página Inicial", href: "/home" },
     { name: "Empreendimentos", href: "/empreendimentos" },
-    { name: "Processos", href: "/secretaria/process" },
+    { name: "Processos", href: "/processos" },
   ]);
   return (
     <LayoutHomeModel navItems={NavItems} children={children} />
