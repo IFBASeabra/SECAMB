@@ -18,6 +18,11 @@ export default async function Process(props: {
   const cookieStore = await cookies();
 
 
+<<<<<<< HEAD
+  // if (!userId?.value) {
+  //   return redirect('/processos/novo?message=usuário não encontrado')
+  // }
+=======
   const userCookie = cookieStore.get('user')?.value;
   const userInfo = userCookie ? JSON.parse(userCookie) : null;
 
@@ -29,11 +34,13 @@ export default async function Process(props: {
   if (!userId) {
     return redirect('/processos/novo?message=usuário não encontrado')
   }
+>>>>>>> 896145e71183443d24ffa2e597417eeb743b6659
 
   console.log('userID: ', userId)
 
   const { data: enterprises } = await supabase.from('user_enterprise').select('enterprise(id, name)').eq('id_user', userId)
   const { data: processList } = await supabase.from('process_types').select('id, name')
+
 
   console.log('empresas: ', enterprises)
   console.log('processList: ', processList)
@@ -47,7 +54,7 @@ export default async function Process(props: {
   }
 
   return ((enterprises && enterprises.length > 0) && (processList && processList.length > 0)) ? (
-    <StepOne processList={processList} enterprises={enterprises}/>
+    <StepOne processList={processList} enterprises={enterprises} />
   ) : (
     <ErrorMessage>Para criar um processo, você precisa ter um empreendimento cadastrado</ErrorMessage>
   );

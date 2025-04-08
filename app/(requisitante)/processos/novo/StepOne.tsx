@@ -24,15 +24,18 @@ const StepOne = ({enterprises, processList}) => {
  
 
     // Número de processo
-    const currentDate = new Date();
+
+  
+    /*const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth()
     const day = currentDate.getDay();
     const hour = currentDate.getHours();
     const minute = currentDate.getMinutes()
-    const second = currentDate.getSeconds();
+    const second = currentDate.getSeconds();*/
 
-    const numberProcess = `${year}${month}${day}${hour}${minute}${second}`
+    const numberProcess = Date.now()
+    console.log(numberProcess)
 
     //colocando na URL
     router.push(`novo/processo?processTypeID=${processTypeID}&processTypeName=${processTypeName}&enterpriseID=${enterpriseID}&enterpriseName=${enterpriseName}&numberProcess=${numberProcess}`)

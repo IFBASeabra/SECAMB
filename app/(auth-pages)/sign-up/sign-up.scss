@@ -157,11 +157,11 @@ body {
       //   width: 716px;
       // }
 
-      .form-error {
+     /* .form-error {
         color: #e74c3c;
         font-size: 0.875rem;
         margin-top: 0.5rem;
-      }
+      } */  
 
       &-types {
         display: flex;
@@ -333,6 +333,7 @@ body {
         box-shadow: none;
         height: auto; /* Ajuste para não forçar a altura */
         overflow-y: auto; /* Adicionando rolagem, se necessário */
+        margin: 0;
       }
     }
 
@@ -351,13 +352,12 @@ body {
       }
 
       &__form {
-        gap: 10px;
+        
       }
 
       &__form-group {
         flex-direction: column;
         width: 100%;
-        gap: 6px;
         align-items: center;
 
         .tests {
@@ -393,7 +393,7 @@ body {
       }
 
       &__submit {
-        font-size: 16px;
+        font-size: 16px;  
         padding: 10px;
         margin-top: 10px;
         margin-bottom: 10px;

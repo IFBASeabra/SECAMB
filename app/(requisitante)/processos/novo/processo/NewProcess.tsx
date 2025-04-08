@@ -61,13 +61,27 @@ const ProcessForm = ({ processAction }: ProcessFormType) => {
             <Input
               {...form.register("protocol")}
               name="protocol"
-              className="border-gray-300"
+              className="border-gray-300 bg-gray-300 text-gray-950"
               placeholder={numberProcess}
               required
               readOnly
             />
-            {form.formState.errors.protocol && (
-              <p className="form-error">{form.formState.errors.protocol.message}</p>
+            
+          </div>
+          
+          <div className="register__form-group">
+            <Label htmlFor="type">Tipo de Processo</Label>
+            <div className="input-wrapper">
+              <Input
+                {...form.register("type")}
+                name="type"
+                required
+                readOnly
+                className="border-gray-300 bg-gray-300 text-gray-950"
+              />
+            </div>
+            {form.formState.errors.type && (
+              <p className="form-error">{form.formState.errors.type.message}</p>
             )}
           </div>
 
@@ -80,26 +94,9 @@ const ProcessForm = ({ processAction }: ProcessFormType) => {
               placeholder="Descreva sobre o processo"
               required
             />
-            {form.formState.errors.description && (
-              <p className="form-error text-red-500">{form.formState.errors.description.message}</p>
-            )}
+            
           </div>
 
-          <div className="register__form-group">
-            <Label htmlFor="type">Tipo de Processo</Label>
-            <div className="input-wrapper">
-              <Input
-                {...form.register("type")}
-                name="type"
-                className="border-gray-300"
-                required
-                readOnly
-              />
-            </div>
-            {form.formState.errors.type && (
-              <p className="form-error">{form.formState.errors.type.message}</p>
-            )}
-          </div>
         </div>
 
         <div className="register__form__blocodois">
@@ -109,14 +106,12 @@ const ProcessForm = ({ processAction }: ProcessFormType) => {
               <Input
                 {...form.register("enterprise")}
                 name="enterprise"
-                className="border-gray-300"
+                className="border-gray-300 bg-gray-300 text-gray-950"
                 required 
                 readOnly
               />
             </div>
-            {form.formState.errors.enterprise && (
-              <p className="form-error">{form.formState.errors.enterprise.message}</p>
-            )}
+            
           </div>
 
           <Button type="submit" className="mt-6">

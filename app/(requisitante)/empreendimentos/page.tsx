@@ -2,6 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 import BuscaEmpreendimento from "./BuscaEmpreendimento";
 import { Button } from "@/components/ui/button";
+import TableModel from "@/components/ui/TableModel";
 
 export default async function Enterprises() {
 
@@ -25,48 +26,41 @@ export default async function Enterprises() {
     return null;
   }
 
+  const columns = [
+    {
+      title: 'Empresa',
+      dataIndex: 'enterprise',
+      render: (value: { name: string }) => value?.name || 'Sem nome',
+    },
+    {
+      title: 'CNPJ',
+      dataIndex: 'enterprise',
+      render: (value: { cnpj: string }) => value?.cnpj || 'Sem CNPJ',
+    },
+    {
+      title: '',
+      dataIndex: 'id',
+      render: (value: string) => (
+        <Button className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-200">
+          <Link href={`empreendimentos/novo`}>
+            Nova Requisição
+          </Link>
+        </Button>
+      ),
+    },
+  ];
+
   return (
     <>
       {
         data?.length === 0 ?
-        <div className="p-4 text-center ">
-          <p className="text-base py-2">Você ainda não representa nenhum empreendimento.</p>
+          <div className="p-4 text-center ">
+            <p className="text-base py-2">Você ainda não representa nenhum empreendimento.</p>
 
-          <p className="text-base py-2">Você pode buscar um empreendimento no formulário abaixo, ou <Link href="/empreendimentos/novo" className="text-blue-600 font-medium">Cadastrar um novo empreendimento</Link> </p>
-        
-          <BuscaEmpreendimento />
-        </div> : (
-          <table className="table-auto w-full">
-            <thead className="text-left">
-              <tr>
-                <th>Empresa</th>
-                <th>CPNJ</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                data?.map((linha, index) => (
-                  <tr key={index}>
-                    <td>
-                      {/*@ts-ignore*/}
-                      {linha.enterprise.name}
-                    </td>
-                    <td>
-                      {/*@ts-ignore*/}
-                      {linha.enterprise.cnpj}
-                    </td>
-                    <td>
-                      <Button>
-                        Nova Requisição
-                      </Button>
-                    </td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-        )
+            <p className="text-base py-2">Você pode buscar um empreendimento no formulário abaixo, ou <Link href="/empreendimentos/novo" className="text-blue-600 font-medium">Cadastrar um novo empreendimento</Link> </p>
+
+            <BuscaEmpreendimento />
+          </div> : <TableModel columns={columns} data={data} />
       }
     </>
   );
