@@ -1,21 +1,19 @@
 'use client';
 import { Carousel } from '@material-tailwind/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
-// tipando as setas
 type ArrowProps = {
   handleClick: () => void;
   isDisabled: boolean;
 };
 
-//tipando os trenzinho que fica embaixo das páginas nos slides/navegação/indicadores de páginas
 type NavigationProps = {
-  setActiveIndex: (index: number) => void; //define o indice ativo
-  activeIndex: number; // o indice que ele está no momento
+  setActiveIndex: (index: number) => void;
+  activeIndex: number;
   length: number;
 };
 
-//botão de anterir
 const PrevArrow = ({ handleClick, isDisabled }: ArrowProps) => (
   <button
     onClick={handleClick}
@@ -38,7 +36,6 @@ const PrevArrow = ({ handleClick, isDisabled }: ArrowProps) => (
   </button>
 );
 
-//botão de proxima página
 const NextArrow = ({ handleClick, isDisabled }: ArrowProps) => (
   <button
     onClick={handleClick}
@@ -61,7 +58,6 @@ const NextArrow = ({ handleClick, isDisabled }: ArrowProps) => (
   </button>
 );
 
-// n(no caso aqui três) pontinhos que ficam embaixo, indicando em qual pagina está, do total
 const Navigation = ({
   setActiveIndex,
   activeIndex,
@@ -81,59 +77,69 @@ const Navigation = ({
 );
 
 export function CarouselTransition() {
-  const images = [
-    'https://www.ideiasocioambiental.com.br/wp-content/uploads/2019/11/meioambiente34.png',
-
-    'https://s2.glbimg.com/9wmrRKpH5JJS3mQkUTJ8-tyNG8A=/620x430/e.glbimg.com/og/ed/f/original/2016/06/06/thinkstockphotos-475628990.jpg',
-
-    'https://i2.wp.com/vivagreen.com.br/wp-content/uploads/2015/10/tumblr_inline_nph1hnibZb1t00dcx_500.png?w=500&ssl=1',
-
-    'https://tissueonline.com.br/novo/wp-content/uploads/2022/07/Cuidar-do-meio-ambiente-e-um-compromisso-de-365-dias-por-ano.jpg',
+  const slides = [
+    {
+      image: '/seabra.jpg',
+      text: 'Promovendo o crescimento sustentável, valorizando nossas riquezas naturais e culturais!',
+    },
+    {
+      image: '/morros.webp',
+      text: 'Aqui, o progresso caminha lado a lado com a natureza e a cultura do nosso povo.',
+    },
+    {
+      image: '/cachoeira.jpg',
+      text: 'Onde o turismo encanta, o meio ambiente é respeitado e o desenvolvimento é feito com responsabilidade',
+    },
   ];
 
-  //guarda o indice da pagina do slide que ta ativo, no caso aí 0, q é o primeiro
   const [activeIndex, setActiveIndex] = useState(0);
 
-  //aqui é onde acontece o loop, tipo, se estiver na primeira pagina e quiser ir para a ultima, é só voltar
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    setActiveIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
 
-  //aqui acontece outro loop, só que é o inverso, se estiver na última pagina e quiser ir para a primeira, clica no próximo denovo que vai dar certo
   const handleNext = () => {
-    setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    setActiveIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };
 
   return (
     <div className="absolute w-full h-[300px] lg:h-[400px]">
-      {/* transição suave usando fade (opacidade) */}
+      {/* Imagem ativa com next/image */}
       <div className="absolute w-full h-full">
-        {/* Imagem ativa */}
-        <img
-          src={images[activeIndex]}
+        <Image
+          src={slides[activeIndex].image}
           alt={`Imagem ${activeIndex + 1}`}
-          className="h-full w-full object-cover rounded-xl duration-[3000ms] ease-in-out"
+          fill
+          className="object-cover rounded-xl duration-[3000ms] ease-in-out"
+          priority
         />
       </div>
 
-      {/* Texto (esse texto e as imagens vou trocar ainda... não sei exatamente o que pôr)*/}
+      {/* Texto */}
       <div className="absolute inset-0 flex justify-center items-left text-center p-4 bg-black/50 z-70">
         <div className="text-green-100">
           <h2 className="text-3xl font-medium mb-4">
             <strong>SECAMB</strong>
           </h2>
-          <p className="text-lg font-medium">Secretaria de Meio Ambiente</p>
+          <span className="text-lg font-medium">
+            {slides[activeIndex].text}
+          </span>
         </div>
       </div>
 
-      {/*botões de navegação, as duas setas recebem as funções q declarei la em cima */}
       <PrevArrow handleClick={handlePrev} isDisabled={false} />
       <NextArrow handleClick={handleNext} isDisabled={false} />
-      {/* as bolinhas, indicando em qual pagina de slide o carrosel ta*/}
       <Navigation
         setActiveIndex={setActiveIndex}
         activeIndex={activeIndex}
-        length={images.length}
+        length={slides.length}
       />
     </div>
   );

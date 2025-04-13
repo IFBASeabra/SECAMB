@@ -54,7 +54,7 @@ const BuscaEmpreendimento = () => {
   });
 
   const searchByCNPJ = async (data: z.output<typeof searchSchema>) => {
-    console.log('buscsando por: ', data.cnpj);
+    console.log('buscando por: ', data.cnpj);
 
     try {
       const { data: enterpriseData, error } = await buscarEmpreendimento(

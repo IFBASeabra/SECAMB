@@ -1,5 +1,6 @@
-import React from "react";
+import BuscaProcesso from '../BuscaProcesso';
+const Page = () => {
+  return <BuscaProcesso />;
+};
 
-export default function page() {
-  return <div>buscar</div>;
-}
+export default Page;

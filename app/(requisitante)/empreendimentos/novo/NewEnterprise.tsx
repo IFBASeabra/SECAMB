@@ -236,7 +236,7 @@ const EnterpriseForm = ({
       <h2 className="text-xl font-semibold text-gray-800 mb-6">
         Dados de Contato
       </h2>
-      <div className="bg-gray-100 p-6 rounded-lg shadow-sm  w-full grid grid-cols-1 sm:grid-cols-2 gap-6  mb-6 w-full">
+      <div className="bg-gray-100 p-6 rounded-lg shadow-sm grid grid-cols-1 sm:grid-cols-2 gap-6  mb-6 w-full">
         <div className="mb-4 ">
           <div className="relative">
             <Input
@@ -318,7 +318,7 @@ const EnterpriseForm = ({
 
       <button
         type="submit"
-        className="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
+        className="w-full bg-green-700 text-white p-3 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400"
       >
         Cadastrar
       </button>
