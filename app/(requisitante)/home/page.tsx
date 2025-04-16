@@ -50,7 +50,7 @@ export default function AreaDoRequisitante() {
                   desc: 'Fomento à produção local e economia criativa.',
                 },
               ].map((item, idx) => (
-                <div key={idx} className="bg-green-100 rounded-xl p-6 shadow">
+                <div key={idx} className="bg-blue-100 rounded-xl p-6 shadow">
                   <h3 className="font-bold text-lg mb-2">{item.title}</h3>
                   <p className="text-justify">{item.desc}</p>
                 </div>
@@ -82,7 +82,7 @@ export default function AreaDoRequisitante() {
             </div>
           </section>
 
-          <section className="bg-green-100 rounded-xl p-8 shadow-inner">
+          <section className="bg-blue-100 rounded-xl p-8 shadow-inner">
             <h2 className="text-2xl font-semibold mb-6">
               Fale com a Secretaria
             </h2>

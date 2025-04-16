@@ -43,7 +43,7 @@ export default async function LayoutHomeModel({
 
   return (
     <>
-      <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 bg-green-700 text-green-100 sticky top-0 z-40">
+      <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 bg-gray-300 text-black sticky top-0 z-40">
         <div className="w-full md:w-4/5 flex justify-between items-center p-3 px-0 text-sm">
           <Image
             src="/logo-header.png"
@@ -53,12 +53,12 @@ export default async function LayoutHomeModel({
             height={60}
           />
 
-          <ul className="flex justify-start gap-4 hidden md:flex">
+          <ul className="flex justify-start gap-4 md:flex">
             {navItems.map((item, index) => (
               <li key={index}>
                 <a
                   href={item.href}
-                  className="text-sm cursor-pointer hover:text-green-300"
+                  className="p-3 text-sm cursor-pointer rounded-md font-normal hover:bg-primary/80 hover:text-white"
                 >
                   {item.name}
                 </a>
@@ -80,7 +80,7 @@ export default async function LayoutHomeModel({
             </button>
           </SheetTrigger>
 
-          <SheetContent side="left" className="bg-green-100">
+          <SheetContent side="left" className="bg-blue-100">
             <SheetHeader>
               <SheetTitle className="text-green-900">
                 <strong>SECAMB</strong>
@@ -106,8 +106,7 @@ export default async function LayoutHomeModel({
             <form action={signOutAction}>
               <Button
                 type="submit"
-                variant={'outline'}
-                className="flex gap-1 bg-red-500 text-white absolute bottom-4 left-3 hover:bg-red-600 hover:text-white"
+                className="flex gap-1  text-black absolute bottom-4 left-3 bg-transparent hover:bg-red-500 hover:text-white"
                 title="Sair"
               >
                 <LogOutIcon size={16} />

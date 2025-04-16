@@ -23,22 +23,22 @@ export default async function layout({
         <div className="justify-start items-start md:justify-end w-full md:w-3/5 gap-4 md:gap-5 mt-4">
           <button
             type="button"
-            className="text-white bg-[#2E8B57] hover:bg-[#9ACD32]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  me-2 mb-2"
+            className="text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  me-2 mb-2"
           >
-            <a href="/empreendimentos/">Meus Empreendimentos</a>
+            <a href="/processos/">Meus Processos</a>
           </button>
         </div>
 
         <nav className="flex flex-col md:flex-row justify-start items-start md:justify-end w-full md:w-3/5 gap-4 md:gap-5 mt-4">
           <button
             type="button"
-            className="text-white bg-[#2E8B57] hover:bg-[#9ACD32]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-1 mb-0"
+            className="text-white  bg-blue-500 hover:bg-blue-700  focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-1 mb-0"
           >
             <Link href={'/processos/buscar'}>Buscar</Link>
           </button>
           <button
             type="button"
-            className="text-white bg-[#2E8B57] hover:bg-[#9ACD32]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  me-1 mb-0"
+            className="text-white  bg-blue-500 hover:bg-blue-700  focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  me-1 mb-0"
           >
             <Link href={'/processos/novo'}>Novo</Link>
           </button>
@@ -46,7 +46,6 @@ export default async function layout({
       </header>
 
       <header className="flex justify-center w-full z-50">
-        <strong>Meus Processos</strong>
       </header>
       <section>{children}</section>
     </main>

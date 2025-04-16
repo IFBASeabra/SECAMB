@@ -9,7 +9,7 @@ interface BadgeProps {
 const StatusBadge: React.FC<BadgeProps> = ({ status = "Desconhecido" }) => {
 
     const variant = {
-        Novo: "bg-blue-500",
+        Novo: "bg-blue-400",
         "Em andamento": "bg-yellow-300 text-yellow-950",
         "Em atendimento": "bg-yellow-400 text-yellow-950",
         Recusado: "bg-red-500",
@@ -20,7 +20,7 @@ const StatusBadge: React.FC<BadgeProps> = ({ status = "Desconhecido" }) => {
     console.log('status: ', status, variant[status])
 
     return (
-        <span className={`${variant[status]} text-white px-3 py-2 rounded-full`}>
+        <span className={`${variant[status]} text-white text-xs px-5 py-1 w-full rounded-full`}>
             {status}
         </span>
     )

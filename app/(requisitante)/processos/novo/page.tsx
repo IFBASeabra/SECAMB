@@ -15,6 +15,7 @@ export default async function Process(props: {
   const searchParams = await props.searchParams;
 
   const supabase = await createClient();
+  
   const cookieStore = await cookies();
 
   // if (!userId?.value) {

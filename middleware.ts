@@ -12,6 +12,7 @@ export async function middleware(request: NextRequest) {
       data: { user },
     } = await supabase.auth.getUser();
 
+    console.log("user:", user)
   
     if (!user) {
       cookieStore.delete('user')
@@ -19,9 +20,19 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL('/sign-in', request.url));
     }
 
-    const {
-        data: { user_id, name, profile },
-      } = await supabase.from("user_info").select().eq("user_id", user.id).single();
+    const {data, error} = await supabase.from("user_info").select().eq("user_id", user.id).single();
+
+    console.log('data: ', data)
+
+    if (error) {
+      console.error("error: ", error)
+      return NextResponse.redirect(new URL('/unauthorized', request.url))
+    } 
+
+    const { user_id, name, profile } = data
+
+    console.log(`${profile} === "admin": ${profile === "admin"}`)
+    console.log(`${profile} === "user": ${profile === "user"}`)
 
       cookieStore.set('user', JSON.stringify({id: user_id, name, profile}), {secure: true, sameSite: 'strict'})
     

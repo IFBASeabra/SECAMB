@@ -84,7 +84,7 @@ const StepOne = ({enterprises, processList}) => {
       </div>
     </div>
     <div className="my-2">
-      <Button className="flex gap-2">
+      <Button>
         Avançar <ArrowRight size={16} />
       </Button>
     </div>

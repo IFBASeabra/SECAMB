@@ -29,8 +29,7 @@ export default async function AuthButton() {
       <form action={signOutAction}>
         <Button
           type="submit"
-          variant={'outline'}
-          className="flex gap-1 bg-red-500 text-white hover:bg-red-600 hover:text-white"
+          className="flex gap-1 bg-transparent text-black hover:bg-red-500 hover:text-white"
           title="Sair"
         >
           <LogOutIcon size={16} /> Sair

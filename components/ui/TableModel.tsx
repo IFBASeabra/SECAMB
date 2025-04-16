@@ -19,12 +19,12 @@ const TableModel: React.FC<TableProps> = ({ columns, data }) => {
 
 
     return (
-        <div className="overflow-x-auto bg-white shadow-md w-full rounded-t-xl border">
+        <div className="overflow-x-auto bg-white shadow-md w-full">
             <table className="table-auto w-full text-sm text-left text-gray-700 ">
-                <thead className="bg-blue-200 text-sm text-gray-600 uppercase">
+                <thead className="bg-gray-300 text-sm text-gray-600 uppercase rounded-tl-lg rounded-tr-lg">
                     <tr>
                         {columns.map((column, index) => (
-                            <th key={`${column.title}-${index}`} className="py-3 px-4 font-semibold text-left border-b border-gray-300 ">
+                            <th key={`${column.title}-${index}`} className="py-3 px-4 font-semibold text-left first:rounded-tl-lg last:rounded-tr-lg border-0">
                                 {column.title}
                             </th>
                         ))}
@@ -34,7 +34,7 @@ const TableModel: React.FC<TableProps> = ({ columns, data }) => {
                     {data?.map((linha, index) => (
                         <tr
                             key={`${linha.id}-${index}`}
-                            className="hover:bg-green-300 hover:cursor-pointer odd:bg-blue-100 transition duration-200 border-b border-x border-gray-500 last:rounded-lg"
+                            className="hover:bg-blue-100 hover:cursor-pointer odd:bg-gray-100 transition duration-200 last:rounded-lg"
                         >
                             {columns.map((column, index) => (
                                 <td key={`${column.dataIndex}-${index}`} className="py-3 px-4">

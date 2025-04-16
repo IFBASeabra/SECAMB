@@ -26,19 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" className={geistSans.className} suppressHydrationWarning>
-      <body className="bg-background bg-green-200 text-foreground">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+      <body className="bg-background bg-white text-foreground">
           <main className="min-h-screen flex flex-col">
             <div className="flex-1 w-full flex flex-col items-center">
               {children}
             </div>
 
-            <footer className="w-full flex bg-green-100 items-center justify-center border-t mx-auto text-center text-xs gap-2 py-4 mt-auto">
+            <footer className="w-full flex bg-blue-100 items-center justify-center border-t mx-auto text-center text-xs gap-2 py-4 mt-auto">
               <p>
                 Por{' '}
                 <a
@@ -49,10 +43,8 @@ export default function RootLayout({
                   SECAMB
                 </a>
               </p>
-              <ThemeSwitcher />
             </footer>
           </main>
-        </ThemeProvider>
         <Toaster richColors />
       </body>
     </html>

@@ -41,7 +41,7 @@ export default function UserMenu({ userEmail }: { userEmail: string }) {
           {/* Configurações */}
           <button
             onClick={() => router.push('#')}
-            className="flex w-full items-right justify-right px-3 py-2 text-sm text-gray-700 hover:bg-green-100  font-sans"
+            className="flex w-full items-right justify-right px-3 py-2 text-sm text-gray-700 hover:bg-blue-100  font-sans"
           >
             <Settings className="w-4 h-4 mr-2 items-right justify-right font-medium" />
             Configurações
