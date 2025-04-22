@@ -8,7 +8,7 @@ export default function AreaDoRequisitante() {
       {/* essa div de baixo foi criada no mesmo tamanho que o component, que é pros textos não ficarem por baixo do carrossel */}
       <div className="h-[300px] lg:h-[400px]" />
 
-      <div className="bg-green-200 text-gray-800">
+      <div className=" text-gray-800">
         <div className="max-w-6xl mx-auto px-4 py-12 space-y-20">
           <section>
             <h2 className="text-2xl font-semibold mb-6">Sobre a Secretaria</h2>
@@ -63,19 +63,19 @@ export default function AreaDoRequisitante() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/empreendimentos"
-                className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl shadow transition"
+                className="bg-blue-500 hover:bg-blue-700 text-white px-6 py-3 rounded-xl shadow transition"
               >
                 Minha Lista de Empreendimentos
               </Link>
               <Link
                 href="/processos"
-                className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl shadow transition"
+                className="bg-blue-500 hover:bg-blue-700 text-white px-6 py-3 rounded-xl shadow transition"
               >
                 Consultar Processos
               </Link>
               <Link
                 href="/processos/novo"
-                className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl shadow transition"
+                className="bg-blue-500 hover:bg-blue-700 text-white px-6 py-3 rounded-xl shadow transition"
               >
                 Abrir Novo Processo
               </Link>
