@@ -6,10 +6,13 @@ import TableModel from "@/components/ui/TableModel";
 import { Status } from "@/types/typings";
 import { Accessibility, FileSearch } from "lucide-react";
 
+
 export default async function Process() {
     const supabase = await createClient();
 
+
     const { data: { user } } = await supabase.auth.getUser();
+
 
 
     const { data, error } = await supabase.from("process").select(`
@@ -19,6 +22,7 @@ export default async function Process() {
         status,
         process_types (name),
         enterprise (name)
+        enterprise (id)
     `);
 
 
@@ -26,6 +30,10 @@ export default async function Process() {
         console.error("Erro ao buscar dados:", error.message);
         return null;
     }
+
+
+
+
 
 
     const columns = [
@@ -51,9 +59,12 @@ export default async function Process() {
         },
         {
             title: 'Detalhes',
-            dataIndex: 'protocol',
+            dataIndex: 'protocol' ,
             render: (value: string) => (
-                <Button className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-200 " >
+                <Button
+                className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-200  "
+                
+                 >
                     <Link className="flex gap-1 items-center" href={`/secretaria/process/details?protocol=${value}`}>
                         <FileSearch size={15} /> Detalhes
                     </Link>

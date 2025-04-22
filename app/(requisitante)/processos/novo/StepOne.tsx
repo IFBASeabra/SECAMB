@@ -8,7 +8,7 @@ const StepOne = ({enterprises, processList}) => {
   const router = useRouter();
 
 
-  const handleNextStep = (event) => {
+  const handleNextStep = (event: any) => {
     event.preventDefault();
     const processType =JSON.parse(event.target[0].value)
     const enterprise = JSON.parse(event.target[1].value)
@@ -84,7 +84,7 @@ const StepOne = ({enterprises, processList}) => {
       </div>
     </div>
     <div className="my-2">
-      <Button>
+      <Button className=" w-[20vw] mt-6 bg-blue-400">
         Avançar <ArrowRight size={16} />
       </Button>
     </div>
