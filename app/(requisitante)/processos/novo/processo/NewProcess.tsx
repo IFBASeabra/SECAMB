@@ -17,6 +17,8 @@ import { NextResponse } from "next/server";
 import { request } from "http";
 
 type ProcessFormType = {
+  enterpriseID: string
+  processType: string
   processAction: (formData: FormData) => Promise<ProcessActionState>;
 };
 
