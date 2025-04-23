@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -20,7 +19,10 @@ type ProcessFormType = {
   processAction: (formData: FormData) => Promise<ProcessActionState>;
 };
 
+
+
 const ProcessForm = ({ processAction }: ProcessFormType) => {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const enterpriseID = searchParams.get("enterpriseID") || "";
   const enterpriseName = searchParams.get("enterpriseName") || "";
@@ -39,6 +41,7 @@ const ProcessForm = ({ processAction }: ProcessFormType) => {
     },
   });
 
+
   const registerProcess = async (data: z.output<typeof processFormSchema>) => {
     const formData = new FormData();
     console.log("form.formState.errors: ", form.formState.errors);
@@ -48,9 +51,13 @@ const ProcessForm = ({ processAction }: ProcessFormType) => {
     formData.append("type", processTypeID);
     formData.append("enterprise", enterpriseID);
 
-    await processAction(formData);
-    NextResponse.redirect(new URL('/processos'))
+     await processAction(formData);
+     
+     router.push('/processos') //não funciona ainda
+     
   };
+
+ 
 
   return (
     <form
@@ -99,28 +106,31 @@ const ProcessForm = ({ processAction }: ProcessFormType) => {
             />
           </div>
           <div className="register__form__blocodois">
-          <div className="flex flex-col gap-3">
-            <Label htmlFor="enterprise">Empresa</Label>
-            <div className="input-wrapper">
-              <Input
-                {...form.register("enterprise")}
-                name="enterprise"
-                className="border-gray-300 bg-gray-300 text-gray-950"
-                required
-                readOnly
-              />
+            <div className="flex flex-col gap-3">
+              <Label htmlFor="enterprise">Empresa</Label>
+              <div className="input-wrapper">
+                <Input
+                  {...form.register("enterprise")}
+                  name="enterprise"
+                  className="border-gray-300 bg-gray-300 text-gray-950"
+                  required
+                  readOnly
+                />
+              </div>
             </div>
-          </div>
 
-          
-            <Button type="submit" className="mt-6 bg-blue-400" >
+
+            <Button 
+             type="submit"  
+             className="mt-6 bg-blue-400"
+            
+             
+             >
               Cadastrar
             </Button>
-     
+ 
+          </div>
         </div>
-        </div>
-
-       
       </div>
     </form>
   );

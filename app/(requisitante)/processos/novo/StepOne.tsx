@@ -83,7 +83,7 @@ const StepOne = ({enterprises, processList}: any) => {
       </div>
     </div>
     <div className="my-2">
-      <Button>
+      <Button className=" w-[20vw] mt-6 bg-blue-400">
         Avançar <ArrowRight size={16} />
       </Button>
     </div>
