@@ -14,7 +14,8 @@ const StatusBadge: React.FC<BadgeProps> = ({ status = "Desconhecido" }) => {
         "Em atendimento": "bg-yellow-400 text-yellow-950",
         Recusado: "bg-red-500",
         Finalizado: "bg-green-500",
-        Desconhecido: "bg-gray-600"
+        Desconhecido: "bg-gray-600",
+        Devolvido: "bg-orange-500"
     }
 
     console.log('status: ', status, variant[status])

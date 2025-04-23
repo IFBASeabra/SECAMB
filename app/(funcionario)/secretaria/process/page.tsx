@@ -23,7 +23,8 @@ export default async function Process() {
         process_types (name),
         enterprise (name)
         enterprise (id)
-    `);
+    `)
+    .order('status', { ascending: true });;
 
 
     if (error) {
