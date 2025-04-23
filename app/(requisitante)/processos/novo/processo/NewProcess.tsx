@@ -12,11 +12,11 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useSearchParams } from "next/navigation";
-import { Link } from "lucide-react";
 import { NextResponse } from "next/server";
-import { request } from "http";
 
 type ProcessFormType = {
+  enterpriseID: string
+  processType: string
   processAction: (formData: FormData) => Promise<ProcessActionState>;
 };
 

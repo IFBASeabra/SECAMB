@@ -20,7 +20,7 @@ export interface ProcessActionState {
   };
 }
 
-export const processAction = async (formData: FormData) => {
+export const processAction = async (formData: FormData): Promise<ProcessActionState> => {
   const form = Object.fromEntries(formData);
   const validationResult = processFormSchema.safeParse(form);
 
