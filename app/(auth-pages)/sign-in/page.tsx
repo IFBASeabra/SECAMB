@@ -1,14 +1,14 @@
-import { signInAction } from "@/app/actions";
-import { FormMessage, Message } from "@/components/form-message";
-import { SubmitButton } from "@/components/submit-button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { signInAction } from '@/app/actions';
+import { FormMessage, Message } from '@/components/form-message';
+import { SubmitButton } from '@/components/submit-button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
-import { Mail, LockKeyhole } from "lucide-react";
+import { Mail, LockKeyhole } from 'lucide-react';
 
-import Image from "next/image";
-import Link from "next/link";
-import "./sign-in.scss";
+import Image from 'next/image';
+import Link from 'next/link';
+import './sign-in.scss';
 
 export default async function Login(props: { searchParams: Promise<Message> }) {
   const searchParams = await props.searchParams;
@@ -30,7 +30,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
             <div className="logo-container">
               <span>
                 <Image
-                  src="/Logo.png"
+                  src="/logo.png"
                   className="logo"
                   alt="logo"
                   width={140}
@@ -87,7 +87,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
 
             <div className="form__login-signin">
               <p className="form_login-signin-p">
-                Não possui conta?{" "}
+                Não possui conta?{' '}
                 <Link className="links" href="/sign-up">
                   Cadastre-se
                 </Link>
