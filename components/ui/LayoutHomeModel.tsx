@@ -53,7 +53,7 @@ export default async function LayoutHomeModel({
             height={60}
           />
 
-          <ul className="flex justify-start gap-4 md:flex">
+          <ul className="hidden md:flex justify-start gap-4">
             {navItems.map((item, index) => (
               <li key={index}>
                 <a

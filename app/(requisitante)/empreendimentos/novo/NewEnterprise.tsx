@@ -318,7 +318,7 @@ const EnterpriseForm = ({
 
       <button
         type="submit"
-        className="w-full bg-green-700 text-white p-3 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400"
+        className="w-full bg-blue-500 hover:bg-blue-700 text-white p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
       >
         Cadastrar
       </button>

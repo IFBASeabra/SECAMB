@@ -10,11 +10,12 @@ import { processFormSchema } from "@/schemas/process";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { redirect, useSearchParams } from "next/navigation";
-import { useRouter } from 'next/navigation'
-import { Link } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { NextResponse } from "next/server";
 
 type ProcessFormType = {
+  enterpriseID: string
+  processType: string
   processAction: (formData: FormData) => Promise<ProcessActionState>;
 };
 

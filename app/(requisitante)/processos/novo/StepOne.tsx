@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { useRouter } from 'next/navigation'
 
-const StepOne = ({enterprises, processList}) => {
+const StepOne = ({enterprises, processList}: any) => {
   const router = useRouter();
 
 
@@ -21,7 +21,6 @@ const StepOne = ({enterprises, processList}) => {
     //Dados da Empresa
     const enterpriseID = enterprise.id
     const enterpriseName = enterprise.name
- 
 
     // Número de processo
 
@@ -52,7 +51,7 @@ const StepOne = ({enterprises, processList}) => {
             className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
           <option value={undefined} disabled>Selecione um Tipo de processo</option>
           {
-            processList.map((process) => (
+            processList.map((process: any) => (
               <option value={JSON.stringify({ id: process.id, name: process.name })} key={process.id}>{process.name}</option>
             ))
           }
@@ -72,7 +71,7 @@ const StepOne = ({enterprises, processList}) => {
             className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
           <option value={undefined} disabled>Selecione um Empreendimento</option>
           {
-            enterprises.map(({ enterprise }) => (
+            enterprises.map(({ enterprise }: any) => (
               <option value={JSON.stringify({ id: enterprise.id, name: enterprise.name })}
               key={enterprise.id}>{enterprise.name}</option>
             ))

@@ -1,7 +1,7 @@
 "use client"
 
 import { marked } from 'marked';
-import markdownContent from '@/content/termsAndConditions.md';
+import markdownContent from '../content/termsAndConditions.md'
 
 export default function MarkdownPage() {
   const htmlContent = marked(markdownContent);

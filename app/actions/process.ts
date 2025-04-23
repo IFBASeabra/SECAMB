@@ -5,13 +5,14 @@ import { createClient } from "@/utils/supabase/server";
 import { headers } from "next/headers";
 import { processFormSchema } from "@/schemas/process";
 
+type formFields = {
+  protocol: string;
+  description: string;
+  type: string;
+  enterprise: string;
+}
 export interface ProcessActionState {
-  form?: {
-    protocol: string;
-    description: string;
-    type: string;
-    enterprise: string;
-  };
+  form?: formFields;
   errors?: {
     protocol?: string[];
     description?: string[];
@@ -20,8 +21,8 @@ export interface ProcessActionState {
   };
 }
 
-export const processAction = async (formData: FormData) => {
-  const form = Object.fromEntries(formData);
+export const processAction = async (formData: FormData): Promise<ProcessActionState> => {
+  const form: any = Object.fromEntries(formData);
   const validationResult = processFormSchema.safeParse(form);
 
   if (!validationResult.success) {
