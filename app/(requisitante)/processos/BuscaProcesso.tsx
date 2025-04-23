@@ -16,7 +16,7 @@ const searchSchema = z.object({
 });
 
 const BuscaProcesso = () => {
-  const [process, setProcess] = useState<ProcessType | null>(null);
+  const [process, setProcess] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
   const form = useForm<z.infer<typeof searchSchema>>({

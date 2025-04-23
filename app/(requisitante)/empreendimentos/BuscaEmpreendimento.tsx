@@ -40,7 +40,7 @@ const searchSchema = z.object({
 });
 
 const BuscaEmpreendimento = () => {
-  const [empresa, setEmpresa] = useState<undefined | EnterpriseType>(undefined);
+  const [empresa, setEmpresa] = useState<undefined | { id: any; name: any; cnpj: any; }>(undefined);
   const [error, setError] = useState<string | null>(null);
   const {
     register,
