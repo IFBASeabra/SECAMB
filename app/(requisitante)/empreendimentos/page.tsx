@@ -42,7 +42,7 @@ export default async function Enterprises() {
       dataIndex: 'id',
       render: (value: string) => (
         <Button className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-200">
-          <Link href={`empreendimentos/novo`}>
+          <Link href={`/processos/novo`}>
             Nova Requisição
           </Link>
         </Button>
