@@ -36,13 +36,20 @@ body {
       align-items: center;
       justify-content: center;
       padding: 40px;
-      height: 100vh;
+      
+    }
+
+    &__right-side{
+      height: auto;
     }
 
     &__left-side {
       position: relative;
       justify-content: flex-start; /* Alinha o conteúdo no topo */
       background: url("/fundo.jpg") no-repeat center center/cover;
+      width: 100%;
+      height: 100%;
+      
       color: white;
       backdrop-filter: blur(8px);
 
