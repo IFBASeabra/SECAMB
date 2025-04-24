@@ -40,9 +40,13 @@ export default async function Process(props: {
     .from('user_enterprise')
     .select('enterprise(id, name)')
     .eq('id_user', userId);
+    
   const { data: processList } = await supabase
     .from('process_types')
     .select('id, name');
+   
+
+    
 
   console.log('empresas: ', enterprises);
   console.log('processList: ', processList);
