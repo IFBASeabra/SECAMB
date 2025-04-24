@@ -10,7 +10,7 @@ import { processFormSchema } from "@/schemas/process";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { NextResponse } from "next/server";
 
 type ProcessFormType = {
