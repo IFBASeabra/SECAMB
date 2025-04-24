@@ -24,7 +24,7 @@ export default async function Process() {
         enterprise (name)
         enterprise (id)
     `)
-    .order('status', { ascending: true });;
+    
 
 
     if (error) {
