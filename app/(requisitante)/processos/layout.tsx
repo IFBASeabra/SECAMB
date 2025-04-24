@@ -30,7 +30,7 @@ export default async function layout({
         </div>
 
         <nav className="flex flex-col md:flex-row justify-start items-start md:justify-end w-full md:w-3/5 gap-4 md:gap-5 mt-4">
-          {/* <button
+          <button
             type="button"
           >
             <Link 
@@ -38,7 +38,7 @@ export default async function layout({
             className="text-white  bg-blue-500 hover:bg-blue-700  focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-1 mb-0"
 
             >Buscar</Link>
-          </button> */}
+          </button>
           <button
             type="button"
           >
