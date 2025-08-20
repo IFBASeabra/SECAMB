@@ -1,5 +1,4 @@
 import { createClient } from '@/utils/supabase/server';
-import './myenterprise.scss';
 
 interface ContactEnterprise {
   id: string;
@@ -41,7 +40,7 @@ async function Empreendimentos() {
   const { contact_name, telephone, cellphone, email } = contactData;
 
   return (
-    <div className="empreendimento-container">
+    <div className="p-5 font-[Arial, sans-serif];">
       <h1>Empreendimentos</h1>
       <table className="empreendimento-table">
         <thead>

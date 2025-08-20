@@ -41,6 +41,12 @@ const SignUpForm = ({ searchParams, signUpAction }: SignUpFormType) => {
   };
 
   return (
+    // <div className="h-screen grid grid-cols-2 min-h-[calc(100vh-165px)] w-full text-black font-sans items-centers justify-center lg:flex lg:flex-col">
+    // <div className="h-screen flex flex-col min-h-[calc(100vh-165px)] w-full text-black font-sans items-centers justify-center lg:flex lg:flex-col p-10">
+    //   <h2 className="title">SECAMB</h2>
+    //   <p className="subtitle">Secretaria Municipal de Desenvolvimento, Turismo e Meio Ambiente</p>
+    // </div>
+    // <div className="flex flex-col min-h-[calc(100vh-165px)] w-full text-black font-sans items-centers justify-center lg:flex lg:flex-col p-10 h-auto"></div>
     <div className="container__signup">
       <div className="container__signup__left-side">
         <h2 className="title">SECAMB</h2>
